@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "build": "npx tsc",
-    "watch": "npx tsc -w"
+    "watch": "npx tsc -w",
+    "docs:dev": "vitepress dev packages",
+    "docs:build": "vitepress build packages",
+    "docs:preview": "vitepress preview packages"
   },
   "author": "Juan de Dios Martínez Vallejo",
   "license": "MIT",
@@ -13,6 +16,7 @@
     "@nativescript/core": "^8.5.3",
     "@nativescript/types": "^8.5.0",
     "nativescript-vue": "^3.0.0-beta.8",
-    "typescript": "^5.1.3"
+    "typescript": "^5.1.3",
+    "vitepress": "^1.0.0-beta.1"
   }
 }
