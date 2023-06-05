@@ -1,0 +1,18 @@
+{
+  "name": "nativescriptvueuse",
+  "version": "0.0.1",
+  "description": "Collection of essential NativeScript-Vue Composition Utilities",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx tsc",
+    "watch": "npx tsc -w"
+  },
+  "author": "Juan de Dios Martínez Vallejo",
+  "license": "MIT",
+  "devDependencies": {
+    "@nativescript/core": "^8.5.3",
+    "@nativescript/types": "^8.5.0",
+    "nativescript-vue": "^3.0.0-beta.8",
+    "typescript": "^5.1.3"
+  }
+}

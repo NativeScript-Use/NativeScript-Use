@@ -1,0 +1,36 @@
+{
+    "compilerOptions": {
+      "target": "es2017",
+      "module": "esnext",
+      "lib": ["ESNext", "DOM", "DOM.Iterable"],
+      "moduleResolution": "node",
+      "esModuleInterop": true,
+      "strict": true,
+      "strictNullChecks": true,
+      "strictFunctionTypes": true,
+      "declaration": true,
+      "declarationDir": "./types",
+      "resolveJsonModule": true,
+      "rootDir": ".",
+      "baseUrl": ".",
+      "skipLibCheck": true,
+      "skipDefaultLibCheck": true,
+      "noUnusedLocals": true,
+      "paths": {
+        "@nativescriptvueuse/core": ["./packages/core/index.ts"],
+        "@nativescriptvueuse/core/*": ["./packages/core/*"],
+      },
+      "typeRoots": ["global_types"],
+    },
+    "include": [
+      "packages",
+      "global_types"
+    ],
+    "exclude": [
+      "node_modules",
+      "**/*.md",
+      "**/dist",
+      "packages/.test",
+      "packages/_docs"
+    ]
+  }
