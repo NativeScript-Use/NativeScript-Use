@@ -10,11 +10,11 @@ import { ref, onMounted, Ref } from "nativescript-vue"
  */
 export function useElementSize<T extends View>(
     target: Ref<{ nativeView: T }>,
-    options: { onChange?: (size: Size) => void, initialSize: Size },
+    options?: { onChange?: (size: Size) => void, initialSize?: Size },
 ) {
     const {
         initialSize = { width: 0, height: 0 },
-    } = options
+    } = options ?? {}
 
     const width = ref(initialSize.width)
     const height = ref(initialSize.height)
@@ -23,7 +23,7 @@ export function useElementSize<T extends View>(
         const size = target.value.nativeView.getActualSize();
         width.value = size.width;
         height.value = size.height;
-        if (options.onChange) {
+        if (options?.onChange) {
             options.onChange(size);
         }
     }
