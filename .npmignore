@@ -1,6 +1,5 @@
 node_modules
-/**/*.js
-types
-dist
+global_types
+packages
 .idea
 .DS_Store

@@ -2,7 +2,8 @@
   "name": "nativescriptvueuse",
   "version": "0.0.1",
   "description": "Collection of essential NativeScript-Vue Composition Utilities",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "npx tsc",
     "watch": "npx tsc -w",

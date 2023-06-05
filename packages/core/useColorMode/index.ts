@@ -71,11 +71,13 @@ export function useColorMode<T extends string = BasicColorMode>(options: UseColo
 
     function processTheme() {
         if (store.value === "auto") {
+            system.value = getSystemTheme();
             applyTheme(system.value);
         } else {
             applyTheme(store.value);
         }
     }
+    
     function applyTheme(theme: T | BasicColorSchema) {
         if (Application.getRootView()) {
             const rootView = Application.getRootView();
