@@ -4,7 +4,7 @@ category: Elements
 
 # useElementSize
 
-Reactive size of an NativeScript View.
+Reactive size of a NativeScript View.
 
 ## Usage
 

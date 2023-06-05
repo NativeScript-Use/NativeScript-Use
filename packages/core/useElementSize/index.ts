@@ -2,7 +2,7 @@ import { Size, View } from "@nativescript/core"
 import { ref, onMounted, Ref } from "nativescript-vue"
 
 /**
- * Reactive size of an NativeScript element.
+ * Reactive size of a NativeScript element.
  *
  * @see 
  * @param target

@@ -6,8 +6,6 @@ Reactive color mode (dark / light / customs) with auto data persistence.
 
 ## Usage
 
-You can also explicit access to the system preference and storaged user override mode.
-
 ```js
 import { computed } from 'nativescript-vue'
 import { useColorMode } from 'vallemar/nativescriptvueuse'
