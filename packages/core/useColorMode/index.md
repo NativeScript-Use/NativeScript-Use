@@ -35,6 +35,28 @@ const myColorMode = computed(() => store.value === 'auto' ? system.value : store
 ```
 <br />
 
+## CSS integration
+To control the styles in your CSS you just have to add the theme class with the prefix `ns-` an example is, for the custom theme `cafe` the class would be `ns-cafe`.
+
+```css
+.ns-light Label{
+    color: gray;
+} 
+
+.ns-dark Label{
+    color: white;
+} 
+
+.ns-dim Label{
+    color: green;
+} 
+
+.ns-cafe Label{
+    color: yellow;
+} 
+
+```
+
 ## Integrate with TailWind CSS
 
 Integrate TaildWind CSS with the official [NativeScript plugin](https://github.com/NativeScript/tailwind) and apply styles depending on the theme
@@ -53,7 +75,7 @@ module.exports = {
      * 
      * Example usage: 
      *
-     *   <Label text="Theme example" class="light:text-red-500 dark:text-blue-500 dim:text-green-500 cafe:text-yellow-500" />
+     *   <Label text="Theme example" class="light:text-gray-500 dark:text-white dim:text-green-500 cafe:text-yellow-500" />
      *
      */
     plugin(function ({ addVariant }) {
