@@ -3,3 +3,4 @@ global_types
 packages
 .idea
 .DS_Store
+dist

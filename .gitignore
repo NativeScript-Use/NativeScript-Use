@@ -2,5 +2,6 @@ node_modules
 /**/*.js
 types
 dist
+lib
 .idea
 .DS_Store
