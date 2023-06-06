@@ -5,3 +5,4 @@ packages
 dist
 rollup.config.js
 tsconfig.json
+demo

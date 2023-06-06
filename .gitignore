@@ -5,3 +5,7 @@ dist
 lib
 .idea
 .DS_Store
+
+demo/node_modules
+demo/hooks
+demo/platforms

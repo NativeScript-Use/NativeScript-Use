@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+
+.ns-light Page{
+  background-color: blue;
+}
+
+.ns-cafe Page{
+  background-color: brown;
+}

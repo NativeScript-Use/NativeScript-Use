@@ -6,7 +6,7 @@
   "types": "lib/index.d.ts",
   "scripts": {
     "build": "rollup -c --bundleConfigAsCjs  && tsc",
-    "watch": "npx tsc -w",
+    "watch": "rollup -c --watch --bundleConfigAsCjs  && tsc -w",
     "docs:dev": "vitepress dev packages",
     "docs:build": "vitepress build packages",
     "docs:preview": "vitepress preview packages",
