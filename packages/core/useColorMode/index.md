@@ -94,10 +94,7 @@ module.exports = {
 
 ```ts
 import { Ref } from 'nativescript-vue';
-export interface ElementSize {
-    width: number;
-    height: number;
-}
+
 export type BasicColorMode = 'light' | 'dark';
 export type BasicColorSchema = BasicColorMode | 'auto';
 export interface UseColorModeOptions<T extends string = BasicColorMode> {

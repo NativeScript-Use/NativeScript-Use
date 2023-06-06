@@ -28,10 +28,12 @@ onMounted(() =>{
 
 ## Type declaration
 ```ts
+import { View } from "@nativescript/core";
+import { ViewRef } from "@vallemar/nativescript-vueuse";
 /**
  * Utility. Get View from Ref.
  *
  * @param target
  */
-declare function unrefView<T extends View>(target: ViewRef): View | undefined;
+export declare function unrefView<T = View>(target: ViewRef<T>): T | undefined;
 ```

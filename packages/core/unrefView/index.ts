@@ -6,9 +6,8 @@ import { ViewRef } from "../types"
  *
  * @param target
  */
-export function unrefView<T extends View>(
-    target: ViewRef,
+export function unrefView<T = View>(
+    target: ViewRef<T>,
 ) {
     return target.value?.nativeView
 }
-

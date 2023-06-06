@@ -27,17 +27,26 @@ const { width, height } = useElementSize(el);
 
 ## Type declaration
 ```ts
+import { Ref } from "nativescript-vue"
+import { ViewRef } from "@vallemar/nativescript-vueuse";
+import { CoreTypes } from "@nativescript/core/core-types";
+
+export type SizeDIP = {
+    width: CoreTypes.dip;
+    height: CoreTypes.dip;
+};
 /**
  * Reactive size of a NativeScript element.
  *
  * @param target
  * @param options
  */
-declare function useElementSize<T extends View>(target: ViewRef, options?: {
-    onChange?: (size: Size) => void;
-    initialSize?: Size;
+export declare function useElementSize(target: ViewRef, options?: {
+    onChange?: (size: SizeDIP) => void;
+    initialSize?: SizeDIP;
 }): {
-    width: Ref<number>;
-    height: Ref<number>;
+    width: Ref<CoreTypes.dip>;
+    height: Ref<CoreTypes.dip>;
 };
+
 ```
