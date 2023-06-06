@@ -7,7 +7,7 @@ import {
   $navigateTo,
 } from 'nativescript-vue';
 import Details from './Details.vue';
-import {useColorMode, useElementSize} from "@lib";
+import {useColorMode, useElementSize} from "@vallemar/nativescript-vueuse";
 
 const refView = ref()
 const { width, height } = useElementSize(refView);

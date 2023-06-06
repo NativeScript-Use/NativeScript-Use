@@ -18,6 +18,7 @@
     "@nativescript/core": "^8.5.3",
     "@nativescript/types": "^8.5.0",
     "nativescript-vue": "^3.0.0-beta.8",
+    "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-dts": "^5.3.0",
     "rollup-plugin-ts": "^3.2.0",
     "typescript": "^5.1.3",

@@ -2,7 +2,7 @@ node_modules
 /**/*.js
 types
 dist
-lib
+publish
 .idea
 .DS_Store
 
