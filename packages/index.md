@@ -12,7 +12,7 @@ hero:
       link: /started
     - theme: alt
       text: Functions
-      link: /core/useColorMode/index.md
+      link: /core/unrefView/index.md
 
 ---
 

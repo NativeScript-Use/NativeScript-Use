@@ -11,7 +11,7 @@ export default defineConfig({
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Get Started', link: '/started' },
-      { text: 'Functions', link: '/core/useColorMode/index.md' }
+      { text: 'Functions', link: '/core/unrefView/index.md' }
     ],
 
     sidebar: [
@@ -33,7 +33,8 @@ export default defineConfig({
     ],
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/vallemar/NativeScriptVueUse' }
+      { icon: 'github', link: 'https://github.com/vallemar/NativeScriptVueUse' },
+      //{ icon: { svg: 'https://upload.wikimedia.org/wikipedia/commons/d/db/Npm-logo.svg'}, link: 'https://www.npmjs.com/package/@vallemar/nativescript-vueuse' }
     ]
   }
 })
