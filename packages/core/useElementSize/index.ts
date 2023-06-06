@@ -1,15 +1,15 @@
 import { Size, View } from "@nativescript/core"
-import { ref, onMounted, Ref } from "nativescript-vue"
+import { ref, onMounted } from "nativescript-vue"
+import {unrefView, ViewRef} from "../"
 
 /**
  * Reactive size of a NativeScript element.
  *
- * @see 
  * @param target
  * @param options
  */
 export function useElementSize<T extends View>(
-    target: Ref<{ nativeView: T }>,
+    target: ViewRef,
     options?: { onChange?: (size: Size) => void, initialSize?: Size },
 ) {
     const {
@@ -20,18 +20,24 @@ export function useElementSize<T extends View>(
     const height = ref(initialSize.height)
 
     function layoutChanged() {
-        const size = target.value.nativeView.getActualSize();
-        width.value = size.width;
-        height.value = size.height;
-        if (options?.onChange) {
-            options.onChange(size);
+        const size = unrefView(target)?.getActualSize();
+        if(size){
+            width.value = size.width;
+            height.value = size.height;
+            if (options?.onChange) {
+                options.onChange(size);
+            }
         }
     }
+
     onMounted(() => {
-        target.value.nativeView.on("layoutChanged", layoutChanged)
-        target.value.nativeView.on("unloaded", () => {
-            target.value.nativeView.off("layoutChanged", layoutChanged)
-        })
+        const view = unrefView(target);
+        if(view){
+            view.on("layoutChanged", layoutChanged)
+            view.on("unloaded", () => {
+                view.off("layoutChanged", layoutChanged)
+            })
+        }
     })
 
     return {
