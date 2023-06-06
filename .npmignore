@@ -4,3 +4,5 @@ packages
 .idea
 .DS_Store
 dist
+rollup.config.js
+tsconfig.json
