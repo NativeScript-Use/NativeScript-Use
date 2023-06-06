@@ -17,7 +17,7 @@ Reactive size of a NativeScript View.
 
 <script lang="ts" setup>
 import { ref } from 'nativescript-vue'
-import { useElementSize } from 'vallemar/nativescriptvueuse'
+import { useElementSize } from '@vallemar/nativescript-vueuse'
 
 const el = ref(null);
 const { width, height } = useElementSize(el);

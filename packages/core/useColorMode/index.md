@@ -8,7 +8,7 @@ Reactive color mode (dark / light / customs) with auto data persistence.
 
 ```js
 import { computed } from 'nativescript-vue'
-import { useColorMode } from 'vallemar/nativescriptvueuse'
+import { useColorMode } from '@vallemar/nativescript-vueuse'
 
 const { system, store } = useColorMode({
      modes: [

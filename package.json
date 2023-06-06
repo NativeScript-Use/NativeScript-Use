@@ -1,6 +1,6 @@
 {
   "name": "@vallemar/nativescript-vueuse",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Collection of essential NativeScript-Vue Composition Utilities",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -10,7 +10,8 @@
     "watch": "npx tsc -w",
     "docs:dev": "vitepress dev packages",
     "docs:build": "vitepress build packages",
-    "docs:preview": "vitepress preview packages"
+    "docs:preview": "vitepress preview packages",
+    "publish": "npm publish --access public"
   },
   "author": "Juan de Dios Martínez Vallejo",
   "license": "MIT",

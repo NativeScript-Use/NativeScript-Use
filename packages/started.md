@@ -7,7 +7,7 @@ NativeScriptVueUse is based on [VueUse](https://vueuse.org/), it is a collection
 
 
 ```bash
-npm i vallemar/nativescriptvueuse
+npm i @vallemar/nativescript-vueuse
 ```
 
 

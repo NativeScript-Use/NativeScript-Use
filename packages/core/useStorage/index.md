@@ -7,7 +7,7 @@ Storage tool for NativeScript.
 ## Usage
 
 ```ts
-import { useStorage } from 'vallemar/nativescriptvueuse'
+import { useStorage } from '@vallemar/nativescript-vueuse'
 
 const storage = useStorage();
 storage.setObject("key", { foo: "bar" });
