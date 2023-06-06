@@ -1,16 +1,13 @@
 <script lang="ts" setup>
 import {
-  ref,
-  computed,
-  onMounted,
-  onUnmounted,
   $navigateTo,
 } from 'nativescript-vue';
-import Details from './Details.vue';
-import {useColorMode, useElementSize} from "@vallemar/nativescript-vueuse";
+import {useColorMode} from "@vallemar/nativescript-vueuse";
+import UseElementSize from "~/components/useElementSize.vue";
 
-const refView = ref()
-const { width, height } = useElementSize(refView);
+function onUseElementSize() {
+    $navigateTo(UseElementSize)
+}
 
 
 const { store } = useColorMode({
@@ -30,14 +27,11 @@ function changeTheme() {
 <template>
   <Frame>
     <Page>
-      <ActionBar>
-        <Label text="Home" class="font-bold text-lg" />
-      </ActionBar>
-
       <StackLayout rows="*, auto, auto, *" class="px-4">
-        <Label ref="refView" :text="`${width} ${height}`" class="light:text-white dark:text-blue-500 dim:text-green-500 cafe:text-yellow-500" />
-        <Button @tap="changeTheme" text="Change Theme" class="bg-white mt-12"></Button>
+        <Label ref="refView" text="" class="light:text-white dark:text-blue-500 dim:text-green-500 cafe:text-yellow-500" />
 
+        <Button @tap="onUseElementSize" text="UseElementSize" class="bg-white mt-12"></Button>
+        <Button @tap="changeTheme" text="Change Theme" class="bg-white mt-12"></Button>
       </StackLayout>
     </Page>
   </Frame>
