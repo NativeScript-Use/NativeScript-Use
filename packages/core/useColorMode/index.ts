@@ -1,5 +1,5 @@
 import { Application, CSSUtils, Utils, isAndroid, Frame } from "@nativescript/core"
-import { ref, Ref, watch, computed, onUnmounted } from "nativescript-vue"
+import {ref, Ref, watch, computed, onUnmounted, getCurrentInstance} from "nativescript-vue"
 import { useStorage } from "../useStorage"
 import { setAutoSystemAppearanceChanged, systemAppearanceChanged } from "@nativescript/core/application"
 import removeSystemCssClass = CSSUtils.removeSystemCssClass;
@@ -57,10 +57,12 @@ export function useColorMode<T extends string = BasicColorMode>(options: UseColo
     Application.on('displayed', processTheme)
     Application.on('systemAppearanceChanged', processTheme)
 
-    onUnmounted(() => {
-        Application.off('displayed', processTheme)
-        Application.off('systemAppearanceChanged', processTheme)
-    })
+    if (getCurrentInstance()){
+        onUnmounted(() => {
+            Application.off('displayed', processTheme)
+            Application.off('systemAppearanceChanged', processTheme)
+        })
+    }
 
     function processTheme() {
         if (store.value === "auto") {

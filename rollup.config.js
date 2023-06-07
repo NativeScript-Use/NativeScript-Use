@@ -4,6 +4,7 @@ const dts = require('rollup-plugin-dts')
 
 const config = [
     {
+        external: ['@nativescript/core'],
         input: "packages/core/index.ts",
         plugins: [typescript("es6"),
             copy({
@@ -19,6 +20,7 @@ const config = [
         ],
     },
     {
+        external: ['@nativescript/core'],
         input: "dist/index.d.ts",
         output: [{ file: "publish/lib/index.d.ts", format: "es" }],
         plugins: [dts.default()],

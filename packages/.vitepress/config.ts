@@ -27,6 +27,7 @@ export default defineConfig({
           { text: 'unrefView', link: '/core/unrefView/index.md' },
           { text: 'useColorMode', link: '/core/useColorMode/index.md' },
           { text: 'useElementSize', link: '/core/useElementSize/index.md' },
+          { text: 'useEventListener', link: '/core/useEventListener/index.md' },
           { text: 'useStorage', link: '/core/useStorage/index.md' },
         ]
       }

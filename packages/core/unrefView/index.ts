@@ -1,4 +1,4 @@
-import { View } from "@nativescript/core"
+import type { View } from "@nativescript/core"
 import { ViewRef } from "../types"
 
 /**
@@ -6,7 +6,7 @@ import { ViewRef } from "../types"
  *
  * @param target
  */
-export function unrefView<T = View>(
+export function unrefView<T extends View = View>(
     target: ViewRef<T>,
 ) {
     return target.value?.nativeView
