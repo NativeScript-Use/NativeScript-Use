@@ -20,8 +20,6 @@ Utility for the RootLayout view. [RootLayout official documentation](https://doc
 import { onMounted } from 'nativescript-vue'
 import { useRootLayout } from '@vallemar/nativescript-vueuse'
 import { MyComponent } from "./MyComponent.vue";
-import { MyOtherComponent } from "./MyOtherComponent.vue";
-
 
 const { show, close, isShow } = useRootLayout(MyComponent, {
   props: { foo: "bar" },
@@ -44,7 +42,7 @@ const { show, close, isShow } = useRootLayout(MyComponent, {
     }
   },
   onClose: () => {
-    console.log("onClose RootLayout")
+    console.log("On Close RootLayout")
   }
 });
 

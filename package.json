@@ -10,7 +10,7 @@
     "docs:dev": "vitepress dev packages",
     "docs:build": "vitepress build packages",
     "docs:preview": "vitepress preview packages",
-    "publish": "npm publish --access public"
+    "deploy": "npm publish --access public"
   },
   "author": "Juan de Dios Martínez Vallejo",
   "license": "MIT",
