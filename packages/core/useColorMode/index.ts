@@ -54,7 +54,6 @@ export function useColorMode<T extends string = BasicColorMode>(options: UseColo
             : store.value,
     )
 
-
     Application.on('displayed', processTheme)
     Application.on('systemAppearanceChanged', processTheme)
 
@@ -93,9 +92,12 @@ export function useColorMode<T extends string = BasicColorMode>(options: UseColo
             }
             rootViewClass.add(getClassFromTheme(applyTheme));
 
-            Application.getRootView().className = Array.from(rootViewClass).join(" ")
+            rootView.className = Array.from(rootViewClass).join(" ")
             const frame = Frame.topmost();
             frame.backStack.forEach(backStack => backStack.resolvedPage?._onCssStateChange())
+            rootView._getRootModalViews()?.forEach((view) => {
+                view?._onCssStateChange();
+            });
             storage.setString(storageKey!, theme);
 
             console.log("Apply: " + getClassFromTheme(theme));
