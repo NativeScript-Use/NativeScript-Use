@@ -1,5 +1,0 @@
-{
-  "installDependencies": true,
-  "compileTrigger": "save",
-  "startCommand": "cd demo && setup-nativescript-stackblitz && ns preview"
-}
