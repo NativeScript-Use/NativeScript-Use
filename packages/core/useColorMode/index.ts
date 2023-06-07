@@ -1,13 +1,8 @@
-import { Application, CSSUtils, Utils, isAndroid } from "@nativescript/core"
+import { Application, CSSUtils, Utils, isAndroid, Frame } from "@nativescript/core"
 import { ref, Ref, watch, computed, onUnmounted } from "nativescript-vue"
 import { useStorage } from "../useStorage"
 import { setAutoSystemAppearanceChanged, systemAppearanceChanged } from "@nativescript/core/application"
-const removeClass = CSSUtils.removeSystemCssClass;
-
-export interface ElementSize {
-    width: number
-    height: number
-}
+import removeSystemCssClass = CSSUtils.removeSystemCssClass;
 
 export type BasicColorMode = 'light' | 'dark'
 export type BasicColorSchema = BasicColorMode | 'auto'
@@ -51,7 +46,6 @@ export function useColorMode<T extends string = BasicColorMode>(options: UseColo
     const storage = useStorage();
 
     const themes = ["auto", "light", "dark", ...options.modes ?? []];
-
     const system = ref(getSystemTheme());
     const store = ref(storage.getString(storageKey!, initialValue.toString())) as Ref<T | BasicColorSchema>;
     const state = computed<T | BasicColorMode>(() =>
@@ -81,24 +75,30 @@ export function useColorMode<T extends string = BasicColorMode>(options: UseColo
     function applyTheme(theme: T | BasicColorSchema) {
         if (Application.getRootView()) {
             const rootView = Application.getRootView();
-            const rootViewClass = new Set();
-            (rootView.className ?? " ").split(/\s+/).forEach((v) => v && rootViewClass.add(v));
+            const rootViewClass = new Set<string>();
+            (Array.from(rootView.cssClasses).join(" ") ?? " ").split(/\s+/).forEach((v) => v && rootViewClass.add(v));
 
             themes.forEach(theme => {
+                removeSystemCssClass(getClassFromTheme(theme))
                 rootViewClass.delete(getClassFromTheme(theme));
-                removeClass(getClassFromTheme(theme))
             })
 
+            let applyTheme = theme;
             if (theme.toLocaleLowerCase().trim() === "auto") {
+                applyTheme = getSystemTheme();
                 setAutoSystemAppearanceChanged(true);
                 systemAppearanceChanged(rootView, getSystemTheme()!);
             } else {
                 setAutoSystemAppearanceChanged(false);
-                rootViewClass.add(getClassFromTheme(theme));
-                rootView.className = Array.from(rootViewClass).join(' ');
             }
-            storage.setString(storageKey!, theme)
-            console.log("Apply: " + Application.getRootView().className);
+            rootViewClass.add(getClassFromTheme(applyTheme));
+
+            Application.getRootView().className = Array.from(rootViewClass).join(" ")
+            const frame = Frame.topmost();
+            frame.backStack.forEach(backStack => backStack.resolvedPage?._onCssStateChange())
+            storage.setString(storageKey!, theme);
+
+            console.log("Apply: " + getClassFromTheme(theme));
 
             if (options.onChanged) {
                 options.onChanged(state.value);
@@ -119,7 +119,7 @@ export function useColorMode<T extends string = BasicColorMode>(options: UseColo
     }
 }
 
-const getClassFromTheme = (theme: string) => "ns-" + theme.toLocaleLowerCase().trim()
+const getClassFromTheme = (theme: string) => CSSUtils.CLASS_PREFIX + theme.toLocaleLowerCase().trim()
 function getSystemTheme(): BasicColorMode {
     if (isAndroid) {
         const nightModeFlags = Utils.android.getApplicationContext().getResources().getConfiguration().uiMode & android.content.res.Configuration.UI_MODE_NIGHT_MASK;
