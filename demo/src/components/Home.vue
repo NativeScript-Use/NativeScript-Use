@@ -16,7 +16,7 @@ function onUseColorMode() {
 </script>
 
 <template>
-  <Frame>
+  <Frame backgroundColor="transparent" >
     <Page>
       <StackLayout rows="*, auto, auto, *" class="px-4">
         <Label ref="refView" text="" class="light:text-white dark:text-blue-500 dim:text-green-500 cafe:text-yellow-500" />

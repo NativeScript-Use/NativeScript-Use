@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@nativescript/core": "~8.5.0",
-    "@vallemar/nativescript-vueuse": "file:../publish",
+    "@vallemar/nativescript-vueuse": "0.0.5",
     "nativescript-vue": "3.0.0-beta.8"
   },
   "devDependencies": {

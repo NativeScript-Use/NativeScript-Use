@@ -21,7 +21,6 @@ function changeTheme(newTheme: string) {
     <StackLayout class="p-4">
       <Label :text="`Current Theme: ${store}`"/>
 
-
       <ListView :items="THEMES" height="800">
         <template #default="{ item, index }: ListItem<string>">
           <FlexboxLayout
