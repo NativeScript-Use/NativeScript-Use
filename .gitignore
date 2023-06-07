@@ -10,3 +10,4 @@ demo/node_modules
 demo/hooks
 demo/platforms
 demo
+/demo/
