@@ -96,12 +96,12 @@ import { RootLayoutOptions, View} from "@nativescript/core";
  */
 export declare function useRootLayout(component: any, options?: {
     props?: any;
-    rootLayoutOption: RootLayoutOptions;
-    onClose: () => void;
+    rootLayoutOption?: RootLayoutOptions;
+    onClose?: () => void;
 }): {
     show: () => Promise<void>;
     close: () => void;
     isShow: Ref<boolean>;
-    nsView: View;
+    view: View;
 };
 ```

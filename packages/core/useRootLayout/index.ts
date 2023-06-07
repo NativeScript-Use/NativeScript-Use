@@ -9,14 +9,14 @@ import { RootLayoutOptions, ViewBase, getRootLayout } from "@nativescript/core"
  */
 export function useRootLayout(
     component: any,
-    options?: { props?: any, rootLayoutOption: RootLayoutOptions, onClose: () => void },
+    options?: { props?: any, rootLayoutOption?: RootLayoutOptions, onClose?: () => void },
 ) {
     const isShow = ref(false);
     const node = createNativeView(component, options?.props);
     node.mount();
-    const nsView = node.nativeView;
+    const view = node.nativeView;
 
-    nsView.on(ViewBase.unloadedEvent, () => {        
+    view.on(ViewBase.unloadedEvent, () => {        
         isShow.value = false;
         if (options?.onClose)
             options.onClose();
@@ -24,17 +24,18 @@ export function useRootLayout(
 
     function show() {
         isShow.value = true;
-        return getRootLayout().open(nsView, options?.rootLayoutOption);
+        return getRootLayout().open(view, options?.rootLayoutOption);
     }
 
     function close() {
-        getRootLayout().close(nsView);
+        getRootLayout().close(view);
     }
+    
     return {
         show,
         close,
         isShow,
-        nsView
+        view
     }
 }
 
