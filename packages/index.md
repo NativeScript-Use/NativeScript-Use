@@ -16,8 +16,10 @@ hero:
 
 ---
 
-<script setup>
-import Preview from './Preview.vue'
-</script>
+<Home />
 
-<Preview />
+
+<script setup>
+import Home from './.vitepress/theme/components/Home.vue'
+
+</script>
