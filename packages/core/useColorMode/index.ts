@@ -1,5 +1,5 @@
 import { Application, CSSUtils, Utils, isAndroid, Frame } from "@nativescript/core"
-import {ref, Ref, watch, computed, onUnmounted, getCurrentInstance} from "nativescript-vue"
+import { ref, Ref, watch, computed, onUnmounted, getCurrentInstance } from "nativescript-vue"
 import { useStorage } from "../useStorage"
 import { setAutoSystemAppearanceChanged, systemAppearanceChanged } from "@nativescript/core/application"
 import removeSystemCssClass = CSSUtils.removeSystemCssClass;
@@ -36,6 +36,8 @@ export interface UseColorModeOptions<T extends string = BasicColorMode> {
      */
     storageKey?: string | null
 }
+/* const system = ref();
+const store = ref(); */
 
 export function useColorMode<T extends string = BasicColorMode>(options: UseColorModeOptions<T> = {},) {
     const {
@@ -52,30 +54,44 @@ export function useColorMode<T extends string = BasicColorMode>(options: UseColo
         store.value === 'auto'
             ? system.value
             : store.value,
-    )
+    );
+    let broadcasting = false
 
-    Application.on('displayed', processTheme)
-    Application.on('systemAppearanceChanged', processTheme)
+    Application.on('displayed', processTheme);
+    Application.on('systemAppearanceChanged', processTheme);
+    Application.on('nativevueuse-color-scheme-changed', (data) => {
+        if(!broadcasting){
+            broadcasting = false;
+            system.value = getSystemTheme();
+            store.value = (data.object as any)["store"]; 
+            if (options.onChanged) {
+                options.onChanged(state.value);
+            }       
+        }
+       
+    });
 
-    if (getCurrentInstance()){
+    if (getCurrentInstance()) {
         onUnmounted(() => {
             Application.off('displayed', processTheme)
             Application.off('systemAppearanceChanged', processTheme)
+            Application.off('nativevueuse-color-scheme-changed', processTheme)
         })
     }
 
     function processTheme() {
+        system.value = getSystemTheme();
         if (store.value === "auto") {
-            system.value = getSystemTheme();
             applyTheme(system.value);
         } else {
             applyTheme(store.value);
         }
     }
-    
+
     function applyTheme(theme: T | BasicColorSchema) {
-        if (Application.getRootView()) {
-            const rootView = Application.getRootView();
+        const rootView = Application.getRootView();
+
+        if (rootView && !rootView.className?.includes(getClassFromTheme(theme))) {
             const rootViewClass = new Set<string>();
             (Array.from(rootView.cssClasses).join(" ") ?? " ").split(/\s+/).forEach((v) => v && rootViewClass.add(v));
 
@@ -103,6 +119,11 @@ export function useColorMode<T extends string = BasicColorMode>(options: UseColo
             storage.setString(storageKey!, theme);
 
             console.log("Apply: " + getClassFromTheme(theme));
+            broadcasting = true;
+            Application.notify({
+                eventName: 'nativevueuse-color-scheme-changed',
+                object: { system: system.value, store: store.value, state: state.value }
+            });
 
             if (options.onChanged) {
                 options.onChanged(state.value);
