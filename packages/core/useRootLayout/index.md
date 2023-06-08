@@ -41,7 +41,7 @@ const { show, close, isShow } = useRootLayout(MyComponent, {
       }
     }
   },
-  onClose: () => {
+  onClose: () => { // 👂 define a listener for when it closes
     console.log("On Close RootLayout")
   }
 });
@@ -71,13 +71,13 @@ const {
   show: showBottomSheet, 
   close: closeBottomSheet, 
   isShow: isShowBottomSheet 
-} = useRootLayout(BomttomSheetComponent, {your_props});
+} = useRootLayout(BomttomSheetComponent, {your_options});
 
 const { 
   show: showModal, 
   close: closeModal, 
   isShow: isShowModal 
-} = useRootLayout(ModalComponent, {your_props});
+} = useRootLayout(ModalComponent, {your_options});
 
 </script>
 ```
