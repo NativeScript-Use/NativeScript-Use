@@ -51,6 +51,9 @@ export default defineConfig({
     socialLinks: [
       { icon: 'github', link: 'https://github.com/vallemar/NativeScriptVueUse' },
       //{ icon: { svg: 'https://upload.wikimedia.org/wikipedia/commons/d/db/Npm-logo.svg'}, link: 'https://www.npmjs.com/package/@vallemar/nativescript-vueuse' }
-    ]
+    ],
+    search: {
+      provider: 'local'
+    }
   }
 })

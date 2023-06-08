@@ -31,7 +31,5 @@
       "node_modules",
       "**/*.md",
       "**/dist",
-      "packages/.test",
-      "packages/_docs"
     ]
   }
