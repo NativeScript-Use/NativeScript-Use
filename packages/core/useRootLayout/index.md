@@ -84,8 +84,7 @@ const {
 
 ## Type declaration
 ```ts
-import { Ref } from "@vallemar/nativescript-vueuse";
-import { RootLayoutOptions, View} from "@nativescript/core";
+import { RootLayoutOptions, View } from "@nativescript/core";
 /**
  * Utility for RootLayout view.
  *

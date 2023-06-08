@@ -2,6 +2,20 @@ import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
+  head: [
+    [
+      'script',
+      {
+        async: "true",
+        src: 'https://www.googletagmanager.com/gtag/js?id=G-RV37C0FX94',
+      },
+    ],
+    [
+      'script',
+      {},
+      "window.dataLayer = window.dataLayer || [];\nfunction gtag(){dataLayer.push(arguments);}\ngtag('js', new Date());\ngtag('config', 'G-RV37C0FX94');",
+    ],
+  ],
   title: "NativeScriptVueUse",
   description: "Collection of NativeScript-Vue3 Composition Utilities",
   themeConfig: {
