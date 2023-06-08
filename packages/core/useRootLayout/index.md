@@ -1,7 +1,7 @@
 
 # useRootLayout
 
-Utility for the RootLayout view. [RootLayout official documentation](https://docs.nativescript.org/ui-and-styling.html#rootlayout)
+Utility for RootLayout view. [RootLayout official documentation](https://docs.nativescript.org/ui-and-styling.html#rootlayout)
 
 ## Usage
 
@@ -87,7 +87,7 @@ const {
 import { Ref } from "@vallemar/nativescript-vueuse";
 import { RootLayoutOptions, View} from "@nativescript/core";
 /**
- * Utility for the RootLayout view.
+ * Utility for RootLayout view.
  *
  * @param component
  * @param options
