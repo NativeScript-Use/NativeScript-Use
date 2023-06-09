@@ -61,6 +61,7 @@ export function useColorMode<T extends string = BasicColorMode>(options: UseColo
             ? system.value
             : schema.value,
     );
+    let internalSchema = schema.value;
 
     Application.on('displayed', () => {
         processTheme();
@@ -116,7 +117,10 @@ export function useColorMode<T extends string = BasicColorMode>(options: UseColo
             storage.setString(storageKey!, themeToApply);
 
             console.log("Apply: " + getClassFromTheme(themeToApply));
-
+        }
+        
+        if(rootView && schema.value !== internalSchema){
+            internalSchema = schema.value;
             if (options.onChanged) {
                 options.onChanged(theme.value);
             }
