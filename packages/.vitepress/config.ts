@@ -44,6 +44,7 @@ export default defineConfig({
           { text: 'useElementSize', link: '/core/useElementSize/index.md' },
           { text: 'useEventListener', link: '/core/useEventListener/index.md' },
           { text: 'useRootLayout', link: '/core/useRootLayout/index.md' },
+          { text: 'useScreenOrientation', link: '/core/useScreenOrientation/index.md' },
           { text: 'useStorage', link: '/core/useStorage/index.md' },
         ]
       }
