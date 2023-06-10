@@ -1,35 +1,47 @@
 {
-    "compilerOptions": {
-      "target": "es2017",
-      "module": "esnext",
-      "lib": ["ESNext", "DOM", "DOM.Iterable"],
-      "moduleResolution": "node",
-      "esModuleInterop": true,
-      "strict": true,
-      "strictNullChecks": true,
-      "strictFunctionTypes": true,
-      "declaration": true,
-      "declarationDir": "./dist",
-      "resolveJsonModule": true,
-      "rootDir": "./packages/core",
-      "baseUrl": ".",
-      "outDir": "./dist",
-      "skipLibCheck": true,
-      "skipDefaultLibCheck": true,
-      "noUnusedLocals": true,
-      "paths": {
-        "@nativescriptvueuse/core": ["./packages/core/index.ts"],
-        "@nativescriptvueuse/core/*": ["./packages/core/*"],
-      },
-      "typeRoots": ["global_types"],
+  "compilerOptions": {
+    "target": "es2017",
+    "module": "esnext",
+    "lib": [
+      "ESNext",
+      "DOM",
+      "DOM.Iterable"
+    ],
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "strict": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "declaration": true,
+    "declarationDir": "./dist",
+    "resolveJsonModule": true,
+    "rootDir": "./packages/core",
+    "baseUrl": ".",
+    "outDir": "./dist",
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "noUnusedLocals": true,
+    "paths": {
+      "@nativescriptvueuse/core": [
+        "./packages/core/index.ts"
+      ],
+      "@nativescriptvueuse/core/*": [
+        "./packages/core/*"
+      ],
     },
-    "include": [
-      "packages",
+    "typeRoots": [
       "global_types"
     ],
-    "exclude": [
-      "node_modules",
-      "**/*.md",
-      "**/dist",
-    ]
-  }
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+  },
+  "include": [
+    "packages",
+    "global_types"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/*.md",
+    "**/dist",
+  ]
+}
