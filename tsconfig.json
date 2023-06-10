@@ -1,13 +1,12 @@
 {
   "compilerOptions": {
-    "target": "es2017",
+    "target": "esnext",
     "module": "esnext",
-    "lib": [
-      "ESNext",
-      "DOM",
-      "DOM.Iterable"
-    ],
     "moduleResolution": "node",
+    "lib": [
+      "esnext",
+      "WebWorker"
+    ],
     "esModuleInterop": true,
     "strict": true,
     "strictNullChecks": true,
@@ -34,6 +33,13 @@
     ],
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
+    "sourceMap": false,
+    "plugins": [
+      {
+        "transform": "@nativescript/webpack/dist/transformers/NativeClass/index.ts",
+        "type": "raw"
+      }
+    ]
   },
   "include": [
     "packages",

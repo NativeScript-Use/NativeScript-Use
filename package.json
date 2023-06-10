@@ -17,6 +17,7 @@
   "devDependencies": {
     "@nativescript/core": "^8.5.3",
     "@nativescript/types": "^8.5.0",
+    "@nativescript/webpack": "^5.0.15",
     "@rollup/plugin-terser": "^0.4.3",
     "nativescript-vue": "^3.0.0-beta.8",
     "rollup-plugin-copy": "^3.4.0",
