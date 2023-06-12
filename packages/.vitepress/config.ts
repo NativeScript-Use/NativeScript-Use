@@ -43,6 +43,7 @@ export default defineConfig({
           { text: 'useColorPalette', link: '/core/useColorPalette/index.md' },
           { text: 'useElementSize', link: '/core/useElementSize/index.md' },
           { text: 'useEventListener', link: '/core/useEventListener/index.md' },
+          { text: 'useKeyboard', link: '/core/useKeyboard/index.md' },
           { text: 'useRootLayout', link: '/core/useRootLayout/index.md' },
           { text: 'useScreenOrientation', link: '/core/useScreenOrientation/index.md' },
           { text: 'useStorage', link: '/core/useStorage/index.md' },

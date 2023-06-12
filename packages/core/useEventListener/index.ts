@@ -1,6 +1,6 @@
 import { onMounted, onUnmounted } from "nativescript-vue"
-import { unrefView } from "@nativescriptvueuse/core/unrefView"
-import { ViewRef } from "@nativescriptvueuse/core/types"
+import { unrefView } from "../unrefView"
+import { ViewRef } from "../types"
 import {EventData, GestureEventData, ShownModallyData, View} from "@nativescript/core"
 
 type ViewEventData<T> = Omit<EventData, 'object'> & { object: T }

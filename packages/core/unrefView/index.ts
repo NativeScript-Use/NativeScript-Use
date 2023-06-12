@@ -9,5 +9,5 @@ import { ViewRef } from "../types"
 export function unrefView<T extends View = View>(
     target: ViewRef<T>,
 ) {
-    return target.value?.nativeView
+    return target?.value?.nativeView;
 }

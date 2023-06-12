@@ -1,6 +1,6 @@
 import { ref, onMounted } from "nativescript-vue"
-import { unrefView } from "@nativescriptvueuse/core/unrefView"
-import { ViewRef } from "@nativescriptvueuse/core/types"
+import { unrefView } from "../unrefView"
+import { ViewRef } from "../types"
 import { CoreTypes } from "@nativescript/core/core-types";
 
 export type SizeDIP = {
