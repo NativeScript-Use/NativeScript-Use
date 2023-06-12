@@ -53,15 +53,10 @@ export const keyboardCore = {
         }
     },
     open(view: View) {
-        if (isAndroid) {
-            const imm = Utils.android.getApplicationContext().getSystemService(android.app.Activity.INPUT_METHOD_SERVICE) as android.view.inputmethod.InputMethodManager;
-            imm.showSoftInput(view.nativeViewProtected, 0);
-        } else if (isIOS) {
-            if (view && view["focus"]) {
-                view.focus();
-            } else {
-                console.log("Error open keyboard");
-            }
+        if (view && view["focus"]) {
+            view.focus();
+        } else {
+            console.log("Error open keyboard");
         }
     },
     close() {
