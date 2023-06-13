@@ -1,7 +1,7 @@
 import { onMounted, onUnmounted, readonly, ref } from "nativescript-vue"
-import { ViewRef } from "@nativescriptvueuse/core/types"
-import { keyboardCore } from "./core";
+import { ViewRef } from "../types"
 import { unrefView } from "../unrefView";
+import { Keyboard } from "./nsCore";
 
 /**
  * Reactive size of a NativeScript element.
@@ -13,15 +13,18 @@ export function useKeyboard(
     options?: { onChange?: (isOpen: boolean) => void, defaultTarget?: ViewRef },
 ) {
     const isOpen = ref(false);
+    const keyboardCore = new Keyboard();
 
     onMounted(() => {
-        keyboardCore.onChangeVisibility((status: boolean) => {
-            if (isOpen.value !== status) {
-                isOpen.value = status;
-                if (options?.onChange)
-                    options.onChange(status);
-            }
-        });
+        setTimeout(() => {
+            keyboardCore.onChangeVisibility((status: boolean) => {
+                if (isOpen.value !== status) {
+                    isOpen.value = status;
+                    if (options?.onChange)
+                        options.onChange(status);
+                }
+            });  
+        }, 100);
     })
 
     onUnmounted(() => {
