@@ -44,7 +44,7 @@ import { useColorMode, useColorPalette } from "@vallemar/nativescript-vueuse";
 
 /* Init Color mode and Palette */
 useColorMode({
-    modes: ["light", "dark", "dim", "cafe"]
+    modes: ["dim", "cafe"] // Custom modes
 });
 
 useColorPalette({ 
