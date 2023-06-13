@@ -20,6 +20,8 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "noUnusedLocals": true,
+		"sourceMap": true,
+		"allowSyntheticDefaultImports": true,
     "paths": {
       "@nativescriptvueuse/core": [
         "./packages/core/index.ts"
@@ -45,6 +47,7 @@
     "packages",
     "global_types"
   ],
+
   "exclude": [
     "node_modules",
     "**/*.md",
