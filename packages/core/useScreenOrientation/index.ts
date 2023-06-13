@@ -1,6 +1,6 @@
-import { ref, readonly } from "nativescript-vue"
+import { ref, readonly, onUnmounted } from "nativescript-vue"
 import { CoreTypes } from "@nativescript/core";
-import { orientationCore } from "./core";
+import { Orientation } from "./nsCore";
 
 
 /**
@@ -12,6 +12,7 @@ import { orientationCore } from "./core";
 export function useScreenOrientation(
     options?: { onChange?: (orientation: CoreTypes.DeviceOrientationType) => void },
 ) {
+    const orientationCore = new Orientation();
     const orientation = ref(orientationCore.getOrientation());
 
     let tryCount = 0;
@@ -31,12 +32,15 @@ export function useScreenOrientation(
     }
     if (orientation.value === CoreTypes.DeviceOrientation.unknown) tryOrientation();
 
-    orientationCore.onChangedOrientation((newValue: CoreTypes.DeviceOrientationType) => {
-        orientation.value = newValue;
+    orientationCore.onChangedOrientation((value: {newValue: CoreTypes.DeviceOrientationType}) => {
+        orientation.value = value.newValue;
         if (options?.onChange)
             options.onChange(orientation.value)
     })
 
+    onUnmounted(() =>{
+        orientationCore.offChangedOrientation();
+    })
     return {
         orientation: readonly(orientation),
         setOrientation: orientationCore.setOrientation,
