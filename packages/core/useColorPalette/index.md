@@ -15,7 +15,7 @@ In order for useColorPalette to react to theme changes you need the application 
 If in your application you will only have light mode and dark mode you will need to initialize the light and dark palettes.
 
 ```js
-// app.ts / maint.ts
+// app.ts / main.ts
 
 import { createApp } from 'nativescript-vue';
 import { useColorMode, useColorPalette } from "@vallemar/nativescript-vueuse";
@@ -37,7 +37,7 @@ createApp(Home).start();
 This function depends on [`useColorMode`](/core/useColorMode/). If you want other themes than the default themes on the native side (light/dark) you must also initialize [`useColorMode`](/core/useColorMode/) so that the themes match useColorPalette.
 
 ```js
-// app.ts / maint.ts
+// app.ts / main.ts
 
 import { createApp } from 'nativescript-vue';
 import { useColorMode, useColorPalette } from "@vallemar/nativescript-vueuse";

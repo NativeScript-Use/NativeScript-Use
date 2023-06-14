@@ -2,6 +2,7 @@ import { onMounted, onUnmounted, readonly, ref } from "nativescript-vue"
 import { ViewRef } from "../types"
 import { unrefView } from "../unrefView";
 import { Keyboard } from "./nsCore";
+import { onApplicationMounted } from "../onApplicationMounted";
 
 /**
  * Reactive size of a NativeScript element.
@@ -15,16 +16,17 @@ export function useKeyboard(
     const isOpen = ref(false);
     const keyboardCore = new Keyboard();
 
+    //TODO: fix this
     onMounted(() => {
-        setTimeout(() => {
+        onApplicationMounted(() => {
             keyboardCore.onChangeVisibility((status: boolean) => {
                 if (isOpen.value !== status) {
                     isOpen.value = status;
                     if (options?.onChange)
                         options.onChange(status);
                 }
-            });  
-        }, 100);
+            });
+        })
     })
 
     onUnmounted(() => {

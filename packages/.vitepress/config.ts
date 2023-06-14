@@ -39,6 +39,7 @@ export default defineConfig({
         text: 'Functions',
         items: [
           { text: 'unrefView', link: '/core/unrefView/index.md' },
+          { text: 'useClipboard', link: '/core/useClipboard/index.md' },
           { text: 'useColorMode', link: '/core/useColorMode/index.md' },
           { text: 'useColorPalette', link: '/core/useColorPalette/index.md' },
           { text: 'useElementSize', link: '/core/useElementSize/index.md' },
@@ -47,6 +48,12 @@ export default defineConfig({
           { text: 'useRootLayout', link: '/core/useRootLayout/index.md' },
           { text: 'useScreenOrientation', link: '/core/useScreenOrientation/index.md' },
           { text: 'useStorage', link: '/core/useStorage/index.md' },
+        ]
+      },
+      {
+        text: 'Global hooks',
+        items: [
+          { text: 'onApplicationMounted', link: '/core/onApplicationMounted/index.md' },
         ]
       }
     ],

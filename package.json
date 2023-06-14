@@ -1,6 +1,6 @@
 {
   "name": "@vallemar/nativescript-vueuse",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "description": "Collection of essential NativeScript-Vue Composition Utilities",
   "main": "index.js",
   "types": "index.d.ts",

@@ -10,7 +10,7 @@ To add custom modes other than `light/dark` you need to initialize in the input 
 
 If you only want to use the `light/dark` modes this step is not necessary.
 ```js
-// app.ts / maint.ts
+// app.ts / main.ts
 
 import { createApp } from 'nativescript-vue';
 import { useColorMode } from "@vallemar/nativescript-vueuse";
