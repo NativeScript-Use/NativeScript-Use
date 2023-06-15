@@ -1,0 +1,73 @@
+{
+  "name": "nativescript-orientation",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "packages/nativescript-orientation",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "options": {
+        "outputPath": "dist/packages/nativescript-orientation",
+        "tsConfig": "packages/nativescript-orientation/tsconfig.json",
+        "packageJson": "packages/nativescript-orientation/package.json",
+        "main": "packages/nativescript-orientation/index.d.ts",
+        "assets": [
+          "packages/nativescript-orientation/*.md",
+          "packages/nativescript-orientation/index.d.ts",
+          "LICENSE",
+          {
+            "glob": "**/*",
+            "input": "packages/nativescript-orientation/platforms/",
+            "output": "./platforms/"
+          }
+        ],
+        "dependsOn": [
+          {
+            "target": "build.all",
+            "projects": "dependencies"
+          }
+        ]
+      }
+    },
+    "build.all": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "node tools/scripts/build-finish.ts nativescript-orientation"
+        ],
+        "parallel": false
+      },
+      "outputs": [
+        "dist/packages/nativescript-orientation"
+      ],
+      "dependsOn": [
+        {
+          "target": "build.all",
+          "projects": "dependencies"
+        },
+        {
+          "target": "build",
+          "projects": "self"
+        }
+      ]
+    },
+    "focus": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "nx g @nativescript/plugin-tools:focus-packages nativescript-orientation"
+        ],
+        "parallel": false
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "packages/nativescript-orientation/**/*.ts"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

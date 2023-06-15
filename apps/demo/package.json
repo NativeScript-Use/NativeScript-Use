@@ -1,0 +1,17 @@
+{
+  "main": "./src/app.ts",
+  "description": "NativeScript Application",
+  "license": "SEE LICENSE IN <your-license-filename>",
+  "repository": "<fill-your-repository-here>",
+  "dependencies": {
+    "@nativescript/core": "file:../../node_modules/@nativescript/core",
+    "@vallemar/nativescript-vueuse": "file:../../packages/nativescript-vueuse",
+    "@vallemar/nativescript-orientation": "file:../../packages/nativescript-orientation",
+    "@vallemar/nativescript-keyboard": "file:../../packages/nativescript-keyboard",
+    "@vallemar/nativescript-clipboard": "file:../../packages/nativescript-clipboard"
+  },
+  "devDependencies": {
+    "@nativescript/android": "~8.4.0",
+    "@nativescript/ios": "~8.4.0"
+  }
+}

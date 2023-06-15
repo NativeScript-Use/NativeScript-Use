@@ -1,0 +1,51 @@
+{
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": true,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "noEmitHelpers": true,
+    "target": "ES2020",
+    "module": "ESNext",
+    "lib": [
+      "ESNext",
+      "dom"
+    ],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "plugins": [
+      {
+        "transform": "@nativescript/webpack/dist/transformers/NativeClass",
+        "type": "raw"
+      }
+    ],
+    "paths": {
+   
+      "@demo/shared": [
+        "tools/demo/index.ts"
+      ],
+      "@vallemar/*": [
+        "packages/*"
+      ],
+      "@vallemar/nativescript-vueuse": [
+        "packages/nativescript-vueuse/index.d.ts"
+      ],
+      "@vallemar/nativescript-orientation": [
+        "packages/nativescript-orientation/index.d.ts"
+      ],
+      "@vallemar/nativescript-keyboard": [
+        "packages/nativescript-keyboard/index.d.ts"
+      ],
+      "@vallemar/nativescript-clipboard": [
+        "packages/nativescript-clipboard/index.d.ts"
+      ]
+    }
+  },
+  "exclude": [
+    "node_modules",
+    "tmp"
+  ]
+}
