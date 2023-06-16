@@ -5,7 +5,7 @@ Reactive color palette (dark / light / customs) for reactive styles.
 <br />
 
 ::: info
-In order for useColorPalette to react to theme changes you need the application themes to be controlled by [`useColorMode`](/core/useColorMode/)
+In order for useColorPalette to react to theme changes you need the application themes to be controlled by [`useColorMode`](/src/useColorMode/)
 :::
 
 ## Usage
@@ -34,7 +34,7 @@ createApp(Home).start();
 
 ### Advanced initialize
 
-This function depends on [`useColorMode`](/core/useColorMode/). If you want other themes than the default themes on the native side (light/dark) you must also initialize [`useColorMode`](/core/useColorMode/) so that the themes match useColorPalette.
+This function depends on [`useColorMode`](/src/useColorMode/). If you want other themes than the default themes on the native side (light/dark) you must also initialize [`useColorMode`](/src/useColorMode/) so that the themes match useColorPalette.
 
 ```js
 // app.ts / main.ts
@@ -60,7 +60,7 @@ createApp(Home).start();
 ```
 
 ### Use in your application
-This is a simple example, keep in mind that when you change the theme through [`useColorMode`](/core/useColorMode/) the reactive palette will change automatically applying the colors of the new palette.
+This is a simple example, keep in mind that when you change the theme through [`useColorMode`](/src/useColorMode/) the reactive palette will change automatically applying the colors of the new palette.
 
 
 ```vue
