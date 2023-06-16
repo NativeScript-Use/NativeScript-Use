@@ -15,10 +15,13 @@
     "add-demo": "nx g @nativescript/plugin-tools:add-demo",
     "ts-vue": "cd packages/nativescript-vueuse && npx tsc --watch",
     "build:all": "nx run-many --target=build.all --all",
-    "demo:android": "cd apps/demo-vue && npm run android",
-    "demo:ios": "cd apps/demo-vue && npm run ios"
+    "demo:vue:android": "npx nx run NativeScript-Use-Vue:android",
+    "demo:vue:ios": "npx nx run NativeScript-Use-Vue:ios"
   },
-  "workspaces":["/packages/*", "/apps/*"],
+  "workspaces": [
+    "/packages/*",
+    "/apps/*"
+  ],
   "private": true,
   "devDependencies": {
     "@nativescript/core": "~8.5.0",
@@ -30,7 +33,8 @@
     "nativescript-vue": "3.0.0-beta.8",
     "ng-packagr": "^15.0.0",
     "tailwindcss": "^3.3.2",
-    "typescript": "~4.8.0"
+    "typescript": "~4.8.0",
+    "vue": "~2.6.12"
   },
   "lint-staged": {
     "**/*.{js,ts,scss,json,html}": [

@@ -9,10 +9,7 @@
     "noEmitHelpers": true,
     "target": "ES2020",
     "module": "ESNext",
-    "lib": [
-      "ESNext",
-      "dom"
-    ],
+    "lib": ["ESNext", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
@@ -23,29 +20,14 @@
       }
     ],
     "paths": {
-   
-      "@demo/shared": [
-        "tools/demo/index.ts"
-      ],
-      "@vallemar/*": [
-        "packages/*"
-      ],
-      "@vallemar/nativescript-vueuse": [
-        "packages/nativescript-vueuse/index.d.ts"
-      ],
-      "@vallemar/nativescript-orientation": [
-        "packages/nativescript-orientation/index.d.ts"
-      ],
-      "@vallemar/nativescript-keyboard": [
-        "packages/nativescript-keyboard/index.d.ts"
-      ],
-      "@vallemar/nativescript-clipboard": [
-        "packages/nativescript-clipboard/index.d.ts"
-      ]
+      "@demo/shared": ["tools/demo/index.ts"],
+      "@nativescript/core/*": ["node_modudes/@nativescript/core/*"],
+      "@vallemar/*": ["packages/*"],
+      "@vallemar/nativescript-vueuse": ["packages/nativescript-vueuse/index.d.ts"],
+      "@vallemar/nativescript-orientation": ["packages/nativescript-orientation/index.d.ts"],
+      "@vallemar/nativescript-keyboard": ["packages/nativescript-keyboard/index.d.ts"],
+      "@vallemar/nativescript-clipboard": ["packages/nativescript-clipboard/index.d.ts"]
     }
   },
-  "exclude": [
-    "node_modules",
-    "tmp"
-  ]
+  "exclude": ["node_modules", "tmp"]
 }
