@@ -1,10 +1,10 @@
 <template>
   <div v-if="isChromium" class="wrap-iframe">
-    <iframe src="https://stackblitz.com/edit/nativescript-vueuse-demo?embed=1&file=src%2Fapp.ts&view=both"></iframe>
+    <iframe src="https://stackblitz.com/edit/nativescrip-use-vue?embed=1&file=src%2Fapp.ts&view=both"></iframe>
   </div>
   <div v-else class=" flex justify-center mb-12">
     <a class="rounded-full bg-ns-vueuse px-3 py-2" target="_blank"
-      href="https://stackblitz.com/edit/nativescript-vueuse-demo?file=src%2Fapp.ts">Playground</a>
+      href="https://stackblitz.com/edit/nativescrip-use-vue?file=src%2Fapp.ts">Playground</a>
   </div>
 </template>
 <script setup>

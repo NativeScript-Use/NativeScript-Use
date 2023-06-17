@@ -21,7 +21,7 @@ export default defineConfig({
       { text: 'Home', link: '/' },
       { text: 'Get Started', link: '/started' },
       { text: 'Functions', link: '/src/unrefView/index.md' },
-      { text: 'Playground', link: 'https://stackblitz.com/edit/nativescript-vueuse-demo?file=src%2Fapp.ts' },
+      { text: 'Playground', link: 'https://stackblitz.com/edit/nativescrip-use-vue?file=src%2Fapp.ts' },
     ],
 
     sidebar: [
