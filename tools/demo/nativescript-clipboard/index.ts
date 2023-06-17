@@ -1,8 +1,7 @@
 import { DemoSharedBase } from '../utils';
-import {  } from '@vallemar/nativescript-clipboard';
+import {} from '@nativescript-use/nativescript-clipboard';
 
 export class DemoSharedNativescriptClipboard extends DemoSharedBase {
-
   testIt() {
     console.log('test nativescript-clipboard!');
   }

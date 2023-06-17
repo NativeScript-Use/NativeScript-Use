@@ -1,13 +1,13 @@
-# @vallemar/nativescript-keyboard
+# @nativescript-use/nativescript-keyboard
 
 ```javascript
-npm install @vallemar/nativescript-keyboard
+npm install @nativescript-use/nativescript-keyboard
 ```
 
 ## Usage
 
 ```ts
-import { Keyboard } from "@vallemar/nativescript-keyboard"
+import { Keyboard } from "@nativescript-use/nativescript-keyboard"
 
 const keyboard = new Keyboard();
 

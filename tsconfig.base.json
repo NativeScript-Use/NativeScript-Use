@@ -22,12 +22,14 @@
     "paths": {
       "@demo/shared": ["tools/demo/index.ts"],
       "@nativescript/core/*": ["node_modudes/@nativescript/core/*"],
-      "@vallemar/*": ["packages/*"],
-      "@vallemar/nativescript-vueuse": ["packages/nativescript-vueuse/index.d.ts"],
-      "@vallemar/nativescript-orientation": ["packages/nativescript-orientation/index.d.ts"],
-      "@vallemar/nativescript-keyboard": ["packages/nativescript-keyboard/index.d.ts"],
-      "@vallemar/nativescript-clipboard": ["packages/nativescript-clipboard/index.d.ts"]
-    }
+      "@nativescript-use/*": ["packages/*"],
+      "@nativescript-use/vue": ["packages/vue/index.d.ts"],
+      "@nativescript-use/nativescript-orientation": ["packages/nativescript-orientation/index.d.ts"],
+      "@nativescript-use/nativescript-keyboard": ["packages/nativescript-keyboard/index.d.ts"],
+      "@nativescript-use/nativescript-clipboard": ["packages/nativescript-clipboard/index.d.ts"],
+      "@/*": ["packages/*"]
+    },
+    "jsx": "react"
   },
   "exclude": ["node_modules", "tmp"]
 }

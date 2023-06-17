@@ -1,8 +1,7 @@
 import { DemoSharedBase } from '../utils';
-import {  } from '@vallemar/nativescript-vueuse';
+import {} from '@nativescript-use/vue';
 
 export class DemoSharedNativescriptVueuse extends DemoSharedBase {
-
   testIt() {
     console.log('test nativescript-vueuse!');
   }

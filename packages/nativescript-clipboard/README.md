@@ -1,13 +1,13 @@
-# @vallemar/nativescript-clipboard
+# @nativescript-use/nativescript-clipboard
 
 ```javascript
-npm install @vallemar/nativescript-clipboard
+npm install @nativescript-use/nativescript-clipboard
 ```
 
 ## Usage
 
 ```ts
-import { Clipboard } from "@vallemar/nativescript-clipboard"
+import { Clipboard } from "@nativescript-use/nativescript-clipboard"
 
 const clipboard = new Clipboard();
 

@@ -1,13 +1,13 @@
-# @vallemar/nativescript-orientation
+# @nativescript-use/nativescript-orientation
 
 ```javascript
-npm install @vallemar/nativescript-orientation
+npm install @nativescript-use/nativescript-orientation
 ```
 
 ## Usage
 
 ```ts
-import { Orientation } from "@vallemar/nativescript-orientation"
+import { Orientation } from "@nativescript-use/nativescript-orientation"
 
 const orientation = new Orientation();
 

@@ -1,0 +1,65 @@
+{
+  "name": "vue",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "packages/vue",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "options": {
+        "outputPath": "dist/packages/vue",
+        "tsConfig": "packages/vue/tsconfig.json",
+        "packageJson": "packages/vue/package.json",
+        "main": "packages/vue/index.d.ts",
+        "assets": [
+          "packages/vue/*.md",
+          "packages/vue/index.d.ts",
+          "LICENSE",
+          {
+            "glob": "**/*",
+            "input": "packages/vue/platforms/",
+            "output": "./platforms/"
+          }
+        ],
+        "dependsOn": [
+          {
+            "target": "build.all",
+            "projects": "dependencies"
+          }
+        ]
+      }
+    },
+    "build.all": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": ["node tools/scripts/build-finish.ts vue"],
+        "parallel": false
+      },
+      "outputs": ["dist/packages/vue"],
+      "dependsOn": [
+        {
+          "target": "build.all",
+          "projects": "dependencies"
+        },
+        {
+          "target": "build",
+          "projects": "self"
+        }
+      ]
+    },
+    "focus": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": ["nx g @nativescript/plugin-tools:focus-packages vue"],
+        "parallel": false
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["packages/vue/**/*.ts"]
+      }
+    }
+  },
+  "tags": []
+}

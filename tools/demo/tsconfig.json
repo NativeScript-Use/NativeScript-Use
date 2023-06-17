@@ -3,9 +3,8 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@vallemar/*": [
-        "../../packages/*"
-      ]
+      "@/*": ["../../packages/*"],
+      "@nativescript-use/*": ["../../packages/*"]
     }
   }
 }

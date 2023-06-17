@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./packages/nativescript-vueuse/.vitepress/theme/**/*.vue', './packages/nativescript-vueuse/.vitepress/theme/*.js'],
+  content: ['./packages/vue/.vitepress/theme/**/*.vue', './packages/vue/.vitepress/theme/*.js'],
   theme: {
     extend: {
       colors: {

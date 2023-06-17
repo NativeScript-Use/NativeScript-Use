@@ -1,5 +1,5 @@
 {
-  "npmScope": "vallemar",
+  "npmScope": "",
   "affected": {
     "defaultBase": "master"
   },
@@ -11,16 +11,8 @@
     "default": {
       "runner": "nx/tasks-runners/default",
       "options": {
-        "cacheableOperations": [
-          "build",
-          "build.all",
-          "lint",
-          "test",
-          "e2e"
-        ],
-        "runtimeCacheInputs": [
-          "node -v"
-        ],
+        "cacheableOperations": ["build", "build.all", "lint", "test", "e2e"],
+        "runtimeCacheInputs": ["node -v"],
         "parallel": 1,
         "useDaemonProcess": false
       }
@@ -28,33 +20,16 @@
   },
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "namedInputs": {
-    "default": [
-      "{projectRoot}/**/*",
-      "sharedGlobals"
-    ],
-    "sharedGlobals": [
-      "{workspaceRoot}/workspace.json",
-      "{workspaceRoot}/tsconfig.base.json",
-      "{workspaceRoot}/tslint.json",
-      "{workspaceRoot}/nx.json"
-    ],
-    "production": [
-      "default",
-      "!{projectRoot}/.eslintrc.json"
-    ]
+    "default": ["{projectRoot}/**/*", "sharedGlobals"],
+    "sharedGlobals": ["{workspaceRoot}/workspace.json", "{workspaceRoot}/tsconfig.base.json", "{workspaceRoot}/tslint.json", "{workspaceRoot}/nx.json"],
+    "production": ["default", "!{projectRoot}/.eslintrc.json"]
   },
   "targetDefaults": {
     "build": {
-      "inputs": [
-        "production",
-        "^production"
-      ]
+      "inputs": ["production", "^production"]
     },
     "lint": {
-      "inputs": [
-        "default",
-        "{workspaceRoot}/.eslintrc.json"
-      ]
+      "inputs": ["default", "{workspaceRoot}/.eslintrc.json"]
     }
   }
 }
