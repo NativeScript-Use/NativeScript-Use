@@ -1,5 +1,6 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 /apps/demo-vue
+/packages/vue/.vitepress/cache
 /apps/NativeScriptVueUse-demo
 # compiled output
 /dist
