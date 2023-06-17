@@ -37,7 +37,7 @@ export class Clipboard extends ClipboardBase {
 
   read(): string {
     const item = this.clipboard.getPrimaryClip()?.getItemAt(0);
-    let content = item.getText().toString();
+    let content = item?.getText().toString();
     return content || '';
   }
 }
