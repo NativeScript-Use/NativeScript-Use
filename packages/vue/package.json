@@ -1,6 +1,6 @@
 {
   "name": "@nativescript-use/vue",
-  "version": "1.0.0",
+  "version": "0.0.2",
   "description": "Add a plugin description",
   "main": "index",
   "typings": "index.d.ts",
@@ -13,7 +13,7 @@
   "dependencies": {
     "@nativescript-use/nativescript-orientation": "0.0.1",
     "@nativescript-use/nativescript-keyboard": "0.0.1",
-    "@nativescript-use/nativescript-clipboard": "0.0.1"
+    "@nativescript-use/nativescript-clipboard": "0.0.2"
   },
   "repository": {
     "type": "git",
