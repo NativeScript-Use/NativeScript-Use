@@ -4,10 +4,7 @@
 npm install @vallemar/nativescript-vueuse
 ```
 
-## Usage
+[Documentation (Vue3)](https://nativescriptvueuse.netlify.app/)
 
-// TODO
-
-## License
 
 Apache License Version 2.0

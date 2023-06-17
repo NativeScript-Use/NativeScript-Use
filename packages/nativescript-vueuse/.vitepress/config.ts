@@ -16,7 +16,6 @@ export default defineConfig({
   description: 'Collection of NativeScript-Vue3 Composition Utilities',
   themeConfig: {
     logo: 'https://art.nativescript-vue.org/NativeScript-Vue-Green-White.svg',
-
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Home', link: '/' },
@@ -53,6 +52,7 @@ export default defineConfig({
 
     socialLinks: [
       { icon: 'github', link: 'https://github.com/vallemar/NativeScriptVueUse' },
+      { icon: 'discord', link: 'https://discord.com/invite/RgmpGky9GR' },
       //{ icon: { svg: 'https://upload.wikimedia.org/wikipedia/commons/d/db/Npm-logo.svg'}, link: 'https://www.npmjs.com/package/@vallemar/nativescript-vueuse' }
     ],
     search: {
