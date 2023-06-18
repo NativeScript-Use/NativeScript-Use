@@ -120,7 +120,6 @@ function evaluatePart(part: string): boolean {
   if (trimmedProperty.includes('width') || trimmedProperty.includes('height')) {
     const realWidth = Screen.mainScreen.widthDIPs;
     const realHeight = Screen.mainScreen.heightDIPs;
-    console.log(trimmedProperty);
 
     if (trimmedProperty === 'width') {
       return parseInt(realWidth.toString(), 10) === parseInt(trimmedValue, 10);
