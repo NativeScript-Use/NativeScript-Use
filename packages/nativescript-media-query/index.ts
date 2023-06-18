@@ -19,11 +19,6 @@ export const matchMedia = (mediaQueryString: string) => {
   const factory = MediaQueryListFactory.getInstance();
   const mql = factory.create(mediaQueryString);
 
-  // Condition for update
-  Application.on('orientationChanged', () => {
-    factory.updateMatches();
-  });
-
   factory.updateMatches();
   return mql;
 };
@@ -76,6 +71,12 @@ class MediaQueryListFactory {
   public static getInstance(): MediaQueryListFactory {
     if (!MediaQueryListFactory.instance) {
       MediaQueryListFactory.instance = new MediaQueryListFactory();
+      // Condition for update
+      Application.on('orientationChanged', () => {
+        setTimeout(() => {
+          MediaQueryListFactory.instance.updateMatches();
+        }, 10);
+      });
     }
     return MediaQueryListFactory.instance;
   }
@@ -117,9 +118,8 @@ function evaluatePart(part: string): boolean {
   const trimmedProperty = property.trim();
   const trimmedValue = value.trim();
   if (trimmedProperty.includes('width') || trimmedProperty.includes('height')) {
-    const orientation = Application.orientation();
-    const realWidth = orientation === 'landscape' ? Screen.mainScreen.heightDIPs : Screen.mainScreen.widthDIPs;
-    const realHeight = orientation === 'landscape' ? Screen.mainScreen.widthDIPs : Screen.mainScreen.heightDIPs;
+    const realWidth = Screen.mainScreen.widthDIPs;
+    const realHeight = Screen.mainScreen.heightDIPs;
     if (trimmedProperty === 'width') {
       return parseInt(realWidth.toString(), 10) === parseInt(trimmedValue, 10);
     } else if (trimmedProperty === 'min-width') {

@@ -1,6 +1,6 @@
 {
   "name": "@nativescript-use/nativescript-media-query",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Add a plugin description",
   "main": "index",
   "typings": "index.d.ts",
