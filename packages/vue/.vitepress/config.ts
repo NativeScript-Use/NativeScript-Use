@@ -39,6 +39,7 @@ export default defineConfig({
           { text: 'useElementSize', link: '/src/useElementSize/index.md' },
           { text: 'useEventListener', link: '/src/useEventListener/index.md' },
           { text: 'useKeyboard', link: '/src/useKeyboard/index.md' },
+          { text: 'useMediaQuery', link: '/src/useMediaQuery/index.md' },
           { text: 'useRootLayout', link: '/src/useRootLayout/index.md' },
           { text: 'useScreenOrientation', link: '/src/useScreenOrientation/index.md' },
           { text: 'useStorage', link: '/src/useStorage/index.md' },

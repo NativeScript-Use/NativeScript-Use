@@ -13,6 +13,7 @@
   "dependencies": {
     "@nativescript-use/nativescript-orientation": "0.0.1",
     "@nativescript-use/nativescript-keyboard": "0.0.1",
+    "@nativescript-use/nativescript-media-query": "0.0.1",
     "@nativescript-use/nativescript-clipboard": "0.0.3"
   },
   "repository": {

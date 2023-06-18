@@ -1,0 +1,65 @@
+{
+  "name": "nativescript-media-query",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "packages/nativescript-media-query",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "options": {
+        "outputPath": "dist/packages/nativescript-media-query",
+        "tsConfig": "packages/nativescript-media-query/tsconfig.json",
+        "packageJson": "packages/nativescript-media-query/package.json",
+        "main": "packages/nativescript-media-query/index.d.ts",
+        "assets": [
+          "packages/nativescript-media-query/*.md",
+          "packages/nativescript-media-query/index.d.ts",
+          "LICENSE",
+          {
+            "glob": "**/*",
+            "input": "packages/nativescript-media-query/platforms/",
+            "output": "./platforms/"
+          }
+        ],
+        "dependsOn": [
+          {
+            "target": "build.all",
+            "projects": "dependencies"
+          }
+        ]
+      }
+    },
+    "build.all": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": ["node tools/scripts/build-finish.ts nativescript-media-query"],
+        "parallel": false
+      },
+      "outputs": ["dist/packages/nativescript-media-query"],
+      "dependsOn": [
+        {
+          "target": "build.all",
+          "projects": "dependencies"
+        },
+        {
+          "target": "build",
+          "projects": "self"
+        }
+      ]
+    },
+    "focus": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": ["nx g @nativescript/plugin-tools:focus-packages nativescript-media-query"],
+        "parallel": false
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["packages/nativescript-media-query/**/*.ts"]
+      }
+    }
+  },
+  "tags": []
+}

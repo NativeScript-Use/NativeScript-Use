@@ -108,6 +108,13 @@ module.exports = {
           description: '@nativescript-use/nativescript-clipboard: Build',
         },
       },
+      // @nativescript-use/nativescript-media-query
+      'nativescript-media-query': {
+        build: {
+          script: 'nx run nativescript-media-query:build.all',
+          description: '@nativescript-use/nativescript-media-query: Build',
+        },
+      },
       'build-all': {
         script: 'nx run-many --target=build.all --all',
         description: 'Build all packages',
@@ -133,6 +140,10 @@ module.exports = {
       'nativescript-clipboard': {
         script: 'nx run nativescript-clipboard:focus',
         description: 'Focus on @vallemar/nativescript-clipboard',
+      },
+      'nativescript-media-query': {
+        script: 'nx run nativescript-media-query:focus',
+        description: 'Focus on @nativescript-use/nativescript-media-query',
       },
       reset: {
         script: 'nx g @vallemar/plugin-tools:focus-packages',
