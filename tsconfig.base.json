@@ -22,6 +22,8 @@
     "paths": {
       "@demo/shared": ["tools/demo/index.ts"],
       "@nativescript/core/*": ["node_modudes/@nativescript/core/*"],
+      "nativescript-vue": ["node_modudes/nativescript-vue/dist/index.d.ts"],
+      "nativescript-vue/*": ["node_modudes/nativescript-vue/dist/*"],
       "@nativescript-use/*": ["packages/*"],
       "@nativescript-use/vue": ["packages/vue/index.d.ts"],
       "@nativescript-use/nativescript-orientation": ["packages/nativescript-orientation/index.d.ts"],

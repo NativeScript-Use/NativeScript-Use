@@ -1,6 +1,7 @@
-import { Application, CSSUtils, Utils, isAndroid, Frame } from '@nativescript/core';
+import { Application, CSSUtils, Frame } from '@nativescript/core';
 import { ref, Ref, watch, computed, onUnmounted, getCurrentInstance, readonly } from 'nativescript-vue';
 import { useStorage } from '../useStorage';
+import { getSystemTheme } from './util';
 import { setAutoSystemAppearanceChanged, systemAppearanceChanged } from '@nativescript/core/application';
 import removeSystemCssClass = CSSUtils.removeSystemCssClass;
 import { createGlobalState } from '../globalState';
@@ -135,19 +136,3 @@ export function useColorMode<T extends string = BasicColorMode>(options: UseColo
 }
 
 const getClassFromTheme = (theme: string) => CSSUtils.CLASS_PREFIX + theme.toLocaleLowerCase().trim();
-function getSystemTheme(): BasicColorMode {
-  if (isAndroid) {
-    const nightModeFlags = Utils.android.getApplicationContext().getResources().getConfiguration().uiMode & android.content.res.Configuration.UI_MODE_NIGHT_MASK;
-    switch (nightModeFlags) {
-      case android.content.res.Configuration.UI_MODE_NIGHT_YES:
-        return 'dark';
-      case android.content.res.Configuration.UI_MODE_NIGHT_NO:
-        return 'light';
-      default:
-        return 'light';
-      //case android.content.res.Configuration.UI_MODE_NIGHT_UNDEFINED:
-    }
-  } else {
-    return UITraitCollection.currentTraitCollection.userInterfaceStyle === UIUserInterfaceStyle.Light ? 'light' : 'dark';
-  }
-}

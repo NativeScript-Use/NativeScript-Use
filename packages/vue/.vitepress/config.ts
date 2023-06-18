@@ -33,6 +33,7 @@ export default defineConfig({
         text: 'Functions',
         items: [
           { text: 'unrefView', link: '/src/unrefView/index.md' },
+          { text: 'useBreakpoints', link: '/src/useBreakpoints/index.md' },
           { text: 'useClipboard', link: '/src/useClipboard/index.md' },
           { text: 'useColorMode', link: '/src/useColorMode/index.md' },
           { text: 'useColorPalette', link: '/src/useColorPalette/index.md' },

@@ -27,6 +27,7 @@
   ],
   "private": true,
   "devDependencies": {
+    "@nativescript-use/vue": "^0.0.5",
     "@nativescript/core": "~8.5.0",
     "@nativescript/plugin-tools": "5.1.0",
     "@nativescript/tailwind": "^2.0.1",
@@ -36,11 +37,11 @@
     "husky": "^8.0.0",
     "nativescript-vue": "3.0.0-beta.8",
     "ng-packagr": "^15.0.0",
+    "patch-package": "~6.4.0",
     "postcss": "^8.4.24",
     "tailwindcss": "^3.3.2",
     "typescript": "~4.8.0",
-    "vitepress": "^1.0.0-beta.2",
-    "patch-package": "~6.4.0"
+    "vitepress": "^1.0.0-beta.2"
   },
   "lint-staged": {
     "**/*.{js,ts,scss,json,html}": [
