@@ -105,7 +105,7 @@ class MediaQueryListFactory {
   private extractQueryParts(mediaQuery: string): string[] {
     const query = mediaQuery.trim().slice(1, -1);
     const parts = query.split(' and ');
-    return parts.map((part) => part.trim());
+    return parts.map((part) => part.replace('(', '').replace(')', '').trim());
   }
 
   private checkMediaQuery(queryParts: string[]): boolean {
@@ -120,6 +120,8 @@ function evaluatePart(part: string): boolean {
   if (trimmedProperty.includes('width') || trimmedProperty.includes('height')) {
     const realWidth = Screen.mainScreen.widthDIPs;
     const realHeight = Screen.mainScreen.heightDIPs;
+    console.log(trimmedProperty);
+
     if (trimmedProperty === 'width') {
       return parseInt(realWidth.toString(), 10) === parseInt(trimmedValue, 10);
     } else if (trimmedProperty === 'min-width') {
