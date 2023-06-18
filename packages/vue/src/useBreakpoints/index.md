@@ -17,7 +17,7 @@ const breakpointsExample = {
   '2xl': 632,
   '4xl': 888,
 };
-// Or you can define the breakpoints you need
+// ⚡ you can define the breakpoints you need
 const breakpoints = useBreakpoints({
   mobile: 0,
   tablet: 640,
@@ -33,7 +33,9 @@ const betweenlg4xl = breakpoints.between('lg', 'xl');
 const largeScreen = breakpoints.isGreater('xl');
 const betweenLGand2xl = breakpoints.between('lg', '2xl');
 const lg = breakpoints['lg'];
+
 // you can see all the methods in the Type declaration section
+
 </script>
 
 ```
