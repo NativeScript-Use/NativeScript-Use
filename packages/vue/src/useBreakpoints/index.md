@@ -18,7 +18,7 @@ const breakpointsExample = {
   '4xl': 888,
 };
 // ⚡ you can define the breakpoints you need
-const breakpoints = useBreakpoints({
+const deviceBreakpoints = useBreakpoints({
   mobile: 0,
   tablet: 640,
   laptop: 1024,
