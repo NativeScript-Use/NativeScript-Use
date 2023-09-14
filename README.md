@@ -18,7 +18,7 @@ Examples:
 As native dependencies, the native code packages have been created in TS so that the core of `NativeScript-Use` is common. Anyone who wants can contribute to create another savor for example: `@nativescript-use/svelte`.
 <br />
 
-The following plugins are the core of some of the native functionality already being used in `@nativescript-use/vue`, they have been separated so they can be used for any `@-nativescriptuse/[any_flavor]` flavor and also, so they can be used as individual plugins. inside nativescript
+The following plugins are the core of some of the native functionality already being used in `@nativescript-use/vue`, they have been separated so they can be used for any `@nativescript-use/[any_flavor]` flavor and also, so they can be used as individual plugins. inside nativescript
 - [@nativescript-use/nativescript-clipboard](packages/nativescript-clipboard/README.md)
 - [@nativescript-use/nativescript-keyboard](packages/nativescript-keyboard/README.md)
 - [@nativescript-use/nativescript-media-query](packages/nativescript-media-query/README.md)
