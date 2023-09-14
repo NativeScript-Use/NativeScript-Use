@@ -7,9 +7,30 @@ import { RootLayoutOptions, ViewBase, getRootLayout } from '@nativescript/core';
  * @param component
  * @param options
  */
-export function useRootLayout(component: any, options?: { props?: any; rootLayoutOption?: RootLayoutOptions; onClose?: () => void }) {
+export function useRootLayout(
+  component: any,
+  options?: {
+    props?: any;
+    on?: Record<string, (...args: any[]) => any>;
+    rootLayoutOption?: RootLayoutOptions;
+    onClose?: () => void;
+  }
+) {
   const isShow = ref(false);
-  const node = createNativeView(component, options?.props);
+
+  const listeners = Object.entries(options?.on ?? {}).reduce((listeners, [key, value]) => {
+    listeners['on' + key.charAt(0).toUpperCase() + key.slice(1)] = value;
+    return listeners;
+  }, {} as { [key: string]: (...args: any[]) => any });
+
+  const propsAndListeners = Object.assign(
+    {
+      props: options?.props,
+    },
+    listeners
+  );
+
+  const node = createNativeView(component, propsAndListeners);
   node.mount();
   const view = node.nativeView;
 

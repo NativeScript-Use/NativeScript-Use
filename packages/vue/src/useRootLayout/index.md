@@ -41,6 +41,12 @@ const { show, close, isShow } = useRootLayout(MyComponent, {
       }
     }
   },
+  // Define listeners to listen to emits from your component
+  on: {
+    myCustomEventEmit: (myData) => {  // 👂 in your child emit('myCustomEventEmit', myData)
+      console.log("listening to emit from parent: myCustomEventEmit " + myData);
+    }
+  },
   onClose: () => { // 👂 define a listener for when it closes
     console.log("On Close RootLayout")
   }
@@ -93,6 +99,7 @@ import { RootLayoutOptions, View } from "@nativescript/core";
  */
 export declare function useRootLayout(component: any, options?: {
     props?: any;
+    on?: Record<string, (...args: any[]) => any>;
     rootLayoutOption?: RootLayoutOptions;
     onClose?: () => void;
 }): {
@@ -101,4 +108,5 @@ export declare function useRootLayout(component: any, options?: {
     isShow: Ref<boolean>;
     view: View;
 };
+
 ```
