@@ -1,8 +1,14 @@
 import { defineConfig } from 'vitepress';
 
+const logo = 'https://art.nativescript-vue.org/NativeScript-Vue-Green-White.svg';
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   head: [
+    /*    ['link', { rel: "apple-touch-icon", sizes: "180x180", href: "https://nativescript-vue.org/apple-touch-icon.png"}],
+    ['link', { rel: "icon", type: "image/png", sizes: "32x32", href: "https://nativescript-vue.org/favicon-32x32.png"}],
+    ['link', { rel: "icon", type: "image/png", sizes: "16x16", href: "https://nativescript-vue.org/favicon-16x16.png"}],
+    */
+    ['link', { rel: 'icon', type: 'image/svg', sizes: '32x32', href: logo }],
     [
       'script',
       {
@@ -15,7 +21,7 @@ export default defineConfig({
   title: 'NativeScriptVueUse',
   description: 'Collection of NativeScript-Vue3 Composition Utilities',
   themeConfig: {
-    logo: 'https://art.nativescript-vue.org/NativeScript-Vue-Green-White.svg',
+    logo,
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Home', link: '/' },
