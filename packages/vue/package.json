@@ -4,6 +4,7 @@
   "description": "Add a plugin description",
   "main": "index",
   "typings": "index.d.ts",
+  "type": "module",
   "nativescript": {
     "platforms": {
       "ios": "6.0.0",

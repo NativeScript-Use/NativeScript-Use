@@ -8,7 +8,12 @@
   </div>
 </template>
 <script setup>
-var isChromium = !!window.chrome;
+import { onBeforeMount, ref } from "vue"
+
+const isChromium = ref(true);
+onBeforeMount(() =>{
+  isChromium.value = !!window.chrome
+})
 </script>
 <style scoped>
 .wrap-iframe {

@@ -6,11 +6,6 @@ Use EventListener with ease. Register using view.on on mounted, and view.off aut
 ## Usage
 
 ```vue
-<template>
-  <StackLayout ref="el">
-  </StackLayout>
-</template>
-
 <script lang="ts" setup>
 import { ref } from 'nativescript-vue'
 import { useEventListener } from '@nativescript-use/vue'
@@ -31,6 +26,11 @@ const { cleanup } = useEventListener<StackLayout>(el, {
 cleanup() // off all events
 
 </script>
+
+<template>
+  <StackLayout ref="el">
+  </StackLayout>
+</template>
 ```
 <br />
 

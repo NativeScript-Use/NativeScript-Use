@@ -6,16 +6,6 @@ Utility for RootLayout view. [RootLayout official documentation](https://docs.na
 ## Usage
 
 ```vue
-<template>
-  <Page>
-    <RootLayout>
-        <StackLayout>
-            <!-- ... -->
-        </StackLayout>
-    </RootLayout>
-  </Page>
-</template>
-
 <script lang="ts" setup>
 import { onMounted } from 'nativescript-vue'
 import { useRootLayout } from '@nativescript-use/vue'
@@ -43,8 +33,8 @@ const { show, close, isShow } = useRootLayout(MyComponent, {
   },
   // Define listeners to listen to emits from your component
   on: {
-    myCustomEventEmit: (myData) => {  // 👂 in your child emit('myCustomEventEmit', myData)
-      console.log("listening to emit from parent: myCustomEventEmit " + myData);
+    myCustomEmitEvent: (myData) => {  // 👂 in your child emit('myCustomEmitEvent', myData)
+      console.log("listening to emit from parent: myCustomEmitEvent " + myData);
     }
   },
   onClose: () => { // 👂 define a listener for when it closes
@@ -57,6 +47,16 @@ onMounted(() => {
 })
 
 </script>
+
+<template>
+  <Page>
+    <RootLayout>
+        <StackLayout>
+            <!-- ... -->
+        </StackLayout>
+    </RootLayout>
+  </Page>
+</template>
 ```
 <br />
 
@@ -64,10 +64,6 @@ onMounted(() => {
 If you need multiple rootLayouts you can alias the methods and references returned by `useRootLayout`.
 :::
 ```vue
-<template>
-  <!-- ... -->
-</template>
-
 <script lang="ts" setup>
 import { useRootLayout } from '@nativescript-use/vue'
 import { BomttomSheetComponent } from "./BomttomSheetComponent.vue";
@@ -86,6 +82,10 @@ const {
 } = useRootLayout(ModalComponent, {your_options});
 
 </script>
+
+<template>
+  <!-- ... -->
+</template>
 ```
 
 ## Type declaration
