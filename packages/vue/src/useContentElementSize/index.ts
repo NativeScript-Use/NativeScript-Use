@@ -1,8 +1,8 @@
 import { ref, onMounted, readonly } from 'nativescript-vue';
 import { unrefView } from '../unrefView';
 import { ViewRef } from '../types';
-import { Utils, CoreTypes, View } from '@nativescript/core';
-import { LOG_PREFIX } from '../constant';
+import { CoreTypes, View } from '@nativescript/core';
+import { toDeviceIndependent } from '../utils';
 
 export type ContentSizeDIP = {
   width: CoreTypes.dip;
@@ -123,15 +123,4 @@ export function useContentElementSize(
     marginLeft: readonly(marginLeft),
     marginRight: readonly(marginRight),
   };
-}
-
-function toDeviceIndependent(size: any /* CoreTypes.dip | CoreTypes.LengthDipUnit | CoreTypes.LengthPxUnit */) {
-  if (Utils.isNumber(size)) {
-    return size;
-  } else if (size?.unit) {
-    if (size.unit === 'dip') return size;
-    else if (size.unit === 'px') return Utils.layout.toDeviceIndependentPixels(size.value);
-  }
-  console.warn(`${LOG_PREFIX} Impossible to extract the value in DPI`);
-  return size;
 }

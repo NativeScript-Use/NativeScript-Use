@@ -3,6 +3,7 @@ import { ViewRef } from '../types';
 import { unrefView } from '../unrefView';
 import { Keyboard } from '@nativescript-use/nativescript-keyboard';
 import { onApplicationMounted } from '../onApplicationMounted';
+import { warn } from '../utils';
 
 /**
  * Reactive size of a NativeScript element.
@@ -33,12 +34,13 @@ export function useKeyboard(options?: { onChange?: (isOpen: boolean) => void; de
   const open = (target?: ViewRef) => {
     const viewTarget = unrefView(target!);
     const viewDefaultTarget = options?.defaultTarget ? unrefView(options?.defaultTarget!) : null;
+
     if (viewTarget) {
       keyboardCore.open(viewTarget);
     } else if (viewDefaultTarget) {
       keyboardCore.open(viewDefaultTarget);
     } else {
-      console.log('Error. Need to define a view to apply focus.');
+      warn('Error. Need to define a view to apply focus.');
     }
   };
   return {
