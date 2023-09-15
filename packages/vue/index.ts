@@ -4,6 +4,7 @@ export * from './src/useBreakpoints';
 export * from './src/useClipboard';
 export * from './src/useColorMode';
 export * from './src/useColorPalette';
+export * from './src/useContentElementSize';
 export * from './src/useElementSize';
 export * from './src/useEventListener';
 export * from './src/useKeyboard';

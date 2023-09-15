@@ -29,7 +29,7 @@ const { width, height } = useElementSize(el);
 ```ts
 import { Ref } from "nativescript-vue"
 import { ViewRef } from "@nativescript-use/vue";
-import { CoreTypes } from "@nativescript/core/core-types";
+import { CoreTypes } from "@nativescript/core";
 
 export type SizeDIP = {
     width: CoreTypes.dip;
