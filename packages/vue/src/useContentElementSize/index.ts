@@ -69,7 +69,6 @@ export function useContentElementSize(
         computeMarginRight += toDeviceIndependent(child.marginRight);
         return true;
       });
-
       width.value = computeWidth;
       height.value = computeHeight;
       marginTop.value = computeMarginTop;
@@ -97,19 +96,19 @@ export function useContentElementSize(
     const view = unrefView(target);
     if (view) {
       view.on('layoutChanged', layoutChanged);
-      // So that it is not executed the first time as many times as there are children
-      setTimeout(() => {
-        view.eachChildView((child: View) => {
-          child.on('layoutChanged', layoutChanged);
-          return true;
-        });
-      }, 200);
+      view.eachChildView((child: View) => {
+        child.on('layoutChanged', layoutChanged);
+        return true;
+      });
+
       view.on('unloaded', () => {
         view.off('layoutChanged', layoutChanged);
-        view.eachChildView((child: View) => {
+      });
+      view.eachChildView((child: View) => {
+        child.on('unloaded', () => {
           child.off('layoutChanged', layoutChanged);
-          return true;
         });
+        return true;
       });
     }
   });
