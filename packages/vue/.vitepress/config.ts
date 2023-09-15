@@ -44,6 +44,7 @@ export default defineConfig({
           { text: 'useColorMode', link: '/src/useColorMode/index.md' },
           { text: 'useColorPalette', link: '/src/useColorPalette/index.md' },
           { text: 'useContentElementSize', link: '/src/useContentElementSize/index.md' },
+          { text: 'useDark', link: '/src/useDark/index.md' },
           { text: 'useElementSize', link: '/src/useElementSize/index.md' },
           { text: 'useEventListener', link: '/src/useEventListener/index.md' },
           { text: 'useKeyboard', link: '/src/useKeyboard/index.md' },
