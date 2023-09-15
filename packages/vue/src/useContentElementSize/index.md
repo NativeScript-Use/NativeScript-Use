@@ -6,7 +6,7 @@ category: Elements
 
 Reactive content size of a NativeScript view. 
 
-This function returns the sum of values of the children of the element passed as target.
+This function returns the sum of size measurements of the children of the element passed as target.
 
 ## Usage
 
