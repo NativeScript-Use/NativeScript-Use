@@ -47,6 +47,7 @@ export default defineConfig({
           { text: 'useDark', link: '/src/useDark/index.md' },
           { text: 'useElementSize', link: '/src/useElementSize/index.md' },
           { text: 'useEventListener', link: '/src/useEventListener/index.md' },
+          { text: 'useIntersectionObserver', link: '/src/useIntersectionObserver/index.md' },
           { text: 'useKeyboard', link: '/src/useKeyboard/index.md' },
           { text: 'useMediaQuery', link: '/src/useMediaQuery/index.md' },
           { text: 'useRootLayout', link: '/src/useRootLayout/index.md' },

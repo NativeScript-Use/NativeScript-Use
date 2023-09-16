@@ -1,4 +1,4 @@
-# @nativescript-use/nativescript-clipboard
+# @nativescript-use/nativescript-intersection-observer
 
 ```javascript
 npm install @nativescript-use/nativescript-intersection-observer
@@ -21,7 +21,7 @@ intersectionObserver.stopTrack();
 
 // Check if is visible view
 const isVisible = intersectionObserver.isVisible(targetView, scollView);
-
+```
 
 Type declaration
 ```ts

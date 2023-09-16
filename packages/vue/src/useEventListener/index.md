@@ -65,11 +65,13 @@ interface Event<T = View> {
     /* Modals */
     showingModally?: (eventData: ViewShownModallyData<T>) => void;
     shownModally?: (eventData: ViewShownModallyData<T>) => void;
-    /* Accessibility */
+/* Accessibility */
     accessibilityBlur?: (eventData: ViewEventData<T>) => void;
     accessibilityFocus?: (eventData: ViewEventData<T>) => void;
     accessibilityFocusChanged?: (eventData: ViewEventData<T>) => void;
     accessibilityPerformEscape?: (eventData: ViewEventData<T>) => void;
+    /* Layouts */
+    scroll?: (eventData: ViewScrollEventData) => void;
 }
 /**
  * Register using view.on on mounted, and view.off automatically on unmounted.

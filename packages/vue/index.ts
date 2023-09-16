@@ -8,6 +8,7 @@ export * from './src/useContentElementSize';
 export * from './src/useDark';
 export * from './src/useElementSize';
 export * from './src/useEventListener';
+export * from './src/useIntersectionObserver';
 export * from './src/useKeyboard';
 export * from './src/useMediaQuery';
 export * from './src/useRootLayout';
