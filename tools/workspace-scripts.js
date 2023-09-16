@@ -115,6 +115,13 @@ module.exports = {
           description: '@nativescript-use/nativescript-media-query: Build',
         },
       },
+      // @nativescript-use/nativescript-intersection-observer
+      'nativescript-intersection-observer': {
+        build: {
+          script: 'nx run nativescript-intersection-observer:build.all',
+          description: '@nativescript-use/nativescript-intersection-observer: Build',
+        },
+      },
       'build-all': {
         script: 'nx run-many --target=build.all --all',
         description: 'Build all packages',
@@ -144,6 +151,10 @@ module.exports = {
       'nativescript-media-query': {
         script: 'nx run nativescript-media-query:focus',
         description: 'Focus on @nativescript-use/nativescript-media-query',
+      },
+      'nativescript-intersection-observer': {
+        script: 'nx run nativescript-intersection-observer:focus',
+        description: 'Focus on undefined/nativescript-intersection-observer',
       },
       reset: {
         script: 'nx g @vallemar/plugin-tools:focus-packages',

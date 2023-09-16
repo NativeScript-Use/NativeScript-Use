@@ -30,7 +30,8 @@
       "@nativescript-use/nativescript-keyboard": ["packages/nativescript-keyboard/index.d.ts"],
       "@nativescript-use/nativescript-clipboard": ["packages/nativescript-clipboard/index.d.ts"],
       "@/*": ["packages/*"],
-      "@nativescript-use/nativescript-media-query": ["packages/nativescript-media-query/index.d.ts"]
+      "@nativescript-use/nativescript-media-query": ["packages/nativescript-media-query/index.d.ts"],
+      "@nativescript-use/nativescript-intersection-observer": ["packages/nativescript-intersection-observer/index.d.ts"]
     },
     "jsx": "react"
   },

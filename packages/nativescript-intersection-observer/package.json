@@ -1,5 +1,5 @@
 {
-  "name": "@nativescript-use/nativescript-keyboard",
+  "name": "@nativescript-use/nativescript-intersection-observer",
   "version": "0.0.1",
   "description": "Add a plugin description",
   "main": "index",
@@ -22,7 +22,7 @@
     "Android"
   ],
   "author": {
-    "name": "Juan de Dios Matínez Vallejo",
+    "name": "Juan de Dios Martínez Vallejo",
     "email": "oss@nativescript.org"
   },
   "bugs": {

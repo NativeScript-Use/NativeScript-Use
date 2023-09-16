@@ -1,0 +1,65 @@
+{
+  "name": "nativescript-intersection-observer",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "packages/nativescript-intersection-observer",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "options": {
+        "outputPath": "dist/packages/nativescript-intersection-observer",
+        "tsConfig": "packages/nativescript-intersection-observer/tsconfig.json",
+        "packageJson": "packages/nativescript-intersection-observer/package.json",
+        "main": "packages/nativescript-intersection-observer/index.d.ts",
+        "assets": [
+          "packages/nativescript-intersection-observer/*.md",
+          "packages/nativescript-intersection-observer/index.d.ts",
+          "LICENSE",
+          {
+            "glob": "**/*",
+            "input": "packages/nativescript-intersection-observer/platforms/",
+            "output": "./platforms/"
+          }
+        ],
+        "dependsOn": [
+          {
+            "target": "build.all",
+            "projects": "dependencies"
+          }
+        ]
+      }
+    },
+    "build.all": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": ["node tools/scripts/build-finish.ts nativescript-intersection-observer"],
+        "parallel": false
+      },
+      "outputs": ["dist/packages/nativescript-intersection-observer"],
+      "dependsOn": [
+        {
+          "target": "build.all",
+          "projects": "dependencies"
+        },
+        {
+          "target": "build",
+          "projects": "self"
+        }
+      ]
+    },
+    "focus": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": ["nx g @nativescript/plugin-tools:focus-packages nativescript-intersection-observer"],
+        "parallel": false
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["packages/nativescript-intersection-observer/**/*.ts"]
+      }
+    }
+  },
+  "tags": []
+}
