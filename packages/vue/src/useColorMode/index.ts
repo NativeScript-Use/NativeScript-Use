@@ -2,7 +2,6 @@ import { Application, CSSUtils, Frame } from '@nativescript/core';
 import { ref, Ref, watch, computed, onUnmounted, getCurrentInstance, readonly } from 'nativescript-vue';
 import { useStorage } from '../useStorage';
 import { getSystemTheme } from './util';
-import { setAutoSystemAppearanceChanged, systemAppearanceChanged } from '@nativescript/core/application';
 import removeSystemCssClass = CSSUtils.removeSystemCssClass;
 import { createGlobalState } from '../globalState';
 
@@ -95,11 +94,12 @@ export function useColorMode<T extends string = BasicColorMode>(options: UseColo
       let applyTheme = themeToApply;
       if (themeToApply.toLocaleLowerCase().trim() === 'auto') {
         applyTheme = getSystemTheme();
-        setAutoSystemAppearanceChanged(true);
-        systemAppearanceChanged(rootView, getSystemTheme()!);
+        Application.setAutoSystemAppearanceChanged(true);
+        Application.systemAppearanceChanged(rootView, getSystemTheme()!);
       } else {
-        setAutoSystemAppearanceChanged(false);
+        Application.setAutoSystemAppearanceChanged(false);
       }
+
       rootViewClass.add(getClassFromTheme(applyTheme));
 
       rootView.className = Array.from(rootViewClass).join(' ');
