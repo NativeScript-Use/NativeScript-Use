@@ -35,4 +35,4 @@ export declare function useMediaQuery(mediaQueryString: string): Ref<boolean>;
 ```
 
 ## Core dependency
-[@nativescript-use/nativescript-media-query](https://github.com/NativeScript-Use/NativeScript-Use/packages/nativescript-media-query/README.md)
+[@nativescript-use/nativescript-media-query](https://github.com/NativeScript-Use/NativeScript-Use/tree/main/packages/nativescript-media-query)

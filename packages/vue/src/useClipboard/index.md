@@ -54,4 +54,4 @@ export declare function useClipboard(options?: {
 ```
 
 ## Core dependency
-[@nativescript-use/nativescript-clipboard](https://github.com/NativeScript-Use/NativeScript-Use/packages/nativescript-clipboard/README.md)
+[@nativescript-use/nativescript-clipboard](https://github.com/NativeScript-Use/NativeScript-Use/tree/main/packages/nativescript-clipboard)

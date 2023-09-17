@@ -62,4 +62,4 @@ export declare function useScreenOrientation(options?: {
 ```
 
 ## Core dependency
-[@nativescript-use/nativescript-orientation](https://github.com/NativeScript-Use/NativeScript-Use/packages/nativescript-orientation/README.md)
+[@nativescript-use/nativescript-orientation](https://github.com/NativeScript-Use/NativeScript-Use/tree/main/packages/nativescript-orientation)

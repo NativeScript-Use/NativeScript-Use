@@ -72,4 +72,4 @@ export declare function useIntersectionObserver(target: ViewRef, parentView: Vie
 ```
 
 ## Core dependency
-[@nativescript-use/nativescript-intersection-observer](https://github.com/NativeScript-Use/NativeScript-Use/packages/nativescript-intersection-observer/README.md)
+[@nativescript-use/nativescript-intersection-observer](https://github.com/NativeScript-Use/NativeScript-Use/tree/main/packages/nativescript-intersection-observer)
