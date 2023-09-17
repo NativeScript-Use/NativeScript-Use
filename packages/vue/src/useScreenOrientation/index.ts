@@ -36,7 +36,7 @@ export function useScreenOrientation(options?: { onChange?: (orientation: CoreTy
   onUnmounted(() => {
     orientationCore.offChangedOrientation();
   });
-  const setOrientation = (value: 'landscape' | 'landscaperight' | 'landscapeleft' | 'portrait', animation: false) => orientationCore.setOrientation(value, animation);
+  const setOrientation = (value: 'landscape' | 'landscaperight' | 'landscapeleft' | 'portrait', animation = false) => orientationCore.setOrientation(value, animation);
   const enableRotation = () => orientationCore.enableRotation();
   const disableRotation = () => orientationCore.disableRotation();
   return {
