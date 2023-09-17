@@ -43,7 +43,7 @@ export class Orientation extends OrientationBase {
     this.updateiOSLockScreen();
   }
 
-  setOrientation(value: 'portrait' | 'landscape' | 'landscaperight' | 'landscapeleft', animation: false): void {
+  setOrientation(value: 'portrait' | 'landscape' | 'landscaperight' | 'landscapeleft', animation = false): void {
     if (parseFloat(Device.osVersion) >= 16) {
       var newOrientation,
         val = value.toLowerCase();
