@@ -1,6 +1,6 @@
----
-category: Elements
----
+<script setup>
+import Source from '../../.vitepress/theme/components/Source.vue'
+</script>
 
 # useKeyboard
 
@@ -41,7 +41,6 @@ const {
   </Page>
 </template>
 ```
-<br />
 
 ## Usage with multiple views
 
@@ -65,7 +64,9 @@ const onOpen = () => open(el); // 👈 Choose the view you want to apply focus t
 </script>
 
 ```
-<br />
+
+## Source
+<Source source="useKeyboard" demo="KeyboardView.vue"/>
 
 ## Type declaration
 ```ts

@@ -1,6 +1,6 @@
----
-category: Elements
----
+<script setup>
+import Source from '../../.vitepress/theme/components/Source.vue'
+</script>
 
 # useIntersectionObserver
 
@@ -47,7 +47,9 @@ watch(isVisible , () => {
   </Page>
 </template>
 ```
-<br />
+
+## Source
+<Source source="useIntersectionObserver" demo="IntersectionObserverView.vue"/>
 
 ## Type declaration
 ```ts

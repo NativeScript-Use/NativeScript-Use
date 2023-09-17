@@ -1,3 +1,6 @@
+<script setup>
+import Source from '../../.vitepress/theme/components/Source.vue'
+</script>
 
 # useClipboard
 
@@ -29,12 +32,14 @@ const {
   </Page>
 </template>
 ```
-<br />
+
 
 ::: warning
 By default clipboard synchronization is disabled, which means that if the user copies something within your application this function will not detect it. To enable synchronization and for the reactive variable `text` to be synchronized with the clipboard, you must enable `{ sync: true }`.
 :::
 
+## Source
+<Source source="useClipboard" demo="ClipboardView.vue"/>
 
 ## Type declaration
 ```ts

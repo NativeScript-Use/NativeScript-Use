@@ -1,8 +1,10 @@
+<script setup>
+import Source from '../../.vitepress/theme/components/Source.vue'
+</script>
 
 # onApplicationMounted
 
 Secure hook to access the native main view.
-<br />
 
 There are times when we want to access the main view of the application or access the native side when starting the application or we want to have global functions that can be used when starting the application or at another point. `onApplicationMounted` ensures that the application is mounted, if it hasn't been mounted yet it will wait until you do and if it is mounted it will execute your code right away.
 
@@ -23,7 +25,7 @@ const frame = Frame.topmost(); // 💀 will be undefined
 
 createApp(Home).start();
 ```
-<br />
+
 
 ## Solution
 
@@ -45,9 +47,10 @@ onApplicationMounted(() => { // 👏 fixed with this
 
 createApp(Home).start();
 ```
-<br />
 
 
+## Source
+<Source source="onApplicationMounted"/>
 
 ## Type declaration
 ```ts

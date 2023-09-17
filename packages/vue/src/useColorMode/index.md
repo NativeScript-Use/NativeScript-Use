@@ -1,8 +1,10 @@
+<script setup>
+import Source from '../../.vitepress/theme/components/Source.vue'
+</script>
 
 # useColorMode
 
 Reactive color mode (dark / light / customs) with auto data persistence.
-<br />
 
 ## Usage
 ### Initialize
@@ -30,7 +32,7 @@ const { system, schema, theme, modes } = useColorMode({
 
 createApp(Home).start();
 ```
-<br />
+
 
 ### Use in your application
 
@@ -108,7 +110,9 @@ Then you can do the following
 ```html
 <Label text="Theme example" class="light:text-gray-500 dark:text-white dim:text-green-500 cafe:text-yellow-500" />
 ```
-<br />
+
+## Source
+<Source source="useColorMode" demo="ColorModeView.vue,src/app.ts"/>
 
 ## Type declaration
 

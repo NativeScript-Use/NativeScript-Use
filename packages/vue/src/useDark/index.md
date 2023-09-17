@@ -1,3 +1,6 @@
+<script setup>
+import Source from '../../.vitepress/theme/components/Source.vue'
+</script>
 
 # useDark
 
@@ -34,7 +37,9 @@ Integrate TaildWind CSS with the official [NativeScript plugin](https://github.c
 ```html
 <Label text="Theme example" class="text-gray-500 dark:text-white" />
 ```
-<br />
+
+## Source
+<Source source="useDark" demo="ColorModeView.vue"/>
 
 ## Type declaration
 

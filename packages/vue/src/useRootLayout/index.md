@@ -1,3 +1,6 @@
+<script setup>
+import Source from '../../.vitepress/theme/components/Source.vue'
+</script>
 
 # useRootLayout
 
@@ -58,7 +61,6 @@ onMounted(() => {
   </Page>
 </template>
 ```
-<br />
 
 ::: tip
 If you need multiple rootLayouts you can alias the methods and references returned by `useRootLayout`.
@@ -87,6 +89,9 @@ const {
   <!-- ... -->
 </template>
 ```
+
+## Source
+<Source source="useRootLayout" demo="RootLayoutView.vue"/>
 
 ## Type declaration
 ```ts

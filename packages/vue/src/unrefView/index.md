@@ -1,9 +1,17 @@
+<script setup>
+import Source from '../../.vitepress/theme/components/Source.vue'
+</script>
 
 # unrefView
 
 Extract a NativeScript view from a Ref
 
 ## Usage
+
+
+
+
+
 
 ```vue
 <script lang="ts" setup>
@@ -22,7 +30,9 @@ onMounted(() =>{
   </StackLayout>
 </template>
 ```
-<br />
+
+## Source
+<Source source="unrefView"/>
 
 ## Type declaration
 ```ts
@@ -35,3 +45,4 @@ import { ViewRef } from "@nativescript-use/vue";
  */
 export declare function unrefView<T = View>(target: ViewRef<T>): T | undefined;
 ```
+

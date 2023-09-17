@@ -3,6 +3,12 @@ import { defineConfig } from 'vitepress';
 const logo = 'https://art.nativescript-vue.org/NativeScript-Vue-Green-White.svg';
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
+  vite:{
+    define: {
+      BASE_BLOB_SOURCE: JSON.stringify('https://github.com/NativeScript-Use/NativeScript-Use/blob/main/packages/vue/src/'),
+      STACKBLITZ_VIEW: JSON.stringify('https://stackblitz.com/edit/nativescrip-use-vue/?file=src/views/')
+    }
+  },
   head: [
     /*    ['link', { rel: "apple-touch-icon", sizes: "180x180", href: "https://nativescript-vue.org/apple-touch-icon.png"}],
     ['link', { rel: "icon", type: "image/png", sizes: "32x32", href: "https://nativescript-vue.org/favicon-32x32.png"}],
@@ -18,6 +24,7 @@ export default defineConfig({
     ],
     ['script', {}, "window.dataLayer = window.dataLayer || [];\nfunction gtag(){dataLayer.push(arguments);}\ngtag('js', new Date());\ngtag('config', 'G-RV37C0FX94');"],
   ],
+  appearance: "dark",
   title: 'NativeScriptVueUse',
   description: 'Collection of NativeScript-Vue3 Composition Utilities',
   themeConfig: {
@@ -69,5 +76,6 @@ export default defineConfig({
     search: {
       provider: 'local',
     },
+   
   },
 });

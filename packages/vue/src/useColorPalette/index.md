@@ -1,8 +1,10 @@
+<script setup>
+import Source from '../../.vitepress/theme/components/Source.vue'
+</script>
 
 # useColorPalette
 
-Reactive color palette (dark / light / customs) for reactive styles. 
-<br />
+Reactive color palette (dark / light / customs) for reactive styles.
 
 ::: info
 In order for useColorPalette to react to theme changes you need the application themes to be controlled by [`useColorMode`](/src/useColorMode/)
@@ -30,7 +32,6 @@ useColorPalette({
 
 createApp(Home).start();
 ```
-<br />
 
 ### Advanced initialize
 
@@ -89,7 +90,8 @@ const { palette } = useColorPalette<string, Patelle>()
 
 ```
 
-<br />
+## Source
+<Source source="useColorPalette" demo="ColorModeView.vue,src/app.ts"/>
 
 ## Type declaration
 

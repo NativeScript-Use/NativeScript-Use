@@ -1,3 +1,6 @@
+<script setup>
+import Source from '../../.vitepress/theme/components/Source.vue'
+</script>
 
 # useEventListener
 
@@ -32,7 +35,9 @@ cleanup() // off all events
   </StackLayout>
 </template>
 ```
-<br />
+
+## Source
+<Source source="useEventListener" demo="EventListenerView.vue"/>
 
 ## Type declaration
 ```ts

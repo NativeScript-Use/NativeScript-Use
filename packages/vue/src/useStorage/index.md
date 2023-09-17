@@ -1,8 +1,10 @@
+<script setup>
+import Source from '../../.vitepress/theme/components/Source.vue'
+</script>
 
 # useStorage
 
 Storage tool for NativeScript.
-<br />
 
 ## Usage
 
@@ -12,9 +14,11 @@ import { useStorage } from '@nativescript-use/vue'
 const storage = useStorage();
 storage.setObject("key", { foo: "bar" });
 ```
-<br />
 
-## Full methods
+## Source
+<Source source="useStorage"/>
+
+## Type declaration
 
 ```ts
 export declare const useStorage: () => {

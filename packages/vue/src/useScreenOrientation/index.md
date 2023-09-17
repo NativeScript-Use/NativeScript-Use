@@ -1,3 +1,7 @@
+<script setup>
+import Source from '../../.vitepress/theme/components/Source.vue'
+</script>
+
 # useScreenOrientation
 
 Reactive screen orientation and utilities to manage the orientation.
@@ -37,7 +41,9 @@ const {
   </Page>
 </template>
 ```
-<br />
+
+## Source
+<Source source="useScreenOrientation" demo="ScreenOrientationView.vue"/>
 
 ## Type declaration
 ```ts

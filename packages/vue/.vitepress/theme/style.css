@@ -6,11 +6,11 @@
 /**
  * Colors
  * -------------------------------------------------------------------------- */
- @tailwind base;
- @tailwind components;
- @tailwind utilities;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
- :root {
+:root {
   --vp-c-brand: #21cd80;
   --vp-c-brand-light: rgba(40, 230, 145, 0.991);
   --vp-c-brand-lighter: #9499ff;
@@ -42,17 +42,13 @@
 
 :root {
   --vp-home-hero-name-color: transparent;
-  --vp-home-hero-name-background: -webkit-linear-gradient(
-    120deg,
-    rgb(40, 230, 145),
-    rgb(101, 173, 241) 50%
-  );
+  --vp-home-hero-name-background: -webkit-linear-gradient(120deg,
+      rgb(40, 230, 145),
+      #65adf1 50%);
 
 
-  --vp-home-hero-image-background-image: linear-gradient(
-    -45deg,
-    rgba(65, 184, 131, 0.5) 30%, rgb(101, 173, 241)
-  );
+  --vp-home-hero-image-background-image: linear-gradient(-45deg,
+      rgba(65, 184, 131, 0.5) 30%, rgb(101, 173, 241));
   --vp-home-hero-image-filter: blur(40px);
 }
 
@@ -78,6 +74,7 @@
   --vp-custom-block-tip-bg: var(--vp-c-brand-dimm);
 
   --vp-c-brand-1: var(--vp-c-brand);
+  --vp-c-brand-2: #65adf1;
 }
 
 .dark {
@@ -94,4 +91,3 @@
 .DocSearch {
   --docsearch-primary-color: var(--vp-c-brand) !important;
 }
-

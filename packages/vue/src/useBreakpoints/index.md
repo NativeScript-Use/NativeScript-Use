@@ -1,3 +1,7 @@
+<script setup>
+import Source from '../../.vitepress/theme/components/Source.vue'
+</script>
+
 # useBreakpoints
 
 Reactive screen breakpoints.
@@ -39,7 +43,9 @@ const lg = breakpoints['lg'];
 </script>
 
 ```
-<br />
+
+## Source
+<Source source="useBreakpoints" demo="BreakpointsView.vue"/>
 
 ## Type declaration
 ```ts

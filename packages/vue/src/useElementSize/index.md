@@ -1,6 +1,6 @@
----
-category: Elements
----
+<script setup>
+import Source from '../../.vitepress/theme/components/Source.vue'
+</script>
 
 # useElementSize
 
@@ -23,7 +23,9 @@ const { width, height } = useElementSize(el);
   </StackLayout>
 </template>
 ```
-<br />
+
+## Source
+<Source source="useElementSize" demo="ElementSizeView.vue"/>
 
 ## Type declaration
 ```ts

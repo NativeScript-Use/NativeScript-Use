@@ -1,3 +1,7 @@
+<script setup>
+import Source from '../../.vitepress/theme/components/Source.vue'
+</script>
+
 # useMediaQuery
 
 Reactive Media Query. Returns a reactive variable that reacts to orientation changes.
@@ -19,7 +23,9 @@ const isLandscape = useMediaQuery("(orientation: landscape)");
 </script>
 
 ```
-<br />
+
+## Source
+<Source source="useMediaQuery"/>
 
 ## Type declaration
 ```ts
