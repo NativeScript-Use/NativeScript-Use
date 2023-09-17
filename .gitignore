@@ -6,7 +6,6 @@
 /dist
 /tmp
 /out-tsc
-.vitepress
 
 # dependencies
 node_modules
