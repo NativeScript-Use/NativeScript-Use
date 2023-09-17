@@ -88,3 +88,6 @@ export declare function useKeyboard(options?: {
 };
 
 ```
+
+## Core dependency
+[@nativescript-use/nativescript-keyboard](https://github.com/NativeScript-Use/NativeScript-Use/packages/nativescript-keyboard/README.md)

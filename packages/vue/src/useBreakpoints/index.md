@@ -65,3 +65,6 @@ export declare function useBreakpoints<K extends string>(breakpoints: Breakpoint
 };
 
 ```
+
+## Core dependency
+[@nativescript-use/nativescript-media-query](https://github.com/NativeScript-Use/NativeScript-Use/packages/nativescript-media-query/README.md)
