@@ -26,7 +26,6 @@ const members = [
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: auto;
 }
 
 h3{

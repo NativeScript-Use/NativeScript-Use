@@ -75,6 +75,7 @@
 
   --vp-c-brand-1: var(--vp-c-brand);
   --vp-c-brand-2: #65adf1;
+/*   --vp-font-family-base: 'Uber Move Text', sans-serif; */
 }
 
 .dark {
@@ -90,4 +91,10 @@
 
 .DocSearch {
   --docsearch-primary-color: var(--vp-c-brand) !important;
+}
+
+
+h3{
+  font-size: 24px;
+  font-weight: bold;
 }
