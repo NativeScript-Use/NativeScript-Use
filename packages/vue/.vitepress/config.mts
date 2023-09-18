@@ -18,6 +18,13 @@ export default defineConfig({
     [
       'script',
       {
+        async: 'false',
+        src: 'https://unpkg.com/@vueuse/core',
+      },
+    ],
+    [
+      'script',
+      {
         async: 'true',
         src: 'https://www.googletagmanager.com/gtag/js?id=G-RV37C0FX94',
       },

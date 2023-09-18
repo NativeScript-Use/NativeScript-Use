@@ -1,5 +1,5 @@
 <template>
-  <div v-if="isChromium" class="wrap-iframe mt-8">
+  <div>
     <div class="flex justify-center items-center">
       <h3 class="">Try with </h3>
       <img class="ml-2" style="height: 38px; width: 38px;"
@@ -11,17 +11,21 @@
       <img style="height: 30px; width: 30px;"
         src="https://d33wubrfki0l68.cloudfront.net/9a3dab7d5789ca17d6b0b9af993d40a26be9e5b6/a0243/img/theme/docs-logo.svg" />
     </div>
-    <iframe class="mt-4"
-      src="https://stackblitz.com/edit/nativescrip-use-vue?embed=1&file=src%2Fapp.ts&view=both"></iframe>
-  </div>
-  <div v-else class=" flex justify-center mb-12">
-    <a class="rounded-full text-white bg-ns-vueuse px-3 py-2" target="_blank"
-      href="https://stackblitz.com/edit/nativescrip-use-vue?file=src%2Fapp.ts">Playground</a>
+    <div v-if="isChromium && width > 768" class="wrap-iframe mt-8">
+      <iframe class="mt-4"
+        src="https://stackblitz.com/edit/nativescrip-use-vue?embed=1&file=src%2Fapp.ts&view=both"></iframe>
+    </div>
+    <div v-else class=" flex justify-center mb-12">
+      <a class="rounded-full text-white bg-ns-vueuse px-3 py-2" target="_blank"
+        href="https://stackblitz.com/edit/nativescrip-use-vue?file=src%2Fapp.ts">Playground</a>
+    </div>
   </div>
 </template>
 <script setup>
 import { onBeforeMount, ref } from "vue"
+import { useWindowSize } from '@vueuse/core'
 
+const { width } = useWindowSize();
 const isChromium = ref(true);
 onBeforeMount(() => {
   isChromium.value = !!window.chrome
