@@ -8,11 +8,6 @@ Extract a NativeScript view from a Ref
 
 ## Usage
 
-
-
-
-
-
 ```vue
 <script lang="ts" setup>
 import { onMounted, ref} from 'nativescript-vue'
@@ -43,6 +38,6 @@ import { ViewRef } from "@nativescript-use/vue";
  *
  * @param target
  */
-export declare function unrefView<T = View>(target: ViewRef<T>): T | undefined;
+export declare function unrefView<T = View>(target: T | ViewRef<T>): T | undefined;
 ```
 
