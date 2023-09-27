@@ -55,7 +55,7 @@ watch(isVisible , () => {
 ```ts
 import { Ref, Readonly } from "nativescript-vue"
 import { ViewRef } from "@nativescript-use/vue";
-import { ScrollView } from "@nativescript/core";
+import { ScrollView, View } from "@nativescript/core";
 
 /**
  * Reactive detects that a target element visibility.
@@ -64,7 +64,7 @@ import { ScrollView } from "@nativescript/core";
  * @param parentView
  * @param options
  */
-export declare function useIntersectionObserver(target: ViewRef, parentView: ViewRef<ScrollView>, options?: {
+export declare function useIntersectionObserver(target: View | ViewRef, parentView: ViewRef<ScrollView>, options?: {
     onChange?: (isVisible: boolean) => void;
 }): {
     isVisible: Readonly<Ref<boolean>>;

@@ -85,7 +85,7 @@ interface Event<T = View> {
  * @param target
  * @param events
  */
-export declare function useEventListener<T extends View = View>(target: ViewRef<T>, events: Event<T>): {
+export declare function useEventListener<T extends View = View>(target: T | ViewRef<T>, events: Event<T>): {
     cleanup: () => void;
 };
 

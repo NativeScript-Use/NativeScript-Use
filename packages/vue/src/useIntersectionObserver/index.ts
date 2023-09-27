@@ -1,7 +1,7 @@
 import { ref, readonly } from 'nativescript-vue';
 import { unrefView } from '../unrefView';
 import { ViewRef } from '../types';
-import { ScrollView } from '@nativescript/core';
+import { ScrollView, View } from '@nativescript/core';
 import { IntersectionObserver } from '@nativescript-use/nativescript-intersection-observer';
 import { useEventListener } from '../useEventListener';
 
@@ -11,7 +11,7 @@ import { useEventListener } from '../useEventListener';
  * @param target
  * @param options
  */
-export function useIntersectionObserver(target: ViewRef, parentView: ViewRef<ScrollView>, options?: { onChange?: (isVisible: boolean) => void }) {
+export function useIntersectionObserver(target: View | ViewRef, parentView: ViewRef<ScrollView>, options?: { onChange?: (isVisible: boolean) => void }) {
   let isVisibleInternal = false;
   let isVisible = ref(isVisibleInternal);
   let intersectionObserver: IntersectionObserver;

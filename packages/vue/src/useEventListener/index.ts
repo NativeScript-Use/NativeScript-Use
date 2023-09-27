@@ -41,7 +41,7 @@ interface Event<T = View> {
  * @param target
  * @param events
  */
-export function useEventListener<T extends View = View>(target: ViewRef<T>, events: Event<T>) {
+export function useEventListener<T extends View = View>(target: T | ViewRef<T>, events: Event<T>) {
   const el = target;
 
   const fireEvent = (onEvent: any) => (args: any) => onEvent(args);

@@ -22,7 +22,7 @@ export type ContentSizeDIP = {
  * @param options
  */
 export function useContentElementSize(
-  target: ViewRef,
+  target: View | ViewRef,
   options?: {
     onChange?: (size: ContentSizeDIP) => void;
     initialSize?: ContentSizeDIP;

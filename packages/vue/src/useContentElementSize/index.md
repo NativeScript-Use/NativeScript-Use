@@ -39,7 +39,7 @@ const { width, fullWidth, // fullWidth: all widths + all margins left|right
 ```ts
 import { Ref, Readonly } from "nativescript-vue"
 import { ViewRef } from "@nativescript-use/vue";
-import { CoreTypes } from "@nativescript/core";
+import { CoreTypes, View } from "@nativescript/core";
 
 export declare type ContentSizeDIP = {
     width: CoreTypes.dip;
@@ -57,7 +57,7 @@ export declare type ContentSizeDIP = {
  * @param target
  * @param options
  */
-export declare function useContentElementSize(target: ViewRef, options?: {
+export declare function useContentElementSize(target: View | ViewRef, options?: {
     onChange?: (size: ContentSizeDIP) => void;
     initialSize?: ContentSizeDIP;
 }): {

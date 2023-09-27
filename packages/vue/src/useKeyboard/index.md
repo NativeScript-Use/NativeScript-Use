@@ -72,6 +72,7 @@ const onOpen = () => open(el); // 👈 Choose the view you want to apply focus t
 ```ts
 import { Ref } from "nativescript-vue"
 import { ViewRef } from "@nativescript-use/vue";
+import { View } from "@nativescript/core";
 
 /**
  * Reactive keyboard state. It also provides methods to open or close the keyboard.
@@ -81,10 +82,10 @@ import { ViewRef } from "@nativescript-use/vue";
  */
 export declare function useKeyboard(options?: {
     onChange?: (isOpen: boolean) => void;
-    defaultTarget?: ViewRef;
+    defaultTarget?: View | ViewRef;
 }): {
     isOpen: Readonly<Ref<boolean>>;
-    open: (target?: ViewRef) => void;
+    open: (target?: View | ViewRef) => void;
     close: () => void;
 };
 

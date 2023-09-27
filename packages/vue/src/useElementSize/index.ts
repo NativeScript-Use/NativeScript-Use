@@ -1,7 +1,7 @@
 import { ref, onMounted } from 'nativescript-vue';
 import { unrefView } from '../unrefView';
 import { ViewRef } from '../types';
-import { CoreTypes } from '@nativescript/core';
+import { CoreTypes, View } from '@nativescript/core';
 
 export type SizeDIP = {
   width: CoreTypes.dip;
@@ -13,7 +13,7 @@ export type SizeDIP = {
  * @param target
  * @param options
  */
-export function useElementSize(target: ViewRef, options?: { onChange?: (size: SizeDIP) => void; initialSize?: SizeDIP }) {
+export function useElementSize(target: View | ViewRef, options?: { onChange?: (size: SizeDIP) => void; initialSize?: SizeDIP }) {
   const { initialSize = { width: 0, height: 0 } } = options ?? {};
 
   const width = ref<CoreTypes.dip>(initialSize.width);
