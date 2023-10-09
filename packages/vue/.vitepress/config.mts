@@ -32,7 +32,7 @@ export default defineConfig({
     ['script', {}, "window.dataLayer = window.dataLayer || [];\nfunction gtag(){dataLayer.push(arguments);}\ngtag('js', new Date());\ngtag('config', 'G-RV37C0FX94');"],
   ],
   appearance: "dark",
-  title: 'NativeScriptVueUse',
+  title: '@NativeScript-Use/Vue',
   description: 'Collection of NativeScript-Vue3 Composition Utilities',
   themeConfig: {
     logo,
