@@ -2,7 +2,7 @@
 
 Collection of NativeScript-Use Composition Utilities
 
-[Documentation (Vue3)](https://nativescriptvueuse.netlify.app/)
+[Documentation (Vue3)](https://nativescriptuse-vue.netlify.app/)
 <br />
 
 This library tries to cover all the `-use` libraries of the frameworks with NativeScript.

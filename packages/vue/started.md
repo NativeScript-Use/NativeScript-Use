@@ -1,6 +1,6 @@
 # Get Started
 
-NativeScriptVueUse is based on [VueUse](https://vueuse.org/), it is a collection of utilities for [NativeScript-Vue3](https://github.com/nativescript-vue/nativescript-vue)
+NativeScript-Use/Vue is based on [VueUse](https://vueuse.org/), it is a collection of utilities for [NativeScript-Vue3](https://github.com/nativescript-vue/nativescript-vue)
 
 Most of the [VueUse](https://vueuse.org/) functions work by default in NativeScript-Vue, only utilities that depend on the dom or web elements are the functions that don't work in NativeScript-Vue. In addition, this package adds specific functions for Vue in Native.
 
