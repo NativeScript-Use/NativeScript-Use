@@ -60,6 +60,7 @@ export default defineConfig({
           { text: 'useContentElementSize', link: '/src/useContentElementSize/index.md' },
           { text: 'useDark', link: '/src/useDark/index.md' },
           { text: 'useElementSize', link: '/src/useElementSize/index.md' },
+          { text: 'useFadeElement', link: '/src/useFadeElement/index.md' },
           { text: 'useEventListener', link: '/src/useEventListener/index.md' },
           { text: 'useIntersectionObserver', link: '/src/useIntersectionObserver/index.md' },
           { text: 'useKeyboard', link: '/src/useKeyboard/index.md' },

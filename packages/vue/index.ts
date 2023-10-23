@@ -7,6 +7,7 @@ export * from './src/useColorPalette';
 export * from './src/useContentElementSize';
 export * from './src/useDark';
 export * from './src/useElementSize';
+export * from './src/useFadeElement';
 export * from './src/useEventListener';
 export * from './src/useIntersectionObserver';
 export * from './src/useKeyboard';
