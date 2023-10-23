@@ -10,12 +10,12 @@ Extract a NativeScript view from a Ref
 
 ```vue
 <script lang="ts" setup>
-import { onMounted, ref} from 'nativescript-vue'
+import { onMounted, ref } from 'nativescript-vue'
 import { unrefView } from '@nativescript-use/vue'
 
 const el = ref();
 
-onMounted(() =>{
+onMounted(() => {
   const view = unrefView(el);
 })
 </script>

@@ -10,14 +10,17 @@ Change opacity and visibility with animation of a NativeScript element.
 
 ```vue
 <script lang="ts" setup>
-const targetViewRef = ref()
-const { isVisible, show, hide, toggle } = useFadeElement(targetViewRef)
+import { ref } from 'nativescript-vue';
+import { useFadeElement } from '@nativescript-use/vue';
+
+const targetViewRef = ref();
+const { isVisible, show, hide, toggle } = useFadeElement(targetViewRef);
 
 const change = () => {
   isVisible.value = !isVisible.value; // 👈 Reactive fade status
-  show() // 👈 Use this if you need a promise to do something when the animation ends
-  hide() // 👈 Use this if you need a promise to do something when the animation ends
-  toggle() // 👈 Async and util
+  show(); // 👈 Use this if you need a promise to do something when the animation ends
+  hide(); // 👈 Use this if you need a promise to do something when the animation ends
+  toggle(); // 👈 Async and util
 }
 
 </script>
