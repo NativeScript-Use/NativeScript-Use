@@ -48,7 +48,7 @@ import { ViewRef } from "@nativescript-use/vue";
  * @param target
  * @param options
  */
-export declare function useFadeElement(target: ViewRef, options: {
+export declare function useFadeElement(target: ViewRef, options?: {
     initial?: {
         opacity: number;
         visibility: CoreTypes.VisibilityType;

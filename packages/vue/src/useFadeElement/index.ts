@@ -12,7 +12,7 @@ import { useEventListener } from '../useEventListener';
  */
 export function useFadeElement(
   target: ViewRef,
-  options: {
+  options?: {
     initial?: { opacity: number; visibility: CoreTypes.VisibilityType };
     animationDuration?: number;
   }
