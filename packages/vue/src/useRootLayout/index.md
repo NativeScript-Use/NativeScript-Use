@@ -16,6 +16,16 @@ import { MyComponent } from "./MyComponent.vue";
 
 const { show, close, isShow } = useRootLayout(MyComponent, {
   props: { foo: "bar" },
+  // Define listeners to listen to emits from your component
+  on: {
+    myCustomEmitEvent: (myData) => {  // 👂 in your child emit('myCustomEmitEvent', myData)
+      console.log("listening to emit from parent: myCustomEmitEvent " + myData);
+    }
+  },
+  closeTimerMillis: 4000, // 🕒 close RootLayout after 4 seconds
+  onClose: () => { // 👂 define a listener for when it closes
+    console.log("On Close RootLayout")
+  },
   rootLayoutOption: {
     shadeCover: {
       color: '#000',
@@ -33,15 +43,6 @@ const { show, close, isShow } = useRootLayout(MyComponent, {
         duration: 300
       }
     }
-  },
-  // Define listeners to listen to emits from your component
-  on: {
-    myCustomEmitEvent: (myData) => {  // 👂 in your child emit('myCustomEmitEvent', myData)
-      console.log("listening to emit from parent: myCustomEmitEvent " + myData);
-    }
-  },
-  onClose: () => { // 👂 define a listener for when it closes
-    console.log("On Close RootLayout")
   }
 });
 

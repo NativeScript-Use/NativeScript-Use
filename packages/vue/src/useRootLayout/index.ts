@@ -37,7 +37,7 @@ export function useRootLayout(
 
   function show() {
     isShow.value = true;
-    if (options.closeTimerMillis) {
+    if (options?.closeTimerMillis) {
       setTimeout(() => {
         getRootLayout().close(view, options?.rootLayoutOption?.animation?.exitTo);
       }, options.closeTimerMillis);
