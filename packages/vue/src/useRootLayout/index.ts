@@ -24,7 +24,7 @@ export function useRootLayout(
     return listeners;
   }, {} as { [key: string]: (...args: any[]) => any });
 
-  const propsAndListeners = Object.assign(options?.props, listeners);
+  const propsAndListeners = Object.assign(options?.props ?? {}, listeners);
 
   const node = createNativeView(component, propsAndListeners);
   node.mount();
