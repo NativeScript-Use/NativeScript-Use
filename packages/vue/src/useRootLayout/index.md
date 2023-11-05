@@ -106,6 +106,7 @@ export declare function useRootLayout(component: any, options?: {
     props?: any;
     on?: Record<string, (...args: any[]) => any>;
     rootLayoutOption?: RootLayoutOptions;
+    closeTimerMillis?: number;
     onClose?: () => void;
 }): {
     show: () => Promise<void>;

@@ -14,6 +14,7 @@ export function useRootLayout(
     on?: Record<string, (...args: any[]) => any>;
     rootLayoutOption?: RootLayoutOptions;
     onClose?: () => void;
+    closeTimerMillis?: number;
   }
 ) {
   const isShow = ref(false);
@@ -23,12 +24,7 @@ export function useRootLayout(
     return listeners;
   }, {} as { [key: string]: (...args: any[]) => any });
 
-  const propsAndListeners = Object.assign(
-    {
-      props: options?.props,
-    },
-    listeners
-  );
+  const propsAndListeners = Object.assign(options?.props, listeners);
 
   const node = createNativeView(component, propsAndListeners);
   node.mount();
@@ -41,6 +37,11 @@ export function useRootLayout(
 
   function show() {
     isShow.value = true;
+    if (options.closeTimerMillis) {
+      setTimeout(() => {
+        getRootLayout().close(view, options?.rootLayoutOption?.animation?.exitTo);
+      }, options.closeTimerMillis);
+    }
     return getRootLayout().open(view, options?.rootLayoutOption);
   }
 
