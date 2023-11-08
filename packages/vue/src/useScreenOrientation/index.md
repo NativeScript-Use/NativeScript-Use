@@ -42,6 +42,24 @@ const {
 </template>
 ```
 
+## Usage in app.ts or MainComponent.vue
+If need to block or enable orientation in your app.ts or your main component must wait for the application to be completely mounted, the following code solves the problem
+
+```ts
+import { onApplicationMounted, useScreenOrientation } from '@nativescript-use/vue';
+
+const {
+  setOrientation,
+  enableRotation,
+  disableRotation
+} = useScreenOrientation();
+
+onApplicationMounted(() => {
+  setOrientation("landscape");
+  disableRotation();
+})
+```
+
 ## Source
 <Source source="useScreenOrientation" demo="ScreenOrientationView.vue"/>
 
