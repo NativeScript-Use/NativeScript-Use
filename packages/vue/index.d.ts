@@ -15,6 +15,7 @@ export * from './src/useMediaQuery';
 export * from './src/useRootLayout';
 export * from './src/useScreenOrientation';
 export * from './src/useStorage';
+export * from './src/useSyncObservableArray';
 export * from './src/types';
 
 /* Global hooks */

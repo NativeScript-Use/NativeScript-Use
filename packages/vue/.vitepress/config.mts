@@ -68,6 +68,7 @@ export default defineConfig({
           { text: 'useRootLayout', link: '/src/useRootLayout/index.md' },
           { text: 'useScreenOrientation', link: '/src/useScreenOrientation/index.md' },
           { text: 'useStorage', link: '/src/useStorage/index.md' },
+          { text: 'useSyncObservableArray', link: '/src/useSyncObservableArray/index.md' },
         ],
       },
       {
