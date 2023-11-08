@@ -25,7 +25,7 @@ const { observableArray } = useSyncObservableArray<MyType>(
 );
 
 function updateData(){
-  myArrayRef.value[1].foo = "lorem";
+  myArrayRef.value[0].foo = "lorem";
 }
 </script>
 ```
@@ -42,7 +42,7 @@ const { sync, observableArray } = useSyncObservableArray<MyType>(
 );
 
 function updateData(){
-  myArrayRef.value[1].foo = "lorem";
+  myArrayRef.value[0].foo = "lorem";
   sync();
 }
 </script>
