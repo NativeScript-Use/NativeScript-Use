@@ -99,9 +99,9 @@ export function useColorMode<T extends string = BasicColorMode>(options: UseColo
       } else {
         Application.setAutoSystemAppearanceChanged(false);
       }
-
-      rootViewClass.add(getClassFromTheme(applyTheme));
-
+      const classToApply = getClassFromTheme(applyTheme);
+      rootViewClass.add(classToApply);
+      CSSUtils.pushToSystemCssClasses(classToApply);
       rootView.className = Array.from(rootViewClass).join(' ');
       const frame = Frame.topmost();
       frame.backStack.forEach((backStack) => backStack.resolvedPage?._onCssStateChange());
@@ -110,7 +110,7 @@ export function useColorMode<T extends string = BasicColorMode>(options: UseColo
       });
       storage.setString(storageKey!, themeToApply);
 
-      console.log('Apply: ' + getClassFromTheme(themeToApply));
+      console.log('Apply: ' + classToApply);
     }
 
     if (rootView && schema.value !== internalSchema) {
