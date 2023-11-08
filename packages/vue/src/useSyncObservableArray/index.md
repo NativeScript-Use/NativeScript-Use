@@ -54,7 +54,7 @@ Keep in mind that searching for changes in very large arrays is expensive so kee
 - The process to search for changes consists of 3 phases:
   - Search for deleted items. Option `checkRemoved`.
   - Search for added items. Option `checkAdded`.
-  - Check for updates on items. Option `checkUpdated`.
+  - Check for updates on items. Option `checkUpdates`.
 
 By default all 3 phases are activated. Use these parameters to indicate which operations you want to detect. An example, if you only want to track updates, use the following configuration:
 
@@ -92,7 +92,7 @@ export declare function useSyncObservableArray<T>(arrayRef: Ref<T[]> | T[], opti
     watchUpdates?: boolean;
     checkRemoved?: boolean;
     checkAdded?: boolean;
-    checkUpdated?: boolean;
+    checkUpdates?: boolean;
 }): {
     sync: (newArray?: Ref<T[]> | T[]) => void;
     observableArray: ObservableArray<T>;
