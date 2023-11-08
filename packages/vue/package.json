@@ -1,6 +1,6 @@
 {
   "name": "@nativescript-use/vue",
-  "version": "0.0.27",
+  "version": "0.0.28",
   "description": "Add a plugin description",
   "main": "index",
   "typings": "index.d.ts",

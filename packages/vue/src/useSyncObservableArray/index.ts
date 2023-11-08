@@ -37,7 +37,7 @@ export function useSyncObservableArray<T>(
   function sync(newArray?: any) {
     //console.time("TIME_[useSyncObservableArray.sync]");
     const itemList = newArray ? getClearArray(newArray) : getClearArray(arrayRef);
-    console.log('Processing_[useSyncObservableArray.sync.itemList.length]' + itemList.length);
+    //console.log('Processing_[useSyncObservableArray.sync.itemList.length] ' + itemList.length);
 
     if (checkRemoved) {
       const indexRemoved: number[] = [];
