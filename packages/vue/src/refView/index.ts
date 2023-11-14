@@ -1,22 +1,32 @@
 import type { View } from '@nativescript/core';
-import { Ref, customRef, ref } from 'nativescript-vue';
+import { Ref, customRef } from 'nativescript-vue';
 import { unrefView } from '../unrefView';
 
 /**
  * Utility. Typed Ref of View.
  */
 export function refView<T = View>(): Ref<T> {
-  const refView = ref();
   return customRef((track, trigger) => {
+    let view = undefined;
     return {
       get() {
         track();
-        return unrefView(refView);
+        return view;
       },
       set(newValue: any) {
-        refView.value = newValue;
+        view = unrefView(newValue);
+        watchPushIfIsArray(view);
         trigger();
       },
     };
   });
+}
+
+function watchPushIfIsArray(view: any) {
+  if (view && Array.isArray(view)) {
+    view.push = function (data) {
+      const newItem = unrefView(data);
+      return Array.prototype.push.apply(this, Array.isArray(newItem) ? newItem : [newItem]);
+    };
+  }
 }
