@@ -52,6 +52,7 @@ export default defineConfig({
       {
         text: 'Functions',
         items: [
+          { text: 'refView', link: '/src/refView/index.md' },
           { text: 'unrefView', link: '/src/unrefView/index.md' },
           { text: 'useBreakpoints', link: '/src/useBreakpoints/index.md' },
           { text: 'useClipboard', link: '/src/useClipboard/index.md' },

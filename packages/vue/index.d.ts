@@ -1,5 +1,6 @@
 /* Functions */
 export * from './src/unrefView';
+export * from './src/refView';
 export * from './src/useBreakpoints';
 export * from './src/useClipboard';
 export * from './src/useColorMode';
