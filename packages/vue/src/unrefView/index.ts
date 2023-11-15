@@ -10,6 +10,7 @@ export function unrefView<T = View>(ref: T | any /*  ViewRef<T> */): T | undefin
   if (ref?.value?.nativeView) return ref?.value.nativeView;
   if (ref?.value?.$el?.nativeView) return ref?.value?.$el?.nativeView;
   if (ref?.nativeView) return ref?.nativeView;
+  if (ref?.$el?.nativeView) return ref?.$el?.nativeView;
   if (ref?.value instanceof View) return ref?.value;
   if (ref instanceof View) return ref as T;
   // @ts-ignore
