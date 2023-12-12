@@ -72,6 +72,57 @@ const { observableArray } = useSyncObservableArray<MyType>(
 </script>
 ```
 
+## Hooks
+### `onPreUpdate`
+To have native performance in Lists/CollectionView, the recycling of items provided by Android/iOS is implemented. When we use these views from vue, the normal thing is to access calculated properties in our template, this causes a loss of performance when the calculation carried out is slow. To mitigate this we must calculate the field before adding it to the `ObservableArray`, for this we have the `onPreUpdate` hook, it allows the object to be mutated before adding it to the `ObservableArray` (this mutation will not affect its reactive object). 
+
+Note that in this case the scrolling will be fast, but the initial loading of the data will be slower since it performs the calculation before inserting the elements.
+
+❌ Don't do this
+```vue
+<script lang="ts" setup>
+import { useSyncObservableArray } from "@nativescript-use/vue";
+import TextService from "...";
+
+const { observableArray } = useSyncObservableArray<MyType>(myArrayRef);
+
+function getText(item: MyType){
+  return TextService.buildTitleText(item);
+}
+</script>
+<template>
+  <CollectionView :items="observableArray">
+    <template #default="{ item } : { item: MyType }">
+      <Label :text="getText(item)" />
+    </template>
+  </CollectionView>
+</template>
+```
+
+✅ Do this
+```vue
+
+<script lang="ts" setup>
+import { useSyncObservableArray } from "@nativescript-use/vue";
+import TextService from "...";
+
+const { observableArray } = useSyncObservableArray<MyType, MyObservableType>(myArrayRef, {
+    onPreUpdate(item: MyType, index: number, updateType: OnPreupdateType){
+      item.title = TextService.buildTitleText(item);
+      return item;
+    }
+  }
+);
+</script>
+<template>
+  <CollectionView :items="observableArray">
+    <template #default="{ item } : { item: MyObservableType }">
+      <Label :text="item.title" />
+    </template>
+  </CollectionView>
+</template>
+```
+
 ## Source
 <Source source="useSyncObservableArray"/>
 
