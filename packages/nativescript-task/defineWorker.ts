@@ -9,7 +9,7 @@ export const defineWorker = (options: { imports?: {} } = {}) => {
     var attachToContextFunctions = {};
 
     if (request.func.attachToContextFunctions && Object.keys(request.func.attachToContextFunctions).length > 0) {
-      attachToContextFunctions = Object.keys(request.func.attachToContextFunctions).reduce((resultObject, keyFunction) => {
+      attachToContextFunctions = Object.keys(request.func.attachToContextFunctions).reduce((resultObject: any, keyFunction: string) => {
         resultObject[keyFunction] = JSONfn.parse(request.func.attachToContextFunctions[keyFunction]);
         return resultObject;
       }, {});
