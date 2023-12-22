@@ -36,6 +36,25 @@ Task.start<number, string, boolean>((ctx) => {
   });
 ```
 
+### Using inline functions
+
+We can add local functions to run inside the worker using `attachToContextFunctions`.
+
+```ts
+import { Task, TaskContext } from "@nativescript-use/nativescript-task";
+
+const myFunction = (ctx: TaskContext) => 5 + ctx.state;
+const myOtherFunction = (ctx: TaskContext) => 20 + ctx.state;
+
+Task.start((ctx) => {
+            return ctx.myFunction(ctx) + ctx.myOtherFunction(ctx);
+        }, {
+            state: 10,
+            attachToContextFunctions: { myFunction, myOtherFunction }
+        })
+```
+
+
 ### Using dependencies
 
 We initialize our worker with the `moduleWorker: true` flag, this will cause the library to import the worker that is defined in the next step.
@@ -89,6 +108,8 @@ Task.start((ctx) => {
   return utils.someFunction(1000) + lib.otherFunction(ctx.state);
 }, { state: 1000 })
 ```
+
+
 
 ## Limitations
 

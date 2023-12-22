@@ -30,17 +30,16 @@ import { JSONfn } from './JSONfn';
  *
  * @return {TResult} The result of the function.
  */
-export type TaskFunc<TState, TResult, TUpdate> = (ctx: { state: TState; onProgressUpdate: (dataUpdate: TUpdate) => void; [key: string]: any }) => TResult;
+export type TaskFunc<TState, TResult, TUpdate> = (ctx: TaskContext<TState, TUpdate>) => TResult;
 export type TaskFuncUpdate<TUpdate> = (update: { data: TUpdate }) => void;
 
 /**
  * Describes a task context.
  */
-export interface TaskContext<TState> {
-  /**
-   * The optional value that was submitted to the function.
-   */
-  state?: TState;
+export interface TaskContext<TState = any, TUpdate = any> {
+  state: TState;
+  onProgressUpdate: (dataUpdate: TUpdate) => void;
+  [key: string]: any;
 }
 
 /**
@@ -174,7 +173,7 @@ export class Task<TState, TResult, TUpdate> extends Observable {
    *
    * @return {Promise<TResult>} The promise.
    */
-  public static start<TState, TResult, TUpdate>(func: TaskFunc<TState, TResult, TUpdate>, options?: { state?: TState; onProgressUpdate?: TaskFuncUpdate<TUpdate> }): Promise<TaskResult<TState, TResult>> {
+  public static start<TState, TResult, TUpdate>(func: TaskFunc<TState, TResult, TUpdate>, options?: { state?: TState; onProgressUpdate?: TaskFuncUpdate<TUpdate>; attachToContextFunctions?: {} }): Promise<TaskResult<TState, TResult>> {
     return Task.newTask<TResult, TUpdate>(func, options?.onProgressUpdate).start(options);
   }
   /**
@@ -205,7 +204,7 @@ export class Task<TState, TResult, TUpdate> extends Observable {
    *
    * @return {Promise<TaskResult<TState, TResult>>} The promise.
    */
-  public start<TState>(options?: { state?: TState }): Promise<TaskResult<TState, TResult>> {
+  public start<TState>(options?: { state?: TState; attachToContextFunctions?: {} }): Promise<TaskResult<TState, TResult>> {
     let me = this;
 
     return new Promise<TaskResult<TState, TResult>>((resolve, reject) => {
@@ -270,6 +269,13 @@ export class Task<TState, TResult, TUpdate> extends Observable {
         if (me._FUNC) {
           func = {};
           func.body = JSONfn.stringify(me._FUNC);
+          if (options.attachToContextFunctions && Object.keys(options.attachToContextFunctions).length > 0) {
+            const functionsToAttach = Object.keys(options.attachToContextFunctions).reduce((resultObject, keyFunction) => {
+              resultObject[keyFunction] = JSONfn.stringify(options.attachToContextFunctions[keyFunction]);
+              return resultObject;
+            }, {});
+            func.attachToContextFunctions = functionsToAttach;
+          }
         }
 
         me.updateStatus(TaskStatus.Running);
