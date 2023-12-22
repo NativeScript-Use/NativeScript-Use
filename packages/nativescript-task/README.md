@@ -56,6 +56,7 @@ We need to define a worker with the imports that we want to have defined in our 
 // /app/globalWorker.ts
 
 import { defineWorker } from "@nativescript-use/nativescript-task";
+import '@nativescript/core/globals';
 
 import { myUtils } from '@utils';
 import { otherLib } from 'other-lib';
