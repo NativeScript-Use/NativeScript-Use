@@ -122,6 +122,13 @@ module.exports = {
           description: '@nativescript-use/nativescript-intersection-observer: Build',
         },
       },
+      // @nativescript-use/nativescript-task
+      'nativescript-task': {
+        build: {
+          script: 'nx run nativescript-task:build.all',
+          description: '@nativescript-use/nativescript-task: Build',
+        },
+      },
       'build-all': {
         script: 'nx run-many --target=build.all --all',
         description: 'Build all packages',
@@ -155,6 +162,10 @@ module.exports = {
       'nativescript-intersection-observer': {
         script: 'nx run nativescript-intersection-observer:focus',
         description: 'Focus on undefined/nativescript-intersection-observer',
+      },
+      'nativescript-task': {
+        script: 'nx run nativescript-task:focus',
+        description: 'Focus on undefined/nativescript-task',
       },
       reset: {
         script: 'nx g @vallemar/plugin-tools:focus-packages',

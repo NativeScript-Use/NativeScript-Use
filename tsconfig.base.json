@@ -31,7 +31,8 @@
       "@nativescript-use/nativescript-clipboard": ["packages/nativescript-clipboard/index.d.ts"],
       "@/*": ["packages/*"],
       "@nativescript-use/nativescript-media-query": ["packages/nativescript-media-query/index.d.ts"],
-      "@nativescript-use/nativescript-intersection-observer": ["packages/nativescript-intersection-observer/index.d.ts"]
+      "@nativescript-use/nativescript-intersection-observer": ["packages/nativescript-intersection-observer/index.d.ts"],
+      "@nativescript-use/nativescript-task": ["packages/nativescript-task/index.d.ts"]
     },
     "jsx": "react"
   },

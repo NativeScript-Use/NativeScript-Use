@@ -24,6 +24,7 @@ The following plugins are the core of some of the native functionality already b
 - [@nativescript-use/nativescript-keyboard](packages/nativescript-keyboard/README.md)
 - [@nativescript-use/nativescript-media-query](packages/nativescript-media-query/README.md)
 - [@nativescript-use/nativescript-orientation](packages/nativescript-orientation/README.md)
+- [@nativescript-use/nativescript-task](packages/nativescript-task/README.md)
 
 # How to contribute?
 
