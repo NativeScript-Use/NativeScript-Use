@@ -64,7 +64,9 @@ We initialize our worker with the `moduleWorker: true` flag, this will cause the
 
 import { Task } from "@nativescript-use/nativescript-task";
 
-Task.initGlobalWorker({ moduleWorker: true });
+Task.globalWorkerConfig({
+    moduleWorker: true
+});
 
 // run app
 ```
@@ -109,7 +111,29 @@ Task.start((ctx) => {
 }, { state: 1000 })
 ```
 
+## Global configuration
 
+```ts
+// app.ts | main.ts (entry file app)
+
+import { Task } from "@nativescript-use/nativescript-task";
+
+Task.globalWorkerConfig({
+    moduleWorker: true,
+    stickyWorker: true,
+    newWorkerIfGlobalIsUsed: true,
+    startGlobalWorker: true
+});
+
+// run app
+```
+
+- `moduleWorker` - default `false`: Indicates that the plugin has to look for the `/app/globalWorker.ts` file to add the modules to the context.
+- `stickyWorker` - default `true`: When set to true the plugin always keeps a worker running to launch your tasks to this worker. This saves time when launching the task since initializing a worker takes time, by default it is true to launch each task as quickly as possible. If set to false the plugin will initialize a worker and terminate each task. 
+- `newWorkerIfGlobalIsUsed` - default `true`: When stickyWorker is true and we have a worker always running, if we launch a task and the main worker is running with another task, a new worker will be created to launch this task and not wait for the previous task to finish. If you disable this flag and launch another task while one is running, it will have to wait until it reaches the beginning of the queue. 
+- `startGlobalWorker` - default `true`: Initialize the global worker when the configuration is set, it will be available when you launch your first task. If disabled, when the first task is launched it will have the worker creation delay.
+
+Note: when the worker execution time is mentioned we are talking about about 200ms (it is almost nothing). It's not much, but this plugin prioritizes speed, which is why we keep a `stickyWorker` always available.
 
 ## Limitations
 

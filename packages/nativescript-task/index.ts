@@ -78,8 +78,11 @@ export enum TaskStatus {
    */
   WaitingToRun,
 }
-
-let globalWorker: Worker = null!;
+type GeneralCallback = ((data: any | undefined) => void) | undefined;
+export type GlobalWorkerConfiguration = { stickyWorker?: boolean; moduleWorker?: boolean; newWorkerIfGlobalIsUsed?: boolean; startGlobalWorker?: boolean };
+export type DataWorker = { worker?: Worker; isGlobal: boolean; running: boolean; globalResolve?: { [key: string]: GeneralCallback }; globalReject?: { [key: string]: GeneralCallback }; globalOnUpdate?: { [key: string]: GeneralCallback } };
+let dataGlobalWorker: DataWorker = { worker: null!, isGlobal: true, running: false, globalResolve: {}, globalReject: {}, globalOnUpdate: {} };
+let globalConfiguration: GlobalWorkerConfiguration = { stickyWorker: true, newWorkerIfGlobalIsUsed: true, moduleWorker: false, startGlobalWorker: true };
 
 /**
  * A task.
@@ -99,6 +102,8 @@ export class Task<TState, TResult, TUpdate> extends Observable {
    */
   protected _status: TaskStatus = TaskStatus.Starting;
 
+  protected dataWorker: DataWorker = { worker: null!, isGlobal: false, running: false };
+  protected id = '';
   /**
    * Initializes a new instance of that class.
    *
@@ -118,19 +123,28 @@ export class Task<TState, TResult, TUpdate> extends Observable {
     this.updateStatus(TaskStatus.Created);
   }
 
-  public static initGlobalWorker(options: { moduleWorker: boolean } = { moduleWorker: false }) {
-    if (globalWorker == null) {
-      if (options.moduleWorker === true) {
-        globalWorker = new Worker('./worker');
-      } else {
-        globalWorker = new Worker('@/globalWorker');
-      }
+  public static globalWorkerConfig(options: GlobalWorkerConfiguration) {
+    globalConfiguration = { ...globalConfiguration, ...options };
+    if (globalConfiguration.startGlobalWorker) {
+      Task.initGlobalWorker({ moduleWorker: globalConfiguration.moduleWorker ?? false });
     }
   }
 
+  public static initGlobalWorker(options: { moduleWorker: boolean } = { moduleWorker: false }): Worker {
+    if (dataGlobalWorker.worker == null) {
+      if (options.moduleWorker === true) {
+        dataGlobalWorker.worker = new Worker('./worker');
+      } else {
+        dataGlobalWorker.worker = new Worker('@/globalWorker');
+      }
+    }
+    return dataGlobalWorker.worker;
+  }
+
   public static finishGlobalWorker() {
-    globalWorker.terminate();
-    globalWorker = null!;
+    dataGlobalWorker.worker?.terminate();
+    dataGlobalWorker.worker = null!;
+    dataGlobalWorker.running = false;
   }
 
   /**
@@ -176,6 +190,27 @@ export class Task<TState, TResult, TUpdate> extends Observable {
     return this._FUNC_UPDATE;
   }
 
+  public getWorker(): DataWorker {
+    if (globalConfiguration.newWorkerIfGlobalIsUsed && dataGlobalWorker.running) {
+      return { worker: this.newWorker(), isGlobal: false, running: false };
+    }
+
+    if (dataGlobalWorker.worker === null) {
+      dataGlobalWorker.worker = this.newWorker();
+      return { worker: dataGlobalWorker.worker, isGlobal: true, running: false };
+    } else {
+      return { worker: dataGlobalWorker.worker, isGlobal: true, running: false };
+    }
+  }
+
+  private newWorker() {
+    if (globalConfiguration.moduleWorker === true) {
+      return new Worker('./worker');
+    } else if (!globalConfiguration.moduleWorker) {
+      return new Worker('@/globalWorker');
+    }
+  }
+
   /**
    * Starts the task.
    *
@@ -183,23 +218,32 @@ export class Task<TState, TResult, TUpdate> extends Observable {
    *
    * @return {Promise<TaskResult<TState, TResult>>} The promise.
    */
+
   public start<TState>(options?: { state?: TState; attachToContextFunctions?: { [key: string]: any } }): Promise<TaskResult<TState, TResult>> {
+    this.id = Date.now().toString();
     let me = this;
 
     return new Promise<TaskResult<TState, TResult>>((resolve, reject) => {
-      let completed = (err: any, data?: TResult) => {
+      let completed = (id: string, err: any, data?: TResult) => {
         if (err) {
-          reject({
-            error: err,
-            state: options?.state,
-          });
+          const rejectFunction = me.getReject(id, reject);
+          if (rejectFunction) {
+            rejectFunction({
+              error: err,
+              state: options?.state,
+            });
+          }
         } else {
-          resolve({
-            data: data,
-            state: options?.state,
-          });
+          const resolveFunction = me.getResolve(id, resolve);
+          if (resolveFunction) {
+            resolveFunction({
+              data: data,
+              state: options?.state,
+            });
+          }
         }
-
+        me.removeGlobalCallback(id);
+        me.checkTerminateWorker(data);
         me.updateError(err);
       };
 
@@ -210,37 +254,45 @@ export class Task<TState, TResult, TUpdate> extends Observable {
           break;
 
         default:
-          completed(new Error(`Cannot start while in '${TaskStatus[me._status]}' state!`));
+          completed('', new Error(`Cannot start while in '${TaskStatus[me._status]}' state!`));
           return;
       }
 
       try {
         me.updateStatus(TaskStatus.WaitingToRun);
-
-        if (globalWorker == null) {
-          Task.initGlobalWorker();
+        me.dataWorker = me.getWorker();
+        const worker: Worker = me.dataWorker.worker as Worker;
+        me.dataWorker.running = true;
+        if (me.dataWorker.isGlobal && dataGlobalWorker.globalResolve && dataGlobalWorker.globalReject && dataGlobalWorker.globalOnUpdate) {
+          dataGlobalWorker.running = true;
+          dataGlobalWorker.globalResolve[me.id] = resolve;
+          dataGlobalWorker.globalReject[me.id] = reject;
+          dataGlobalWorker.globalOnUpdate[me.id] = me._FUNC_UPDATE;
         }
-        globalWorker.onmessage = function (msg) {
-          // worker.terminate();
 
+        worker.onmessage = function (msg) {
           let result = msg.data;
+          let executionId = '';
           if (result) {
-            result = JSON.parse(result);
+            const message = JSON.parse(result);
+            executionId = message.id;
+            result = message.result;
           }
-
           if (result?.onProgressUpdate === true) {
-            if (me._FUNC_UPDATE) {
-              me._FUNC_UPDATE({ data: result.dataUpdate });
+            const onUpdateFuncion = me.getOnUpdate(executionId);
+            if (onUpdateFuncion) {
+              onUpdateFuncion({ data: result.dataUpdate });
             }
           } else {
             me.updateStatus(TaskStatus.RanToCompletion);
-            completed(null, result);
+            completed(executionId, null, result);
           }
         };
 
-        globalWorker.onerror = function (err) {
+        worker.onerror = function (err) {
+          const idExecution = JSON.parse(err.message.replace('Uncaught Error: ', ''))?.id;
           me.updateStatus(TaskStatus.Faulted);
-          completed(err);
+          completed(idExecution, err);
         };
 
         let func: any;
@@ -260,20 +312,59 @@ export class Task<TState, TResult, TUpdate> extends Observable {
         }
 
         me.updateStatus(TaskStatus.Running);
-        globalWorker.postMessage(
+        worker.postMessage(
           JSON.stringify({
+            id: me.id,
             func: func,
             state: options?.state,
           })
         );
       } catch (e) {
         console.log(e);
-
         me.updateStatus(TaskStatus.Faulted);
-
-        completed(e);
+        completed(me.id, e);
       }
     });
+  }
+
+  private getReject(id: string, reject: (data: any) => void) {
+    if (this.dataWorker.isGlobal) {
+      return dataGlobalWorker.globalReject ? dataGlobalWorker.globalReject[id] : null;
+    }
+    return reject;
+  }
+  private getResolve(id: string, resolve: (data: any) => void) {
+    if (this.dataWorker.isGlobal) {
+      return dataGlobalWorker.globalResolve ? dataGlobalWorker.globalResolve[id] : null;
+    }
+    return resolve;
+  }
+
+  private getOnUpdate(id: string) {
+    if (this.dataWorker.isGlobal) {
+      return dataGlobalWorker.globalOnUpdate ? dataGlobalWorker.globalOnUpdate[id] : null;
+    }
+    return this._FUNC_UPDATE;
+  }
+
+  private removeGlobalCallback(id: string) {
+    if (dataGlobalWorker.globalResolve && dataGlobalWorker.globalResolve[id]) delete dataGlobalWorker.globalResolve[id];
+    if (dataGlobalWorker.globalReject && dataGlobalWorker.globalReject[id]) delete dataGlobalWorker.globalReject[id];
+    if (dataGlobalWorker.globalOnUpdate && dataGlobalWorker.globalOnUpdate[id]) delete dataGlobalWorker.globalOnUpdate[id];
+  }
+
+  private checkTerminateWorker(result: any) {
+    if ((!this.dataWorker.isGlobal && result?.onProgressUpdate !== true) || (!globalConfiguration.stickyWorker && dataGlobalWorker.isGlobal && dataGlobalWorker.globalResolve && Object.keys(dataGlobalWorker.globalResolve).length === 0)) {
+      this.dataWorker.worker?.terminate();
+      this.dataWorker.worker = null!;
+      if (this.dataWorker.isGlobal) {
+        Task.finishGlobalWorker();
+      }
+    }
+    if (result?.onProgressUpdate !== true) {
+      this.dataWorker.running = false;
+      if (this.dataWorker.isGlobal) dataGlobalWorker.running = false;
+    }
   }
 
   /**
