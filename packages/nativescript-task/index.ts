@@ -12,6 +12,9 @@ export * from './defineWorker';
 export type TaskFunc<TState, TResult, TUpdate> = (ctx: TaskContext<TState, TUpdate>) => TResult;
 export type TaskFuncUpdate<TUpdate> = (update: { data: TUpdate }) => void;
 
+export interface OnData<Data> {
+  data: Data;
+}
 /**
  * Describes a task context.
  */
@@ -166,9 +169,10 @@ export class Task<TState, TResult, TUpdate> extends Observable {
    *
    * @return {Promise<TResult>} The promise.
    */
-  public static start<TState, TResult, TUpdate>(func: TaskFunc<TState, TResult, TUpdate>, options?: { state?: TState; onProgressUpdate?: TaskFuncUpdate<TUpdate>; attachToContextFunctions?: {} }): Promise<TaskResult<TState, TResult>> {
+  public static start<TState, TResult, TUpdate>(func: TaskFunc<TState, TResult, TUpdate>, options?: { state?: TState; onProgressUpdate?: TaskFuncUpdate<TUpdate>; attachToContextFunctions?: {}; performance?: boolean }): Promise<TaskResult<TState, TResult>> {
     return Task.newTask<TResult, TUpdate>(func, options?.onProgressUpdate).start(options);
   }
+
   /**
    * Gets the error of the last execution.
    */
@@ -219,7 +223,7 @@ export class Task<TState, TResult, TUpdate> extends Observable {
    * @return {Promise<TaskResult<TState, TResult>>} The promise.
    */
 
-  public start<TState>(options?: { state?: TState; attachToContextFunctions?: { [key: string]: any } }): Promise<TaskResult<TState, TResult>> {
+  public start<TState>(options?: { state?: TState; attachToContextFunctions?: { [key: string]: any }; performance?: boolean }): Promise<TaskResult<TState, TResult>> {
     this.id = Date.now().toString();
     let me = this;
 
@@ -241,6 +245,9 @@ export class Task<TState, TResult, TUpdate> extends Observable {
               state: options?.state,
             });
           }
+        }
+        if (options.performance) {
+          console.timeEnd('RunWorker');
         }
         me.removeGlobalCallback(id);
         me.checkTerminateWorker(data);
@@ -311,6 +318,13 @@ export class Task<TState, TResult, TUpdate> extends Observable {
           }
         }
 
+        if (options.performance) {
+          console.time('RunUI');
+          // @ts-ignore
+          me._FUNC({ state: options?.state, ...options?.attachToContextFunctions });
+          console.timeEnd('RunUI');
+          console.time('RunWorker');
+        }
         me.updateStatus(TaskStatus.Running);
         worker.postMessage(
           JSON.stringify({
@@ -363,7 +377,7 @@ export class Task<TState, TResult, TUpdate> extends Observable {
     }
     if (result?.onProgressUpdate !== true) {
       this.dataWorker.running = false;
-      if (this.dataWorker.isGlobal) dataGlobalWorker.running = false;
+      if (this.dataWorker.isGlobal && Object.keys(dataGlobalWorker.globalResolve).length === 0) dataGlobalWorker.running = false;
     }
   }
 
