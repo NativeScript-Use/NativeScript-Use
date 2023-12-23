@@ -278,21 +278,21 @@ export class Task<TState, TResult, TUpdate> extends Observable {
         }
 
         worker.onmessage = function (msg) {
-          let result = msg.data;
+          let message = msg.data;
           let executionId = '';
-          if (result) {
-            const message = JSON.parse(result);
+          if (message) {
+            message = JSON.parse(message);
             executionId = message.id;
-            result = message.result;
           }
-          if (result?.onProgressUpdate === true) {
+
+          if (message?.onProgressUpdate === true) {
             const onUpdateFuncion = me.getOnUpdate(executionId);
             if (onUpdateFuncion) {
-              onUpdateFuncion({ data: result.dataUpdate });
+              onUpdateFuncion({ data: message.dataUpdate });
             }
           } else {
             me.updateStatus(TaskStatus.RanToCompletion);
-            completed(executionId, null, result);
+            completed(executionId, null, message.result);
           }
         };
 
