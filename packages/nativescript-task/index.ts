@@ -246,7 +246,7 @@ export class Task<TState, TResult, TUpdate> extends Observable {
             });
           }
         }
-        if (options.performance) {
+        if (options?.performance) {
           console.timeEnd('RunWorker');
         }
         me.removeGlobalCallback(id);
@@ -318,7 +318,7 @@ export class Task<TState, TResult, TUpdate> extends Observable {
           }
         }
 
-        if (options.performance) {
+        if (options?.performance) {
           console.time('RunUI');
           // @ts-ignore
           me._FUNC({ state: options?.state, ...options?.attachToContextFunctions });
@@ -377,7 +377,7 @@ export class Task<TState, TResult, TUpdate> extends Observable {
     }
     if (result?.onProgressUpdate !== true) {
       this.dataWorker.running = false;
-      if (this.dataWorker.isGlobal && Object.keys(dataGlobalWorker.globalResolve).length === 0) dataGlobalWorker.running = false;
+      if (this.dataWorker.isGlobal && dataGlobalWorker.globalResolve && Object.keys(dataGlobalWorker.globalResolve).length === 0) dataGlobalWorker.running = false;
     }
   }
 
