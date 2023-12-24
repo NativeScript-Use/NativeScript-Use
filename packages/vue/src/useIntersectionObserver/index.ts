@@ -1,8 +1,8 @@
-import { ref, readonly } from 'nativescript-vue';
-import { unrefView } from '../unrefView';
-import { ViewRef } from '../types';
-import { ScrollView, View } from '@nativescript/core';
 import { IntersectionObserver } from '@nativescript-use/nativescript-intersection-observer';
+import { ScrollView, View } from '@nativescript/core';
+import { readonly, ref } from 'nativescript-vue';
+import { ViewRef } from '../types';
+import { unrefView } from '../unrefView';
 import { useEventListener } from '../useEventListener';
 
 /**
@@ -20,18 +20,20 @@ export function useIntersectionObserver(target: View | ViewRef, parentView: View
     loaded: () => {
       setTimeout(() => {
         const view = unrefView(target);
-        const parent = unrefView<ScrollView>(parentView);
-        intersectionObserver = new IntersectionObserver();
-        isVisibleInternal = intersectionObserver.isVisible(view, parent);
-        isVisible.value = isVisibleInternal;
+        if (view) {
+          const parent = unrefView<ScrollView>(parentView);
+          intersectionObserver = new IntersectionObserver();
+          isVisibleInternal = intersectionObserver.isVisible(view, parent);
+          isVisible.value = isVisibleInternal;
 
-        intersectionObserver.track(view, parent, (visible) => {
-          if (isVisibleInternal != visible) {
-            isVisibleInternal = visible;
-            isVisible.value = visible;
-            if (options?.onChange) options.onChange(visible);
-          }
-        });
+          intersectionObserver.track(view, parent, (visible) => {
+            if (isVisibleInternal != visible) {
+              isVisibleInternal = visible;
+              isVisible.value = visible;
+              if (options?.onChange) options.onChange(visible);
+            }
+          });
+        }
       }, 10);
     },
   });

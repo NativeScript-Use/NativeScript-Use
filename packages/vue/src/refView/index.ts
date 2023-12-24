@@ -7,7 +7,7 @@ import { unrefView } from '../unrefView';
  */
 export function refView<T = View>(): Ref<T> {
   return customRef((track, trigger) => {
-    let view = undefined;
+    let view: View | undefined = undefined;
     return {
       get() {
         track();

@@ -50,7 +50,7 @@ export function useSyncObservableArray<T, J = any>(
   //let clearArray = runOnPreSync(onPreSync, getClearArray(arrayRef), OnPreSycType.Initial);
   let clearArray = getClearArray(arrayRef);
   if (onPreUpdate) {
-    clearArray = clearArray.map((item, index) => {
+    clearArray = clearArray.map((item: T, index: number) => {
       return runOnPreUpdate(onPreUpdate, item, index, OnPreUpdateType.Add);
     });
   }
@@ -120,7 +120,7 @@ export function useSyncObservableArray<T, J = any>(
   return items;
 } */
 
-function runOnPreUpdate<T, J>(onPreUpdated: preUpdate<T, J>, item: T, index: number, type: OnPreUpdateType): T | J {
+function runOnPreUpdate<T, J>(onPreUpdated: preUpdate<T, J> | undefined, item: T, index: number, type: OnPreUpdateType): T | J {
   if (onPreUpdated) return onPreUpdated(item, index, type);
   return item;
 }
