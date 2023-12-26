@@ -2,7 +2,10 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "outDir": "../../dist/out-tsc",
-    "rootDir": "."
+    "rootDir": ".",
+    "paths": {
+      "@nativescript-use/nativescript-task": ["../nativescript-task"]
+    }
   },
   "exclude": ["**/*.spec.ts", "**/*.test.ts", "angular"],
   "include": ["**/*.ts", "./src/**/*.ts", "references.d.ts"]

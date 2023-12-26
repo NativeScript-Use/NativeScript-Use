@@ -3,7 +3,7 @@ import { defineConfig } from 'vitepress';
 const logo = 'https://art.nativescript-vue.org/NativeScript-Vue-Green-White.svg';
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  vite:{
+  vite: {
     define: {
       BASE_BLOB_SOURCE: JSON.stringify('https://github.com/NativeScript-Use/NativeScript-Use/blob/main/packages/vue/src/'),
       STACKBLITZ_VIEW: JSON.stringify('https://stackblitz.com/edit/nativescrip-use-vue/?file=src/views/')
@@ -70,6 +70,7 @@ export default defineConfig({
           { text: 'useScreenOrientation', link: '/src/useScreenOrientation/index.md' },
           { text: 'useStorage', link: '/src/useStorage/index.md' },
           { text: 'useSyncObservableArray', link: '/src/useSyncObservableArray/index.md' },
+          { text: 'useWorker', link: '/src/useWorker/index.md' },
         ],
       },
       {
@@ -86,6 +87,6 @@ export default defineConfig({
     search: {
       provider: 'local',
     },
-   
+
   },
 });

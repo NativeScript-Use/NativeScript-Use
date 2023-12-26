@@ -145,15 +145,15 @@ module.exports = {
       },
       'nativescript-orientation': {
         script: 'nx run nativescript-orientation:focus',
-        description: 'Focus on @vallemar/nativescript-orientation',
+        description: 'Focus on @nativescript-use/nativescript-orientation',
       },
       'nativescript-keyboard': {
         script: 'nx run nativescript-keyboard:focus',
-        description: 'Focus on @vallemar/nativescript-keyboard',
+        description: 'Focus on @nativescript-use/nativescript-keyboard',
       },
       'nativescript-clipboard': {
         script: 'nx run nativescript-clipboard:focus',
-        description: 'Focus on @vallemar/nativescript-clipboard',
+        description: 'Focus on @nativescript-use/nativescript-clipboard',
       },
       'nativescript-media-query': {
         script: 'nx run nativescript-media-query:focus',
@@ -161,14 +161,14 @@ module.exports = {
       },
       'nativescript-intersection-observer': {
         script: 'nx run nativescript-intersection-observer:focus',
-        description: 'Focus on undefined/nativescript-intersection-observer',
+        description: 'Focus on @nativescript-use/nativescript-intersection-observer',
       },
       'nativescript-task': {
         script: 'nx run nativescript-task:focus',
-        description: 'Focus on undefined/nativescript-task',
+        description: 'Focus on @nativescript-use/nativescript-task',
       },
       reset: {
-        script: 'nx g @vallemar/plugin-tools:focus-packages',
+        script: 'nx g @nativescript-use/plugin-tools:focus-packages',
         description: 'Reset Focus',
       },
     },
