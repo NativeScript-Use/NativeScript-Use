@@ -82,10 +82,10 @@ export enum TaskStatus {
   WaitingToRun,
 }
 type GeneralCallback = ((data: any | undefined) => void) | undefined;
-export type GlobalWorkerConfiguration = { stickyWorker?: boolean; moduleWorker?: boolean; newWorkerIfGlobalIsUsed?: boolean; startGlobalWorker?: boolean };
+export type GlobalWorkerConfiguration = { stickyWorker?: boolean; newWorkerIfGlobalIsUsed?: boolean; startGlobalWorker?: boolean };
 export type DataWorker = { worker?: Worker; isGlobal: boolean; running: boolean; globalResolve?: { [key: string]: GeneralCallback }; globalReject?: { [key: string]: GeneralCallback }; globalOnUpdate?: { [key: string]: GeneralCallback } };
 let dataGlobalWorker: DataWorker = { worker: null!, isGlobal: true, running: false, globalResolve: {}, globalReject: {}, globalOnUpdate: {} };
-let globalConfiguration: GlobalWorkerConfiguration = { stickyWorker: true, newWorkerIfGlobalIsUsed: true, moduleWorker: false, startGlobalWorker: true };
+let globalConfiguration: GlobalWorkerConfiguration = { stickyWorker: true, newWorkerIfGlobalIsUsed: true, startGlobalWorker: true };
 
 /**
  * A task.
@@ -122,34 +122,25 @@ export class Task<TState, TResult, TUpdate> extends Observable {
 
     this._FUNC = func;
     this._FUNC_UPDATE = funcUptade;
-
     this.updateStatus(TaskStatus.Created);
   }
 
   public static globalWorkerConfig(options: GlobalWorkerConfiguration) {
     globalConfiguration = { ...globalConfiguration, ...options };
     if (globalConfiguration.startGlobalWorker) {
-      Task.initGlobalWorker({ moduleWorker: globalConfiguration.moduleWorker ?? false });
+      Task.initGlobalWorker();
     }
   }
 
-  public static initGlobalWorker(options: { moduleWorker: boolean } = { moduleWorker: false }): Worker {
+  public static initGlobalWorker(): Worker {
     if (dataGlobalWorker.worker == null) {
-      if (options.moduleWorker === true) {
-        dataGlobalWorker.worker = new Worker('@/globalWorker');
-      } else {
-        dataGlobalWorker.worker = new Worker('./worker');
-      }
+      dataGlobalWorker.worker = new Worker('~/globalWorker');
     }
     return dataGlobalWorker.worker;
   }
 
   private newWorker() {
-    if (globalConfiguration.moduleWorker === true) {
-      return new Worker('@/globalWorker');
-    } else if (!globalConfiguration.moduleWorker) {
-      return new Worker('./worker');
-    }
+    return new Worker('~/globalWorker');
   }
 
   public static finishGlobalWorker() {
