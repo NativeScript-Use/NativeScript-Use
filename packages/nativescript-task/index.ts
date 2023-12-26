@@ -136,12 +136,20 @@ export class Task<TState, TResult, TUpdate> extends Observable {
   public static initGlobalWorker(options: { moduleWorker: boolean } = { moduleWorker: false }): Worker {
     if (dataGlobalWorker.worker == null) {
       if (options.moduleWorker === true) {
-        dataGlobalWorker.worker = new Worker('./worker');
-      } else {
         dataGlobalWorker.worker = new Worker('@/globalWorker');
+      } else {
+        dataGlobalWorker.worker = new Worker('./worker');
       }
     }
     return dataGlobalWorker.worker;
+  }
+
+  private newWorker() {
+    if (globalConfiguration.moduleWorker === true) {
+      return new Worker('@/globalWorker');
+    } else if (!globalConfiguration.moduleWorker) {
+      return new Worker('./worker');
+    }
   }
 
   public static finishGlobalWorker() {
@@ -204,14 +212,6 @@ export class Task<TState, TResult, TUpdate> extends Observable {
       return { worker: dataGlobalWorker.worker, isGlobal: true, running: false };
     } else {
       return { worker: dataGlobalWorker.worker, isGlobal: true, running: false };
-    }
-  }
-
-  private newWorker() {
-    if (globalConfiguration.moduleWorker === true) {
-      return new Worker('./worker');
-    } else if (!globalConfiguration.moduleWorker) {
-      return new Worker('@/globalWorker');
     }
   }
 
@@ -326,6 +326,7 @@ export class Task<TState, TResult, TUpdate> extends Observable {
           console.time('RunWorker');
         }
         me.updateStatus(TaskStatus.Running);
+
         worker.postMessage(
           JSON.stringify({
             id: me.id,

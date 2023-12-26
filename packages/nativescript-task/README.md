@@ -43,15 +43,12 @@ We can add local functions to run inside the worker using `attachToContextFuncti
 ```ts
 import { Task, TaskContext } from "@nativescript-use/nativescript-task";
 
-const myFunction = (ctx: TaskContext) => 5 + ctx.state;
-const myOtherFunction = (ctx: TaskContext) => 20 + ctx.state;
+const myFunction = (myNumber: number) => 5 + myNumber;
+const myOtherFunction = (myNumber: number) => 20 + myNumber;
 
 Task.start((ctx) => {
-            return ctx.myFunction(ctx) + ctx.myOtherFunction(ctx);
-        }, {
-            state: 10,
-            attachToContextFunctions: { myFunction, myOtherFunction }
-        })
+    return myFunction(ctx.state) + myOtherFunction(ctx.state);
+}, { state: 10, attachToContextFunctions: { myFunction, myOtherFunction }})
 ```
 
 
@@ -75,9 +72,8 @@ We need to define a worker with the imports that we want to have defined in our 
 
 ```ts
 // /app/globalWorker.ts
-
-import { defineWorker } from "@nativescript-use/nativescript-task";
 import '@nativescript/core/globals';
+import { defineWorker } from "@nativescript-use/nativescript-task";
 
 import { myUtils } from '@utils';
 import { otherLib } from 'other-lib';
@@ -86,29 +82,19 @@ defineWorker({ imports: { otherLib } });
 ```
 
 Now access the modules defined in the globalWorker file from the context.
-```ts
-import { Task } from "@nativescript-use/nativescript-task";
 
-Task.start((ctx) => {
-  // access imported modules
-  return ctx.myUtils.someFunction(1000) + ctx.otherLib.otherFunction(ctx.state);
-}, { state: 1000 })
-  .then((result) => {
-    console.log('Result: ' + result.data); 
-  })
-```
-
-TIP: If you want to have TS typing you can do it as shown below
 ```ts
 import { Task } from "@nativescript-use/nativescript-task";
 import { myUtils } from '@utils';
 import { otherLib } from 'other-lib';
 
 Task.start((ctx) => {
-  const utils = ctx.myUtils as typeof myUtils; // <-- THIS
-  const lib = ctx.otherLib as typeof otherLib; // <-- THIS
-  return utils.someFunction(1000) + lib.otherFunction(ctx.state);
+  // access imported modules
+  return myUtils.someFunction(1000) + otherLib.otherFunction(ctx.state);
 }, { state: 1000 })
+  .then((result) => {
+    console.log('Result: ' + result.data); 
+  })
 ```
 
 ## Global configuration
