@@ -54,20 +54,6 @@ Task.start((ctx) => {
 
 ### Using dependencies
 
-We initialize our worker with the `moduleWorker: true` flag, this will cause the library to import the worker that is defined in the next step.
-
-```ts
-// app.ts | main.ts (entry file app)
-
-import { Task } from "@nativescript-use/nativescript-task";
-
-Task.globalWorkerConfig({
-    moduleWorker: true
-});
-
-// run app
-```
-
 We need to define a worker with the imports that we want to have defined in our tasks. We define the file `globalWorker.ts|js` in the `src|app` folder of our project, import the modules that we want to have available and pass them to the `defineWorker` function that this library provides.
 
 ```ts
@@ -105,7 +91,6 @@ Task.start((ctx) => {
 import { Task } from "@nativescript-use/nativescript-task";
 
 Task.globalWorkerConfig({
-    moduleWorker: true,
     stickyWorker: true,
     newWorkerIfGlobalIsUsed: true,
     startGlobalWorker: true
@@ -114,7 +99,6 @@ Task.globalWorkerConfig({
 // run app
 ```
 
-- `moduleWorker` - default `false`: Indicates that the plugin has to look for the `/app/globalWorker.ts` file to add the modules to the context.
 - `stickyWorker` - default `true`: When set to true the plugin always keeps a worker running to launch your tasks to this worker. This saves time when launching the task since initializing a worker takes time, by default it is true to launch each task as quickly as possible. If set to false the plugin will initialize a worker and terminate each task. 
 - `newWorkerIfGlobalIsUsed` - default `true`: When stickyWorker is true and we have a worker always running, if we launch a task and the main worker is running with another task, a new worker will be created to launch this task and not wait for the previous task to finish. If you disable this flag and launch another task while one is running, it will have to wait until it reaches the beginning of the queue. 
 - `startGlobalWorker` - default `true`: Initialize the global worker when the configuration is set, it will be available when you launch your first task. If disabled, when the first task is launched it will have the worker creation delay.
