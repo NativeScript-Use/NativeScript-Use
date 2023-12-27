@@ -1,6 +1,6 @@
 {
   "name": "@nativescript-use/nativescript-task",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Multiprocessing task in background",
   "main": "index",
   "typings": "index.d.ts",

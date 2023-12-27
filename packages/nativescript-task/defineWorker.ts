@@ -35,7 +35,8 @@ export const defineWorker = (options: { imports?: {} } = {}) => {
 
 function injectImports(functionString: string, paramUserName: string) {
   functionString = functionString.replaceAll(/([0-9],_.*?)(.*?__WEBPACK_IMPORTED_MODULE_.*?)(__.?)/g, paramUserName + '.');
-  return functionString.replaceAll(/( _.*?)(.*?__WEBPACK_IMPORTED_MODULE_.*?)(__.?)/g, paramUserName + '.'); //"_importExample__WEBPACK_IMPORTED_MODULE_3__.", "ctx.")
+  functionString = functionString.replaceAll(/( _.*?)(.*?__WEBPACK_IMPORTED_MODULE_.*?)(__.?)/g, ' ' + paramUserName + '.');
+  return functionString;
 }
 
 function injectFunctionToAttach(functionString: string, functionStrToAttach: string[], paramUserName: string) {
