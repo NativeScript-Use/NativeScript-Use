@@ -1,5 +1,6 @@
 <script setup>
 import Source from '../../.vitepress/theme/components/Source.vue'
+import YoutubeVideo from '../../.vitepress/theme/components/YoutubeVideo.vue'
 </script>
 
 # useWorker
@@ -13,6 +14,8 @@ NativeScript runs in the main thread, just like native applications do. We also 
 This module facilitates the use of the workers module, launching the function that we pass to `useWorker` to a worker and thus keeping the main thread free for the user.
 
 This module is based on [@nativescript-use/nativescript-task](https://github.com/NativeScript-Use/NativeScript-Use/tree/main/packages/nativescript-task).
+
+<YoutubeVideo src="https://www.youtube.com/watch?v=BPv05WuJ0-w" />
 
 ## Understanding how the module works and configuration
 
