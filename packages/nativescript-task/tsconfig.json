@@ -2,8 +2,9 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "outDir": "../../dist/out-tsc",
-    "rootDir": "."
+    "rootDir": ".",
+    "allowJs": true
   },
   "exclude": ["**/*.spec.ts", "**/*.test.ts", "angular"],
-  "include": ["**/*.ts", "references.d.ts"]
+  "include": ["**/*.ts", "references.d.ts", "nativescript.webpack.js"]
 }
