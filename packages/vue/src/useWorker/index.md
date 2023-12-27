@@ -111,6 +111,7 @@ watch(result, () => {
 See `attachToContextFunctions` option. 
 ```vue
 <script lang="ts" setup>
+import { useWorker } from "@nativescript-use/vue";
 
 function fibonacci(num: number): number {
     if (num <= 1) return 1;
@@ -129,6 +130,7 @@ const { runTask, result } = useWorker((ctx) => {
 See `onProgressUpdate` option and reactive `update`. 
 ```vue
 <script lang="ts" setup>
+import { useWorker } from "@nativescript-use/vue";
 
 const { runTask, update } = useWorker((ctx) => {
   // Action in background
@@ -167,7 +169,7 @@ import '@nativescript/core/globals';
 import { myUtils } from '@utils';
 import { otherLib } from 'other-lib';
 
-defineWorker({ imports: { otherLib } });
+defineWorker({ imports: { myUtils, otherLib } });
 ```
 
 Now access the modules defined in the globalWorker file from the context.
