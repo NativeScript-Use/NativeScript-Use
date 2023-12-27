@@ -162,9 +162,8 @@ We need to define a worker with the imports that we want to have defined in our 
 
 ```ts
 // /app/globalWorker.ts|js
-
-import { defineWorker } from "@nativescript-use/vue";
 import '@nativescript/core/globals';
+import { defineWorker } from "@nativescript-use/vue";
 
 import { myUtils } from '@utils';
 import { otherLib } from 'other-lib';
