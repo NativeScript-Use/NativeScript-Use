@@ -15,7 +15,7 @@ This module facilitates the use of the workers module, launching the function th
 
 This module is based on [@nativescript-use/nativescript-task](https://github.com/NativeScript-Use/NativeScript-Use/tree/main/packages/nativescript-task).
 
-<YoutubeVideo src="https://www.youtube.com/watch?v=BPv05WuJ0-w" />
+<YoutubeVideo src="https://www.youtube.com/embed/BPv05WuJ0-w?vq=hd1080" />
 
 ## Understanding how the module works and configuration
 

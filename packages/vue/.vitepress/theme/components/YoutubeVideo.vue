@@ -1,6 +1,6 @@
 <template>
   <div class="flex justify-center">
-    <iframe width="420" height="345" :src="src">
+    <iframe width="100%" height="500" :src="src">
     </iframe>
   </div>
 </template>
