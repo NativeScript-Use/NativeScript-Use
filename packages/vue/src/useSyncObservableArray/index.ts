@@ -58,7 +58,7 @@ export function useSyncObservableArray<T, J = any>(
   const observableArray = new ObservableArray<NotAnyResult<J, T>>(clearArray);
 
   if (options?.watchUpdates && (isReactive(arrayRef) || isRef(arrayRef))) {
-    watch(arrayRef, sync, { deep: true });
+    watch(arrayRef, () => sync(), { deep: true });
   }
 
   function sync(newArray?: any) {
