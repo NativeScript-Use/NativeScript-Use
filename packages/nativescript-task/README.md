@@ -64,7 +64,7 @@ import { defineWorker } from "@nativescript-use/nativescript-task";
 import { myUtils } from '@utils';
 import { otherLib } from 'other-lib';
 
-defineWorker({ imports: { otherLib } });
+defineWorker({ imports: { myUtils, otherLib } });
 ```
 
 Now access the modules defined in the globalWorker file from the context.
