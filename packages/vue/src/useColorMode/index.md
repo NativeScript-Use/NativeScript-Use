@@ -7,7 +7,22 @@ import Source from '../../.vitepress/theme/components/Source.vue'
 Reactive color mode (dark / light / customs) with auto data persistence.
 
 ## Usage
-### Initialize
+### Basic Initialize
+To use only light/dark themes you can initialize with the basic setting `useColorMode`
+
+```js
+// app.ts / main.ts
+
+import { createApp } from 'nativescript-vue';
+import { useColorMode } from "@nativescript-use/vue";
+
+/* Init ColorMode */
+useColorMode({ initialValue: 'auto' })
+
+createApp(Home).start();
+```
+
+### Advanced initializer
 To add custom modes other than `light/dark` you need to initialize in the input file to your application the custom modes you want to apply.
 
 If you only want to use the `light/dark` modes this step is not necessary.
@@ -25,7 +40,6 @@ const { system, schema, theme, modes } = useColorMode({
         'cafe',
     ],
     initialValue: 'auto',
-    storageKey: 'nativevueuse-color-scheme',
     onChanged: (theme: 'dark' | 'light' | 'dim' | 'cafe') => {
     }
 })
@@ -40,10 +54,7 @@ createApp(Home).start();
 import { computed } from 'nativescript-vue'
 import { useColorMode } from '@nativescript-use/vue'
 
-const { system, schema, theme, modes } = useColorMode({
-    onChanged: (theme: 'dark' | 'light' | 'dim' | 'cafe') => {
-    }
-})
+const { system, schema, theme, modes } = useColorMode();
 
 schema // Ref<'dark' | 'light' | 'dim' | 'cafe' | 'auto'>   👈 use this for change theme
 system // Readonly<Ref<'dark' | 'light'>>
@@ -51,7 +62,11 @@ theme  // Readonly<Ref<'dark' | 'light' | 'dim' | 'cafe'>>;
 modes  // Readonly<Ref<'dark' | 'light' | 'dim' | 'cafe' | 'auto'>>;
 
 function changeTheme(){
-    schema.value = 'cafe' // change to cafe mode
+    schema.value = 'cafe'; // change to cafe mode
+}
+
+function changeToDeviceTheme(){
+    schema.value = 'auto';
 }
 ```
 

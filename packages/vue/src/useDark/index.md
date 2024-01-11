@@ -17,6 +17,17 @@ function toggleTheme(){
 }
 ```
 
+::: warning
+#### Switch to device theme
+
+`useDark` is a switch between the light/dark theme of your application. If you want to activate the device theme you must use [`useColorMode`](/src/useColorMode/).
+
+```ts
+const { schema } = useColorMode();
+schema.value = "auto";
+```
+:::
+
 ## CSS integration
 To control the styles in your CSS you just have to add the theme class with the prefix `ns-`.
 
