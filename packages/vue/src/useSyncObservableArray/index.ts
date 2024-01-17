@@ -33,11 +33,13 @@ export function useSyncObservableArray<T, J = any>(
     checkRemoved?: boolean;
     checkAdded?: boolean;
     checkUpdates?: boolean;
+    initialDelay?: number;
     //   onPreSync?: preSync<T, J>,
+    onPushInitialData?: () => void;
     onPreUpdate?: preUpdate<T, J>;
   } = { addRemoveByField: '' }
 ) {
-  const { checkRemoved = true, checkAdded = true, checkUpdates = true, excludeCompareFields = undefined, addRemoveByField /* , onPreSync = undefined */, onPreUpdate = undefined } = options;
+  const { initialDelay = 0, checkRemoved = true, checkAdded = true, checkUpdates = true, excludeCompareFields = undefined, addRemoveByField /* , onPreSync = undefined */, onPreUpdate = undefined, onPushInitialData = undefined } = options;
   const excludeFields = {
     ...baseExcludeCompareFields,
     ...excludeCompareFields?.reduce((a: any, b) => {
@@ -55,7 +57,7 @@ export function useSyncObservableArray<T, J = any>(
     });
   }
 
-  const observableArray = new ObservableArray<NotAnyResult<J, T>>(clearArray);
+  let observableArray = createAndPushInitialData(clearArray, initialDelay, onPushInitialData);
 
   if (options?.watchUpdates && (isReactive(arrayRef) || isRef(arrayRef))) {
     watch(arrayRef, () => sync(), { deep: true });
@@ -115,6 +117,23 @@ export function useSyncObservableArray<T, J = any>(
   };
 }
 
+function createAndPushInitialData<J, T>(clearArray: NotAnyResult<J, T>[], initialDelay: number, onPushInitialData: () => void) {
+  let observableArray = new ObservableArray<NotAnyResult<J, T>>([]);
+  if (initialDelay != 0) {
+    setTimeout(() => {
+      observableArray.push(...clearArray);
+      if (onPushInitialData) {
+        onPushInitialData();
+      }
+    }, initialDelay);
+  } else {
+    observableArray.push(...clearArray);
+    if (onPushInitialData) {
+      onPushInitialData();
+    }
+  }
+  return observableArray;
+}
 /* function runOnPreSync<T, J>(onPreSync: preSync<T, J>, items: T[], type: OnPreSycType): T[] | J[] {
   if (onPreSync) return onPreSync(items, type);
   return items;

@@ -133,17 +133,20 @@ import { Ref } from "nativescript-vue";
 /**
  * Reactive synchronization between a reactive array with ObservableArray.
  *
- * @param arrayWatchTarge
+ * @param arrayWatchTarget
  * @param options
  */
 
-export declare function useSyncObservableArray<T>(arrayRef: Ref<T[]> | T[], options?: {
-    addRemoveByField?: string;
+export declare function useSyncObservableArray<T, J = any>(arrayRef: Ref<T[]> | T[], options?: {
+   addRemoveByField?: string;
     excludeCompareFields?: string[];
     watchUpdates?: boolean;
     checkRemoved?: boolean;
     checkAdded?: boolean;
     checkUpdates?: boolean;
+    initialDelay?: number;
+    onPushInitialData?: () => void;
+    onPreUpdate?: preUpdate<T, J>;
 }): {
     sync: (newArray?: Ref<T[]> | T[]) => void;
     observableArray: ObservableArray<T>;
