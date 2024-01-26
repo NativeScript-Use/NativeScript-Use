@@ -12,4 +12,6 @@ Most of the [VueUse](https://vueuse.org/) functions work by default in NativeScr
 npm i @nativescript-use/vue
 ```
 
+## Need a NativeScript-Vue3 Starter?
+Check out [Quick start section.](https://github.com/nativescript-vue/nativescript-vue#quick-start)
 
