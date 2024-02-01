@@ -1,4 +1,5 @@
 export * from './utils';
+export * from './change-icon';
 export * from './nativescript-clipboard';
 export * from './nativescript-intersection-observer';
 export * from './nativescript-keyboard';

@@ -129,6 +129,13 @@ module.exports = {
           description: '@nativescript-use/nativescript-task: Build',
         },
       },
+      // @nativescript-use/change-icon
+      'change-icon': {
+        build: {
+          script: 'nx run change-icon:build.all',
+          description: '@nativescript-use/change-icon: Build',
+        },
+      },
       'build-all': {
         script: 'nx run-many --target=build.all --all',
         description: 'Build all packages',
@@ -166,6 +173,10 @@ module.exports = {
       'nativescript-task': {
         script: 'nx run nativescript-task:focus',
         description: 'Focus on @nativescript-use/nativescript-task',
+      },
+      'change-icon': {
+        script: 'nx run change-icon:focus',
+        description: 'Focus on @nativescript-use/change-icon',
       },
       reset: {
         script: 'nx g @nativescript-use/plugin-tools:focus-packages',

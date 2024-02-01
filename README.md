@@ -19,6 +19,8 @@ As native dependencies, the native code packages have been created in TS so that
 <br />
 
 The following plugins are the core of some of the native functionality already being used in `@nativescript-use/vue`, they have been separated so they can be used for any `@nativescript-use/[any_flavor]` flavor and also, so they can be used as individual plugins. inside nativescript
+
+- [@nativescript-use/change-icon](packages/change-icon/README.md)
 - [@nativescript-use/nativescript-clipboard](packages/nativescript-clipboard/README.md)
 - [@nativescript-use/nativescript-intersection-observer](packages/nativescript-intersection-observer/README.md)
 - [@nativescript-use/nativescript-keyboard](packages/nativescript-keyboard/README.md)
