@@ -189,7 +189,7 @@ To begin, we must define our icons in `App_Resources/iOS`, we recommend the page
 
 3. Add in `Info.plist` (`App_Resources/iOS/Info.plist`) the following code to indicate which is the default and which are the alternatives:
 
-```plist
+```xml
 <key>CFBundleIcons</key>
 <dict>
     <key>CFBundlePrimaryIcon</key>
