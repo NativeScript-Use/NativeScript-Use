@@ -19,10 +19,9 @@ To begin, we must define our icons in `App_Resources/Android/src/main/res`, we r
 1. Generate the icons and add them to `App_Resources/Android/src/main/res/mipmap`.
 
 - ic_launcher_foreground_[default|dark|cafe].png (`Icon`)
-- ic_launcher__[default|dark|cafe].png (`SplashScreen`)
 - ic_launcher_background__[default|dark|cafe].png (`Icon Background`)
 
-2. Add the `adaptive-icon` to your `mipmap-anydpi-v26` folder inside `App_Resources/Android/src/main/res/`.
+1. Add the `adaptive-icon` to your `mipmap-anydpi-v26` folder inside `App_Resources/Android/src/main/res/`.
 
 - `mipmap-anydpi-v26/ic_launcher_default.xml`
 
@@ -70,7 +69,10 @@ To begin, we must define our icons in `App_Resources/Android/src/main/res`, we r
             android:exported="true"
             android:hardwareAccelerated="true"
             android:label="@string/title_activity_kimera"
-            android:launchMode="singleTask">
+            android:launchMode="singleTask"
+            android:theme="@style/AppTheme">
+            
+            <meta-data android:name="SET_THEME_ON_LAUNCH" android:resource="@style/AppTheme" />
             <intent-filter>
                 <!-- Note that here we have removed <category android:name="android.intent.category.LAUNCHER" /> -->
                 <action android:name="android.intent.action.MAIN" />
@@ -79,16 +81,11 @@ To begin, we must define our icons in `App_Resources/Android/src/main/res`, we r
 
         <activity-alias
             android:name=".MainActivityDefault"
-            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|smallestScreenSize|screenLayout|locale|uiMode"
             android:enabled="true"
             android:exported="true"
-            android:hardwareAccelerated="true"
             android:icon="@mipmap/ic_launcher_default"
-            android:roundIcon="@mipmap/ic_launcher_default"
             android:label="@string/title_activity_kimera"
-            android:launchMode="singleTask"
-            android:targetActivity="com.tns.NativeScriptActivity"
-            android:theme="@style/Theme.SplashScreen">
+            android:targetActivity="com.tns.NativeScriptActivity">
             <meta-data
                 android:name="SET_THEME_ON_LAUNCH"
                 android:resource="@style/AppTheme" />
@@ -99,16 +96,11 @@ To begin, we must define our icons in `App_Resources/Android/src/main/res`, we r
         </activity-alias>
         <activity-alias
             android:name=".MainActivityDark"
-            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|smallestScreenSize|screenLayout|locale|uiMode"
             android:enabled="false"
             android:exported="true"
-            android:hardwareAccelerated="true"
             android:icon="@mipmap/ic_launcher_dark"
             android:label="@string/title_activity_kimera"
-            android:roundIcon="@mipmap/ic_launcher_dark"
-            android:launchMode="singleTask"
-            android:targetActivity="com.tns.NativeScriptActivity"
-            android:theme="@style/Theme.SplashScreenDark">
+            android:targetActivity="com.tns.NativeScriptActivity">
             <meta-data
                 android:name="SET_THEME_ON_LAUNCH"
                 android:resource="@style/AppTheme" />
@@ -119,16 +111,11 @@ To begin, we must define our icons in `App_Resources/Android/src/main/res`, we r
         </activity-alias>
          <activity-alias
             android:name=".MainActivityCafe"
-            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|smallestScreenSize|screenLayout|locale|uiMode"
             android:enabled="false"
             android:exported="true"
-            android:hardwareAccelerated="true"
             android:icon="@mipmap/ic_launcher_cafe"
             android:label="@string/title_activity_kimera"
-            android:roundIcon="@mipmap/ic_launcher_cafe"
-            android:launchMode="singleTask"
-            android:targetActivity="com.tns.NativeScriptActivity"
-            android:theme="@style/Theme.SplashScreenCafe">
+            android:targetActivity="com.tns.NativeScriptActivity">
             <meta-data
                 android:name="SET_THEME_ON_LAUNCH"
                 android:resource="@style/AppTheme" />
@@ -151,28 +138,6 @@ Note here the important things from the previous code:
 - `android:icon` and `android:roundIcon` have the icon we added earlier.
 - `android:targetActivity` has the value of the main activity, default for NativeScript: `com.tns.NativeScriptActivity`.
 
-- Plus: you can configure the SplashScreen with `android:theme` and apply a splashScreen as follows in your `themes.xml`:
-
-```xml
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Theme.SplashScreen" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="android:windowSplashScreenBackground">@color/white</item>
-        <item name="android:windowSplashScreenAnimatedIcon">@mipmap/ic_launcher_default</item>
-        <item name="postSplashScreenTheme">@style/AppTheme</item>
-    </style>
-   <style name="Theme.SplashScreenBlack" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="android:windowSplashScreenBackground">@color/black</item>
-        <item name="android:windowSplashScreenAnimatedIcon">@mipmap/ic_launcher_dark</item>
-        <item name="postSplashScreenTheme">@style/AppTheme</item>
-    </style>
- <style name="Theme.SplashScreenCafe" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="android:windowSplashScreenBackground">@color/cafe</item>
-        <item name="android:windowSplashScreenAnimatedIcon">@mipmap/ic_launcher_cafe</item>
-        <item name="postSplashScreenTheme">@style/AppTheme</item>
-    </style>
-</resources>
-```
 
 ### iOS
 
