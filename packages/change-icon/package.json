@@ -1,6 +1,6 @@
 {
   "name": "@nativescript-use/change-icon",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Add a plugin description",
   "main": "index",
   "typings": "index.d.ts",

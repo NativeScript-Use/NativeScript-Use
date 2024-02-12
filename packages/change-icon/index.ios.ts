@@ -8,6 +8,7 @@ export const changeIcon = {
   change(icon: string | null) {
     if (changeIcon.getCurrent() === icon) {
       console.log('ICON_ALREADY_USED');
+      return;
     }
 
     let newIcon: string | null = icon;
