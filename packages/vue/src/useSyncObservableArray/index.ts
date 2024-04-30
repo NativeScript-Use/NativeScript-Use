@@ -34,12 +34,13 @@ export function useSyncObservableArray<T, J = any>(
     checkAdded?: boolean;
     checkUpdates?: boolean;
     initialDelay?: number;
+    pushAllInFirstSync?: boolean;
     //   onPreSync?: preSync<T, J>,
     onPushInitialData?: () => void;
     onPreUpdate?: preUpdate<T, J>;
   } = { addRemoveByField: '' }
 ) {
-  const { initialDelay = 0, checkRemoved = true, checkAdded = true, checkUpdates = true, excludeCompareFields = undefined, addRemoveByField /* , onPreSync = undefined */, onPreUpdate = undefined, onPushInitialData = undefined } = options;
+  const { initialDelay = 0, checkRemoved = true, pushAllInFirstSync = false, checkAdded = true, checkUpdates = true, excludeCompareFields = undefined, addRemoveByField /* , onPreSync = undefined */, onPreUpdate = undefined, onPushInitialData = undefined } = options;
   const excludeFields = {
     ...baseExcludeCompareFields,
     ...excludeCompareFields?.reduce((a: any, b) => {
@@ -47,7 +48,7 @@ export function useSyncObservableArray<T, J = any>(
       return a;
     }, {}),
   };
-
+  let firstSync = true;
   //TODO: runOnPreSync
   //let clearArray = runOnPreSync(onPreSync, getClearArray(arrayRef), OnPreSycType.Initial);
   let clearArray = getClearArray(arrayRef);
@@ -57,19 +58,25 @@ export function useSyncObservableArray<T, J = any>(
     });
   }
 
-  let observableArray = createAndPushInitialData(clearArray, initialDelay, onPushInitialData);
+  const observableArray = createAndPushInitialData(clearArray, initialDelay, onPushInitialData);
 
   if (options?.watchUpdates && (isReactive(arrayRef) || isRef(arrayRef))) {
     watch(arrayRef, () => sync(), { deep: true });
   }
 
   function sync(newArray?: any) {
-    //console.time("TIME_[useSyncObservableArray.sync]");
     const itemList = newArray ? getClearArray(newArray) : getClearArray(arrayRef);
+    //console.time("TIME_[useSyncObservableArray.sync]");
     //TODO: runOnPreSync
     //const clearArray = newArray ? getClearArray(newArray) : getClearArray(arrayRef);
     //const itemList = runOnPreSync(onPreSync, clearArray,  OnPreSycType.Update);
     //console.log('Processing_[useSyncObservableArray.sync.itemList.length] ' + itemList.length);
+    if (pushAllInFirstSync && firstSync) {
+      firstSync = false;
+      observableArray.push(...itemList);
+      return;
+    }
+
     if (checkRemoved) {
       const indexRemoved: number[] = [];
       observableArray.forEach((itemObservable: any, index: number) => {

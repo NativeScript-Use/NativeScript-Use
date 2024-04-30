@@ -72,6 +72,9 @@ const { observableArray } = useSyncObservableArray<MyType>(
 </script>
 ```
 
+### `pushAllInFirstSync`
+A typical case is to declare a reactive array next to `useSyncObservableArray` and then make a request to a service to bring us all the information. In this scenario, the fastest thing is to directly synchronize the ObservableArray without checking for updates. With the property `pushAllInFirstSync: true` we indicate that the data is inserted in the first synchronization
+
 ## Hooks
 ### `onPreUpdate`
 To have native performance in Lists/CollectionView, the recycling of items provided by Android/iOS is implemented. When we use these views from vue, the normal thing is to access calculated properties in our template, this causes a loss of performance when the calculation carried out is slow. To mitigate this we must calculate the field before adding it to the `ObservableArray`, for this we have the `onPreUpdate` hook, it allows the object to be mutated before adding it to the `ObservableArray` (this mutation will not affect its reactive object). 
@@ -144,6 +147,7 @@ export declare function useSyncObservableArray<T, J = any>(arrayRef: Ref<T[]> | 
     checkRemoved?: boolean;
     checkAdded?: boolean;
     checkUpdates?: boolean;
+    pushAllInFirstSync?: boolean;
     initialDelay?: number;
     onPushInitialData?: () => void;
     onPreUpdate?: preUpdate<T, J>;
