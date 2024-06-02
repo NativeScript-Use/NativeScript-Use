@@ -7,6 +7,6 @@
       "@nativescript-use/nativescript-task": ["../nativescript-task"]
     }
   },
-  "exclude": ["**/*.spec.ts", "**/*.test.ts", "angular"],
+  "exclude": ["**/*.spec.ts", "**/*.test.ts", "angular", "node_modules"],
   "include": ["**/*.ts", "./src/**/*.ts", "references.d.ts"]
 }

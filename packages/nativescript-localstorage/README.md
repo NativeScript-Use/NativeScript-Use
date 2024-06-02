@@ -5,7 +5,7 @@ npm install @nativescript-use/nativescript-localstorage
 ```
 
 Use localStorage like in the browser. 
-This library uses [ApplicationStorage](https://docs.nativescript.org/core/application-settings) from NativeScript behind it.
+This library uses [ApplicationSettings](https://docs.nativescript.org/core/application-settings) from NativeScript behind it.
 
 ## Usage
 ```ts

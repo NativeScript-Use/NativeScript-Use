@@ -1,6 +1,6 @@
 {
   "name": "@nativescript-use/vue",
-  "version": "0.0.42",
+  "version": "0.0.43",
   "description": "Add a plugin description",
   "main": "index",
   "typings": "index.d.ts",
@@ -13,10 +13,14 @@
   "dependencies": {
     "@nativescript-use/nativescript-clipboard": "0.0.3",
     "@nativescript-use/nativescript-keyboard": "0.0.1",
+    "@nativescript-use/nativescript-localstorage": "0.0.1",
     "@nativescript-use/nativescript-media-query": "0.0.4",
     "@nativescript-use/nativescript-orientation": "0.0.3",
     "@nativescript-use/nativescript-intersection-observer": "0.0.1",
     "@nativescript-use/nativescript-task": "^0.0.11"
+  },
+  "peerDependencies": {
+    "@vueuse/core": ">= 10.x"
   },
   "repository": {
     "type": "git",

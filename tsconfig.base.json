@@ -38,5 +38,5 @@
     },
     "jsx": "react"
   },
-  "exclude": ["node_modules", "tmp"]
+  "exclude": ["node_modules", "/packages/vue/node_modules", "tmp"]
 }

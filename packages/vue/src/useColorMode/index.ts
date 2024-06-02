@@ -1,6 +1,5 @@
-import { Application, CSSUtils, Frame } from '@nativescript/core';
+import { Application, ApplicationSettings, CSSUtils, Frame } from '@nativescript/core';
 import { ref, Ref, watch, computed, onUnmounted, getCurrentInstance, readonly } from 'nativescript-vue';
-import { useStorage } from '../useStorage';
 import { getSystemTheme } from './util';
 import removeSystemCssClass = CSSUtils.removeSystemCssClass;
 import { createGlobalState } from '../globalState';
@@ -39,17 +38,14 @@ export interface UseColorModeOptions<T extends string = BasicColorMode> {
 }
 
 const useGlobalState = createGlobalState(<T extends string = BasicColorMode>(storageKey: string, initialValue: string, themes: string[]) => {
-  const storage = useStorage();
   const system = ref(getSystemTheme());
-  const schema = ref(storage.getString(storageKey!, initialValue.toString())) as Ref<T | BasicColorSchema>;
+  const schema = ref(ApplicationSettings.getString(storageKey!, initialValue.toString())) as Ref<T | BasicColorSchema>;
   const modes = ref(themes);
   return { system, schema, modes };
 });
 
 export function useColorMode<T extends string = BasicColorMode>(options: UseColorModeOptions<T> = {}) {
   const { initialValue = 'auto', storageKey = 'nativevueuse-color-scheme' } = options;
-
-  const storage = useStorage();
 
   const { system, schema, modes } = useGlobalState<T>(storageKey!, initialValue, ['auto', 'light', 'dark', ...(options.modes ?? [])]);
 
@@ -108,7 +104,7 @@ export function useColorMode<T extends string = BasicColorMode>(options: UseColo
       rootView._getRootModalViews()?.forEach((view) => {
         view?._onCssStateChange();
       });
-      storage.setString(storageKey!, themeToApply);
+      ApplicationSettings.setString(storageKey!, themeToApply);
 
       console.log('Apply: ' + classToApply);
     }
