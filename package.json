@@ -18,7 +18,7 @@
     "demo:vue:android": "npx nx run demo-vue:android",
     "demo:vue:ios": "npx nx run demo-vue:ios",
     "docs:dev": "vitepress dev packages/vue",
-    "docs:build": "npm install --legacy-peer-deps --force && vitepress build packages/vue ",
+    "docs:build": "vitepress build packages/vue ",
     "docs:preview": "vitepress preview packages/vue"
   },
   "workspaces": [
