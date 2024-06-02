@@ -24,6 +24,7 @@ The following plugins are the core of some of the native functionality already b
 - [@nativescript-use/nativescript-clipboard](packages/nativescript-clipboard/README.md)
 - [@nativescript-use/nativescript-intersection-observer](packages/nativescript-intersection-observer/README.md)
 - [@nativescript-use/nativescript-keyboard](packages/nativescript-keyboard/README.md)
+- [@nativescript-use/nativescript-localstorage](packages/nativescript-localstorage/README.md)
 - [@nativescript-use/nativescript-media-query](packages/nativescript-media-query/README.md)
 - [@nativescript-use/nativescript-orientation](packages/nativescript-orientation/README.md)
 - [@nativescript-use/nativescript-task](packages/nativescript-task/README.md)

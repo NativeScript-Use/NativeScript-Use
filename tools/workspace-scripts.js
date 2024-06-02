@@ -136,6 +136,13 @@ module.exports = {
           description: '@nativescript-use/change-icon: Build',
         },
       },
+      // @nativescript-use/nativescript-localstorage
+      'nativescript-localstorage': {
+        build: {
+          script: 'nx run nativescript-localstorage:build.all',
+          description: '@nativescript-use/nativescript-localstorage: Build',
+        },
+      },
       'build-all': {
         script: 'nx run-many --target=build.all --all',
         description: 'Build all packages',
@@ -177,6 +184,10 @@ module.exports = {
       'change-icon': {
         script: 'nx run change-icon:focus',
         description: 'Focus on @nativescript-use/change-icon',
+      },
+      'nativescript-localstorage': {
+        script: 'nx run nativescript-localstorage:focus',
+        description: 'Focus on @nativescript-use/nativescript-localstorage',
       },
       reset: {
         script: 'nx g @nativescript-use/plugin-tools:focus-packages',
