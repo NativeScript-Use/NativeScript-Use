@@ -1,5 +1,7 @@
 import { createNativeView, ref } from 'nativescript-vue';
-import { RootLayoutOptions, ViewBase, getRootLayout } from '@nativescript/core';
+import { Frame, RootLayoutOptions, View, ViewBase, getRootLayout } from '@nativescript/core';
+import { onApplicationMounted } from '../onApplicationMounted';
+import { warn } from '../utils';
 
 /**
  * Utility for the RootLayout view.
@@ -26,23 +28,55 @@ export function useRootLayout(
 
   const propsAndListeners = Object.assign(options?.props ?? {}, listeners);
 
-  const node = createNativeView(component, propsAndListeners);
-  node.mount();
-  const view = node.nativeView;
+  let view: View | null = null;
 
-  view.on(ViewBase.unloadedEvent, () => {
-    isShow.value = false;
-    if (options?.onClose) options.onClose();
+  function buildView() {
+    const node = createNativeView(component, propsAndListeners);
+    node.mount();
+    view = node.nativeView;
+
+    view.on(ViewBase.unloadedEvent, () => {
+      isShow.value = false;
+      if (options?.onClose) options.onClose();
+    });
+  }
+
+  onApplicationMounted(() => {
+    if (!view) buildView();
   });
 
-  function show() {
+  function _show(resolve, reject) {
     isShow.value = true;
     if (options?.closeTimerMillis) {
       setTimeout(() => {
         getRootLayout().close(view, options?.rootLayoutOption?.animation?.exitTo);
       }, options.closeTimerMillis);
     }
-    return getRootLayout().open(view, options?.rootLayoutOption);
+    getRootLayout()
+      .open(view, options?.rootLayoutOption)
+      .then((params) => {
+        resolve(params);
+      })
+      .catch((error) => {
+        reject(error);
+      });
+  }
+
+  function show() {
+    const promise = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        if (!view && Frame.topmost()) {
+          buildView();
+          _show(resolve, reject);
+        } else if (view) {
+          _show(resolve, reject);
+        } else {
+          reject();
+          warn('[useRootLayout] If you are using show() in your main view call show() inside the onApplicationMounted hook or onMounted');
+        }
+      }, 0);
+    });
+    return promise;
   }
 
   function close() {

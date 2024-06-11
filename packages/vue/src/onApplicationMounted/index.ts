@@ -6,7 +6,7 @@ export const onApplicationMounted = (callback: () => void, immediateCallback?: (
     callback();
   } else {
     const run = () => {
-      callback();
+      setTimeout(callback, 0);
       Application.off('launch', run);
     };
     Application.on('launch', run);
