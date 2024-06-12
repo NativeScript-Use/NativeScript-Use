@@ -9,7 +9,7 @@ Create a reactive ref that can be used to access & modify [ApplicationSettings](
 Uses [localStorage plugin](https://github.com/NativeScript-Use/NativeScript-Use/blob/main/packages/nativescript-localstorage/README.md) by default, other storage sources be specified via third argument.
 
 ::: warning
-#### Switch to device theme
+#### Breaking changes 0.0.43
 
 Breaking changes since version 0.0.43. It is now not used as a utility to access ApplicationSettings values. 
 
