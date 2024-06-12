@@ -22,13 +22,20 @@ Breaking changes since version 0.0.43. It is now not used as a utility to access
 import { useStorage } from '@nativescript-use/vue'
 
 // bind object
-const state = useStorage('my-store', { hello: 'hi', greeting: 'Hello' })
+const state = useStorage('my-store', { hello: 'hi', greeting: 'Hello' }) // returns Ref<{ hello: string, greeting: string }>
+
+state.value.hello = 'Updated Hi!'; // 🔄 Automatically synchronize with ApplicationSettings (localStorage)
 
 // bind boolean
 const flag = useStorage('my-flag', true) // returns Ref<boolean>
 
+flag.value = false; // 🔄 Automatically synchronize with ApplicationSettings (localStorage)
+
 // bind number
 const count = useStorage('my-count', 0) // returns Ref<number>
+
+count.value = 15; // 🔄 Automatically synchronize with ApplicationSettings (localStorage)
+
 
 // delete data from storage
 state.value = null
