@@ -11,9 +11,9 @@ export enum OnPreUpdateType {
   Update
 } */
 
-type NotAnyResult<TypeToCheck, J> = unknown extends TypeToCheck ? ([keyof TypeToCheck] extends [never] ? TypeToCheck : J) : TypeToCheck;
+type NotAnyResult<TypeToCheck, J> = [J] extends [undefined] ? TypeToCheck : J;
 
-type preUpdate<T, J> = (item: T, index: number, updateType: OnPreUpdateType) => J;
+type preUpdate<ReactiveItem, OAItem> = (item: ReactiveItem, index: number, updateType: OnPreUpdateType) => OAItem;
 //type preSync<T, J> = (items: T[], syncType: OnPreSycType) => J[];
 
 const baseExcludeCompareFields = { startingSide: null, menuOpened: null };
@@ -24,8 +24,8 @@ const baseExcludeCompareFields = { startingSide: null, menuOpened: null };
  * @param arrayWatchTarge
  * @param options
  */
-export function useSyncObservableArray<T, J = any>(
-  arrayRef: Ref<T[]> | T[],
+export function useSyncObservableArray<ReactiveItem, OAItem = any>(
+  arrayRef: Ref<ReactiveItem[]> | ReactiveItem[],
   options: {
     addRemoveByField?: string;
     excludeCompareFields?: string[];
@@ -37,10 +37,11 @@ export function useSyncObservableArray<T, J = any>(
     pushAllInFirstSync?: boolean;
     //   onPreSync?: preSync<T, J>,
     onPushInitialData?: () => void;
-    onPreUpdate?: preUpdate<T, J>;
+    onPreUpdate?: preUpdate<ReactiveItem, OAItem>;
   } = { addRemoveByField: '' }
 ) {
-  const { initialDelay = 0, checkRemoved = true, pushAllInFirstSync = false, checkAdded = true, checkUpdates = true, excludeCompareFields = undefined, addRemoveByField /* , onPreSync = undefined */, onPreUpdate = undefined, onPushInitialData = undefined } = options;
+  const { initialDelay = 0, checkRemoved = true, pushAllInFirstSync = false, watchUpdates = false, checkAdded = true, checkUpdates = true, excludeCompareFields = undefined, addRemoveByField /* , onPreSync = undefined */, onPreUpdate = undefined, onPushInitialData = undefined } = options;
+
   const excludeFields = {
     ...baseExcludeCompareFields,
     ...excludeCompareFields?.reduce((a: any, b) => {
@@ -53,14 +54,14 @@ export function useSyncObservableArray<T, J = any>(
   //let clearArray = runOnPreSync(onPreSync, getClearArray(arrayRef), OnPreSycType.Initial);
   let clearArray = getClearArray(arrayRef);
   if (onPreUpdate) {
-    clearArray = clearArray.map((item: T, index: number) => {
+    clearArray = clearArray.map((item: ReactiveItem, index: number) => {
       return runOnPreUpdate(onPreUpdate, item, index, OnPreUpdateType.Add);
     });
   }
 
-  const observableArray = createAndPushInitialData(clearArray, initialDelay, onPushInitialData);
+  const observableArray = createAndPushInitialData<ReactiveItem, OAItem>(clearArray, initialDelay, onPushInitialData) as ObservableArray<NotAnyResult<ReactiveItem, OAItem>>;
 
-  if (options?.watchUpdates && (isReactive(arrayRef) || isRef(arrayRef))) {
+  if (watchUpdates && (isReactive(arrayRef) || isRef(arrayRef))) {
     watch(arrayRef, () => sync(), { deep: true });
   }
 
@@ -71,7 +72,7 @@ export function useSyncObservableArray<T, J = any>(
     //const clearArray = newArray ? getClearArray(newArray) : getClearArray(arrayRef);
     //const itemList = runOnPreSync(onPreSync, clearArray,  OnPreSycType.Update);
     //console.log('Processing_[useSyncObservableArray.sync.itemList.length] ' + itemList.length);
-    if (pushAllInFirstSync && firstSync) {
+    if (pushAllInFirstSync && firstSync && observableArray.length === 0) {
       firstSync = false;
       observableArray.push(...itemList);
       return;
@@ -124,8 +125,8 @@ export function useSyncObservableArray<T, J = any>(
   };
 }
 
-function createAndPushInitialData<J, T>(clearArray: NotAnyResult<J, T>[], initialDelay: number, onPushInitialData: () => void) {
-  let observableArray = new ObservableArray<NotAnyResult<J, T>>([]);
+function createAndPushInitialData<ReactiveItem, OAItem>(clearArray: NotAnyResult<ReactiveItem, OAItem>[], initialDelay: number, onPushInitialData: () => void) {
+  let observableArray = new ObservableArray<NotAnyResult<ReactiveItem, OAItem>>([]);
   if (initialDelay != 0) {
     setTimeout(() => {
       observableArray.push(...clearArray);
@@ -146,12 +147,12 @@ function createAndPushInitialData<J, T>(clearArray: NotAnyResult<J, T>[], initia
   return items;
 } */
 
-function runOnPreUpdate<T, J>(onPreUpdated: preUpdate<T, J> | undefined, item: T, index: number, type: OnPreUpdateType): T | J {
+function runOnPreUpdate<ReactiveItem, OAItem>(onPreUpdated: preUpdate<ReactiveItem, OAItem> | undefined, item: ReactiveItem, index: number, type: OnPreUpdateType): ReactiveItem | OAItem {
   if (onPreUpdated) return onPreUpdated(item, index, type);
   return item;
 }
 
-function getClearArray<T>(array: Ref<T[]> | T[]) {
+function getClearArray<ReactiveItem>(array: Ref<ReactiveItem[]> | ReactiveItem[]) {
   return cloneObject(extractArray(array));
 }
 
