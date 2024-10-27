@@ -14,7 +14,6 @@ export enum OnPreUpdateType {
 type NotAnyResult<TypeToCheck, J> = [J] extends [undefined] ? TypeToCheck : J;
 
 type preUpdate<ReactiveItem, OAItem> = (item: ReactiveItem, index: number, updateType: OnPreUpdateType) => OAItem;
-//type preSync<T, J> = (items: T[], syncType: OnPreSycType) => J[];
 
 const baseExcludeCompareFields = { startingSide: null, menuOpened: null };
 
@@ -34,6 +33,9 @@ export function useSyncObservableArray<ReactiveItem, OAItem = any>(
     checkAdded?: boolean;
     checkUpdates?: boolean;
     initialDelay?: number;
+    /**
+     * @deprecated ObservableArray will sync without checking for differences if it is empty. Applied since v0.0.46
+     */
     pushAllInFirstSync?: boolean;
     //   onPreSync?: preSync<T, J>,
     onPushInitialData?: () => void;
@@ -72,7 +74,7 @@ export function useSyncObservableArray<ReactiveItem, OAItem = any>(
     //const clearArray = newArray ? getClearArray(newArray) : getClearArray(arrayRef);
     //const itemList = runOnPreSync(onPreSync, clearArray,  OnPreSycType.Update);
     //console.log('Processing_[useSyncObservableArray.sync.itemList.length] ' + itemList.length);
-    if (pushAllInFirstSync && firstSync && observableArray.length === 0) {
+    if (observableArray.length === 0 || (pushAllInFirstSync && firstSync)) {
       firstSync = false;
       observableArray.push(...itemList);
       return;

@@ -72,7 +72,13 @@ const { observableArray } = useSyncObservableArray<MyType>(
 </script>
 ```
 
-### `pushAllInFirstSync`
+### `pushAllInFirstSync`  
+::: warning
+#### `@Deprecated from v0.0.46`
+
+ObservableArray will sync without checking for differences if it is empty. This improves performance and this option is no longer needed.
+:::
+
 A typical case is to declare a reactive array next to `useSyncObservableArray` and then make a request to a service to bring us all the information. In this scenario, the fastest thing is to directly synchronize the ObservableArray without checking for updates. With the property `pushAllInFirstSync: true` we indicate that the data is inserted in the first synchronization
 
 ## Hooks
