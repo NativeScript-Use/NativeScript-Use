@@ -42,7 +42,7 @@ cleanup() // off all events
 ## Type declaration
 ```ts
 import { ViewRef } from "@nativescript-use/vue";
-import { EventData, GestureEventData, ShownModallyData, View } from "@nativescript/core";
+import { EventData, GestureEventData, ShownModallyData, View, CreateViewEventData } from "@nativescript/core";
 
 type ViewEventData<T> = Omit<EventData, 'object'> & {
     object: T;
@@ -52,6 +52,9 @@ type ViewGestureEventData<T> = Omit<GestureEventData, 'object'> & {
 };
 type ViewShownModallyData<T> = Omit<ShownModallyData, 'object'> & {
     object: T;
+};
+type CreatingViewEventData = Omit<CreateViewEventData, 'object'> & {
+  object: Placeholder;
 };
 interface Event<T = View> {
     /* Lifecycle */
@@ -77,6 +80,8 @@ interface Event<T = View> {
     accessibilityPerformEscape?: (eventData: ViewEventData<T>) => void;
     /* Layouts */
     scroll?: (eventData: ViewScrollEventData) => void;
+    /* Components */
+    creatingView?: (eventData: CreatingViewEventData) => void;
 }
 /**
  * Register using view.on on mounted, and view.off automatically on unmounted.

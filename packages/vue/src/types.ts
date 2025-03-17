@@ -1,4 +1,11 @@
 import { View } from '@nativescript/core';
-import { Ref } from 'nativescript-vue';
+import { Ref, ShallowRef } from 'nativescript-vue';
 
-export type ViewRef<T = View> = T | Ref<T | { nativeView?: T; $el?: { nativeView: T } }>;
+type NativeElement<T> = {
+  nativeView?: T;
+  $el?: {
+    nativeView: T;
+  };
+};
+
+export type ViewRef<T = View> = T | Ref<T | NativeElement<T>> | Readonly<ShallowRef<T | NativeElement<T>>>;

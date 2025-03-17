@@ -1,13 +1,15 @@
+import { CreateViewEventData, EventData, GestureEventData, Placeholder, ScrollEventData, ScrollView, ShownModallyData, View } from '@nativescript/core';
 import { onMounted, onUnmounted } from 'nativescript-vue';
-import { unrefView } from '../unrefView';
 import { ViewRef } from '../types';
-import { EventData, GestureEventData, ShownModallyData, View, ScrollEventData, ScrollView } from '@nativescript/core';
+import { unrefView } from '../unrefView';
 
 type ViewEventData<T> = Omit<EventData, 'object'> & { object: T };
 type ViewGestureEventData<T> = Omit<GestureEventData, 'object'> & { object: T };
 type ViewShownModallyData<T> = Omit<ShownModallyData, 'object'> & { object: T };
 type ViewScrollEventData<T = ScrollView> = Omit<ScrollEventData, 'object'> & { object: T };
-
+type CreatingViewEventData = Omit<CreateViewEventData, 'object'> & {
+  object: Placeholder;
+};
 interface Event<T = View> {
   /* Lifecycle */
   loaded?: (eventData: ViewEventData<T>) => void;
@@ -32,6 +34,8 @@ interface Event<T = View> {
   accessibilityPerformEscape?: (eventData: ViewEventData<T>) => void;
   /* Layouts */
   scroll?: (eventData: ViewScrollEventData) => void;
+  /* Components */
+  creatingView?: (eventData: CreatingViewEventData) => void;
 }
 
 /**
