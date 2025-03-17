@@ -5,7 +5,7 @@
   "sourceRoot": "packages/nativescript-localstorage",
   "targets": {
     "build": {
-      "executor": "@nrwl/js:tsc",
+      "executor": "@nx/js:tsc",
       "options": {
         "outputPath": "dist/packages/nativescript-localstorage",
         "tsConfig": "packages/nativescript-localstorage/tsconfig.json",

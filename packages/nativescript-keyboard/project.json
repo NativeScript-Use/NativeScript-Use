@@ -5,7 +5,7 @@
   "sourceRoot": "packages/nativescript-keyboard",
   "targets": {
     "build": {
-      "executor": "@nrwl/js:tsc",
+      "executor": "@nx/js:tsc",
       "options": {
         "outputPath": "dist/packages/nativescript-keyboard",
         "tsConfig": "packages/nativescript-keyboard/tsconfig.json",
@@ -32,14 +32,10 @@
     "build.all": {
       "executor": "nx:run-commands",
       "options": {
-        "commands": [
-          "node tools/scripts/build-finish.ts nativescript-keyboard"
-        ],
+        "commands": ["node tools/scripts/build-finish.ts nativescript-keyboard"],
         "parallel": false
       },
-      "outputs": [
-        "dist/packages/nativescript-keyboard"
-      ],
+      "outputs": ["dist/packages/nativescript-keyboard"],
       "dependsOn": [
         {
           "target": "build.all",
@@ -54,18 +50,14 @@
     "focus": {
       "executor": "nx:run-commands",
       "options": {
-        "commands": [
-          "nx g @nativescript/plugin-tools:focus-packages nativescript-keyboard"
-        ],
+        "commands": ["nx g @nativescript/plugin-tools:focus-packages nativescript-keyboard"],
         "parallel": false
       }
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": [
-          "packages/nativescript-keyboard/**/*.ts"
-        ]
+        "lintFilePatterns": ["packages/nativescript-keyboard/**/*.ts"]
       }
     }
   },

@@ -5,7 +5,7 @@
   "sourceRoot": "packages/nativescript-task",
   "targets": {
     "build": {
-      "executor": "@nrwl/js:tsc",
+      "executor": "@nx/js:tsc",
       "options": {
         "outputPath": "dist/packages/nativescript-task",
         "tsConfig": "packages/nativescript-task/tsconfig.json",

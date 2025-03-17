@@ -80,6 +80,12 @@ export function useSyncObservableArray<ReactiveItem, OAItem = any>(
       return;
     }
 
+    // If the array is empty, we will clear the observableArray
+    if (itemList.length === 0 && observableArray.length !== 0) {
+      observableArray.splice(0, observableArray.length);
+      return;
+    }
+
     if (checkRemoved) {
       const indexRemoved: number[] = [];
       observableArray.forEach((itemObservable: any, index: number) => {

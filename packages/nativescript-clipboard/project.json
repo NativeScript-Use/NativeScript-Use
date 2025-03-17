@@ -5,7 +5,7 @@
   "sourceRoot": "packages/nativescript-clipboard",
   "targets": {
     "build": {
-      "executor": "@nrwl/js:tsc",
+      "executor": "@nx/js:tsc",
       "options": {
         "outputPath": "dist/packages/nativescript-clipboard",
         "tsConfig": "packages/nativescript-clipboard/tsconfig.json",
@@ -32,14 +32,10 @@
     "build.all": {
       "executor": "nx:run-commands",
       "options": {
-        "commands": [
-          "node tools/scripts/build-finish.ts nativescript-clipboard"
-        ],
+        "commands": ["node tools/scripts/build-finish.ts nativescript-clipboard"],
         "parallel": false
       },
-      "outputs": [
-        "dist/packages/nativescript-clipboard"
-      ],
+      "outputs": ["dist/packages/nativescript-clipboard"],
       "dependsOn": [
         {
           "target": "build.all",
@@ -54,18 +50,14 @@
     "focus": {
       "executor": "nx:run-commands",
       "options": {
-        "commands": [
-          "nx g @nativescript/plugin-tools:focus-packages nativescript-clipboard"
-        ],
+        "commands": ["nx g @nativescript/plugin-tools:focus-packages nativescript-clipboard"],
         "parallel": false
       }
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": [
-          "packages/nativescript-clipboard/**/*.ts"
-        ]
+        "lintFilePatterns": ["packages/nativescript-clipboard/**/*.ts"]
       }
     }
   },

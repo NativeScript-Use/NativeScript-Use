@@ -1,6 +1,6 @@
 {
   "name": "@nativescript-use/vue",
-  "version": "0.0.46",
+  "version": "0.0.48",
   "description": "Add a plugin description",
   "main": "index",
   "typings": "index.d.ts",
@@ -10,20 +10,17 @@
       "android": "6.0.0"
     }
   },
-  "scripts": {
-    "postinstall": "npx vue-demi-switch 3 nativescript-vue"
-  },
+  "scripts": {},
   "dependencies": {
     "@nativescript-use/nativescript-clipboard": "0.0.3",
+    "@nativescript-use/nativescript-intersection-observer": "0.0.1",
     "@nativescript-use/nativescript-keyboard": "0.0.1",
     "@nativescript-use/nativescript-localstorage": "0.0.1",
     "@nativescript-use/nativescript-media-query": "0.0.4",
     "@nativescript-use/nativescript-orientation": "0.0.3",
-    "@nativescript-use/nativescript-intersection-observer": "0.0.1",
     "@nativescript-use/nativescript-task": "^0.0.11",
-    "@vueuse/core": "^10.10.1"
+    "@vueuse/core": "^12.5.0"
   },
-  "peerDependencies": {},
   "repository": {
     "type": "git",
     "url": "https://github.com/NativeScript-Use/NativeScript-Use.git"

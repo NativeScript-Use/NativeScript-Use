@@ -1,8 +1,8 @@
 import { Application, ApplicationSettings, CSSUtils, Frame } from '@nativescript/core';
-import { ref, Ref, watch, computed, onUnmounted, getCurrentInstance, readonly } from 'nativescript-vue';
+import { computed, getCurrentInstance, onUnmounted, readonly, ref, Ref, watch } from 'nativescript-vue';
+import { createGlobalState } from '../globalState';
 import { getSystemTheme } from './util';
 import removeSystemCssClass = CSSUtils.removeSystemCssClass;
-import { createGlobalState } from '../globalState';
 
 export type BasicColorMode = 'light' | 'dark';
 export type BasicColorSchema = BasicColorMode | 'auto';
@@ -100,7 +100,7 @@ export function useColorMode<T extends string = BasicColorMode>(options: UseColo
       CSSUtils.pushToSystemCssClasses(classToApply);
       rootView.className = Array.from(rootViewClass).join(' ');
       const frame = Frame.topmost();
-      frame.backStack.forEach((backStack) => backStack.resolvedPage?._onCssStateChange());
+      frame?.backStack.forEach((backStack) => backStack?.resolvedPage?._onCssStateChange());
       rootView._getRootModalViews()?.forEach((view) => {
         view?._onCssStateChange();
       });

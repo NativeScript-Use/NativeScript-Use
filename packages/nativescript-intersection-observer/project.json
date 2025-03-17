@@ -5,7 +5,7 @@
   "sourceRoot": "packages/nativescript-intersection-observer",
   "targets": {
     "build": {
-      "executor": "@nrwl/js:tsc",
+      "executor": "@nx/js:tsc",
       "options": {
         "outputPath": "dist/packages/nativescript-intersection-observer",
         "tsConfig": "packages/nativescript-intersection-observer/tsconfig.json",

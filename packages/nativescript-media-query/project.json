@@ -5,7 +5,7 @@
   "sourceRoot": "packages/nativescript-media-query",
   "targets": {
     "build": {
-      "executor": "@nrwl/js:tsc",
+      "executor": "@nx/js:tsc",
       "options": {
         "outputPath": "dist/packages/nativescript-media-query",
         "tsConfig": "packages/nativescript-media-query/tsconfig.json",

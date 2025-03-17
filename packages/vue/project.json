@@ -5,7 +5,7 @@
   "sourceRoot": "packages/vue",
   "targets": {
     "build": {
-      "executor": "@nrwl/js:tsc",
+      "executor": "@nx/js:tsc",
       "options": {
         "outputPath": "dist/packages/vue",
         "tsConfig": "packages/vue/tsconfig.json",

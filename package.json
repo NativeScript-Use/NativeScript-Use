@@ -14,11 +14,12 @@
     "remove-package": "nx g @nativescript/plugin-tools:remove-package",
     "add-demo": "nx g @nativescript/plugin-tools:add-demo",
     "ts-vue": "cd packages/vue && npx tsc --watch",
-    "build:all": "nx run-many --target=build.all --all",
+    "build:all": "NX_DISABLE_DB=true nx run-many --target=build.all --all --verbose --skip-nx-cache ",
+    "build:vue": "nx run-many --target=vue  ",
     "demo:vue:android": "npx nx run demo-vue:android",
     "demo:vue:ios": "npx nx run demo-vue:ios",
     "docs:dev": "vitepress dev packages/vue",
-    "docs:build": "npx vue-demi-switch 3 && vitepress build packages/vue ",
+    "docs:build": "vitepress build packages/vue ",
     "docs:preview": "vitepress preview packages/vue"
   },
   "workspaces": [
@@ -28,20 +29,20 @@
   "private": true,
   "devDependencies": {
     "@nativescript-use/vue": "^0.0.5",
-    "@nativescript/core": "~8.5.0",
-    "@nativescript/plugin-tools": "5.1.0",
+    "@nativescript/core": "~8.9.0",
+    "@nativescript/plugin-tools": "5.5.1",
     "@nativescript/tailwind": "^2.0.1",
-    "@nativescript/types": "~8.5.0",
-    "@nativescript/webpack": "^5.0.15",
+    "@nativescript/types": "~8.9.0",
+    "@nativescript/webpack": "^5.0.23",
     "autoprefixer": "^10.4.14",
     "husky": "^8.0.0",
     "nativescript-vue": "3.0.0-beta.8",
-    "ng-packagr": "^15.0.0",
+    "ng-packagr": "^19.2.0",
     "patch-package": "~6.4.0",
     "postcss": "^8.4.24",
     "tailwindcss": "^3.3.2",
-    "typescript": "^5.4.5",
-    "vitepress": "^1.0.0-rc.40"
+    "typescript": "~5.6.0",
+    "vitepress": "^1.6.3"
   },
   "lint-staged": {
     "**/*.{js,ts,scss,json,html}": [
