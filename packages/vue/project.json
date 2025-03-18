@@ -11,6 +11,7 @@
         "tsConfig": "packages/vue/tsconfig.json",
         "packageJson": "packages/vue/package.json",
         "main": "packages/vue/index.d.ts",
+        "generatePackageJson": false,
         "assets": [
           "packages/vue/*.md",
           "packages/vue/index.d.ts",

@@ -35,9 +35,8 @@
       "cache": true
     }
   },
-  "neverConnectToCloud": true,
-
   "useDaemonProcess": false,
   "parallel": 1,
-  "defaultBase": "master"
+  "defaultBase": "master",
+  "useLegacyCache": true
 }

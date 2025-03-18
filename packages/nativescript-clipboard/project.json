@@ -11,6 +11,7 @@
         "tsConfig": "packages/nativescript-clipboard/tsconfig.json",
         "packageJson": "packages/nativescript-clipboard/package.json",
         "main": "packages/nativescript-clipboard/index.d.ts",
+        "generatePackageJson": false,
         "assets": [
           "packages/nativescript-clipboard/*.md",
           "packages/nativescript-clipboard/index.d.ts",

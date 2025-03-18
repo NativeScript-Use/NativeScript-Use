@@ -11,6 +11,7 @@
         "tsConfig": "packages/nativescript-orientation/tsconfig.json",
         "packageJson": "packages/nativescript-orientation/package.json",
         "main": "packages/nativescript-orientation/index.d.ts",
+        "generatePackageJson": false,
         "assets": [
           "packages/nativescript-orientation/*.md",
           "packages/nativescript-orientation/index.d.ts",

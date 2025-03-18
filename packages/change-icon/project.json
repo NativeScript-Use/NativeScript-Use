@@ -11,6 +11,7 @@
         "tsConfig": "packages/change-icon/tsconfig.json",
         "packageJson": "packages/change-icon/package.json",
         "main": "packages/change-icon/index.d.ts",
+        "generatePackageJson": false,
         "assets": [
           "packages/change-icon/*.md",
           "packages/change-icon/index.d.ts",

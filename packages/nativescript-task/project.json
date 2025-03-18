@@ -11,6 +11,7 @@
         "tsConfig": "packages/nativescript-task/tsconfig.json",
         "packageJson": "packages/nativescript-task/package.json",
         "main": "packages/nativescript-task/index.d.ts",
+        "generatePackageJson": false,
         "assets": [
           "packages/nativescript-task/*.md",
           "packages/nativescript-task/index.d.ts",

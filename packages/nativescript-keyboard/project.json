@@ -11,6 +11,7 @@
         "tsConfig": "packages/nativescript-keyboard/tsconfig.json",
         "packageJson": "packages/nativescript-keyboard/package.json",
         "main": "packages/nativescript-keyboard/index.d.ts",
+        "generatePackageJson": false,
         "assets": [
           "packages/nativescript-keyboard/*.md",
           "packages/nativescript-keyboard/index.d.ts",

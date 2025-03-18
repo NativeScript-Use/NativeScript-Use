@@ -11,6 +11,7 @@
         "tsConfig": "packages/nativescript-localstorage/tsconfig.json",
         "packageJson": "packages/nativescript-localstorage/package.json",
         "main": "packages/nativescript-localstorage/index.d.ts",
+        "generatePackageJson": false,
         "assets": [
           "packages/nativescript-localstorage/*.md",
           "packages/nativescript-localstorage/index.d.ts",

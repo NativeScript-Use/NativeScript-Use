@@ -11,6 +11,7 @@
         "tsConfig": "packages/nativescript-media-query/tsconfig.json",
         "packageJson": "packages/nativescript-media-query/package.json",
         "main": "packages/nativescript-media-query/index.d.ts",
+        "generatePackageJson": false,
         "assets": [
           "packages/nativescript-media-query/*.md",
           "packages/nativescript-media-query/index.d.ts",

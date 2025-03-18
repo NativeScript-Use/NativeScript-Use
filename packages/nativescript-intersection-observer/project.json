@@ -11,6 +11,7 @@
         "tsConfig": "packages/nativescript-intersection-observer/tsconfig.json",
         "packageJson": "packages/nativescript-intersection-observer/package.json",
         "main": "packages/nativescript-intersection-observer/index.d.ts",
+        "generatePackageJson": false,
         "assets": [
           "packages/nativescript-intersection-observer/*.md",
           "packages/nativescript-intersection-observer/index.d.ts",
