@@ -1,3 +1,6 @@
+# DEPRECATED. NativeScript introduced media queries in version 8.8. We've deprecated this package in favor of using @nativescript/core. Official documentation is available [here](https://docs.nativescript.org/guide/styling#media-queries-8-8).
+
+
 # @nativescript-use/nativescript-media-query
 
 ```javascript

@@ -1,5 +1,8 @@
 import { Screen, Application } from '@nativescript/core';
 
+/**
+ * @deprecated. NativeScript introduced media queries in version 8.8. We've deprecated this package in favor of using @nativescript/core. Official documentation is available [here](https://docs.nativescript.org/guide/styling#media-queries-8-8)
+ */
 export interface MediaQueryList {
   readonly matches: boolean;
   readonly media: string;
@@ -8,13 +11,22 @@ export interface MediaQueryList {
   removeListener(listener: MediaQueryListListener): void;
 }
 
+/**
+ * @deprecated. NativeScript introduced media queries in version 8.8. We've deprecated this package in favor of using @nativescript/core. Official documentation is available [here](https://docs.nativescript.org/guide/styling#media-queries-8-8)
+ */
 export type MediaQueryListListener = (mql: MediaQueryList) => void;
 
+/**
+ * @deprecated. NativeScript introduced media queries in version 8.8. We've deprecated this package in favor of using @nativescript/core. Official documentation is available [here](https://docs.nativescript.org/guide/styling#media-queries-8-8)
+ */
 export interface MediaQueryListEvent {
   readonly matches: boolean;
   readonly media: string;
 }
 
+/**
+ * @deprecated. NativeScript introduced media queries in version 8.8. We've deprecated this package in favor of using @nativescript/core. Official documentation is available [here](https://docs.nativescript.org/guide/styling#media-queries-8-8)
+ */
 export const matchMedia = (mediaQueryString: string) => {
   const factory = MediaQueryListFactory.getInstance();
   const mql = factory.create(mediaQueryString);
